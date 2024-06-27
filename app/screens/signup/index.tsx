@@ -13,7 +13,7 @@ export default function SignUpIndex() {
         Enter the name you would like to go by
       </Text>
       <TextInput
-        className="text-[17px] mt-1 pb-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
+        className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
         // style={{ height: 40 }}
         placeholder="Name"
         // onChangeText={(newText) => setText(newText)}
