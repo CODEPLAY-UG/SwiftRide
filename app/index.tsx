@@ -1,10 +1,13 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
-import { Link, Stack } from "expo-router";
+import { Link, Stack, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Button from "@/components/core/Button";
 
 export default function RootIndex() {
+  const handleHome = () => {
+    router.replace("./(tabs)/");
+  };
+
   return (
     <SafeAreaView className="h-full w-full flex justify-center items-center">
       <Stack.Screen
@@ -18,12 +21,12 @@ export default function RootIndex() {
           <Text className="text-[#32cd32] text-lg">Go to sign up</Text>
         </Pressable>
       </Link>
-
-      <Link href="/screens/map" className="mt-5" asChild>
-        <Pressable className="">
-          <Text className="text-[#3a1a6c] text-lg">Go to map</Text>
-        </Pressable>
-      </Link>
+      <TouchableOpacity
+        onPress={handleHome}
+        className="mt-3 bg-[#00ffff] py-2 px-4 rounded"
+      >
+        <Text className="text-[#3a1a6c] text-lg">Go to home</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
