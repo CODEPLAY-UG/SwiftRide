@@ -18,9 +18,12 @@ export default function RootIndex() {
           <Text className="text-[#32cd32] text-lg">Go to sign up</Text>
         </Pressable>
       </Link>
-      <Button>
-        <Text>Click Me</Text>
-      </Button>
+
+      <Link href="/screens/map" className="mt-5" asChild>
+        <Pressable className="">
+          <Text className="text-[#3a1a6c] text-lg">Go to map</Text>
+        </Pressable>
+      </Link>
     </SafeAreaView>
   );
 }
