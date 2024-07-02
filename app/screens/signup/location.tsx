@@ -76,10 +76,7 @@ export default function OnboardingScreen() {
             key={screenIndex}
           >
             <Animated.View className="" entering={FadeIn} exiting={FadeOut}>
-              <Image
-                className="border-2 w-[328.6px] h-[528.55px]"
-                source={data.image}
-              />
+              <Image className="w-[328.6px] h-[528.55px]" source={data.image} />
             </Animated.View>
 
             <View className="mt-20">
