@@ -72,14 +72,17 @@ export default function OnboardingScreen() {
 
         <GestureDetector gesture={swipes}>
           <View
-            className="items-center bg-white h-full px-3 pt-16"
+            className="items-center bg-white h-full px-3 "
             key={screenIndex}
           >
-            <Animated.View entering={FadeIn} exiting={FadeOut}>
-              <Image style={styles.image} source={data.image} />
+            <Animated.View className="" entering={FadeIn} exiting={FadeOut}>
+              <Image
+                className="border-2 w-[328.6px] h-[528.55px]"
+                source={data.image}
+              />
             </Animated.View>
 
-            <View className="">
+            <View className="mt-20">
               <Animated.Text
                 entering={SlideInRight}
                 exiting={SlideOutLeft}
@@ -130,13 +133,6 @@ export default function OnboardingScreen() {
 }
 
 const styles = StyleSheet.create({
-  image: {
-    // margin: 20,
-    width: 328.67,
-    height: 528.55,
-    resizeMode: "contain",
-  },
-
   stepIndicatorContainer: {
     flexDirection: "row",
     gap: 8,
