@@ -1,36 +1,9 @@
-// import { View, Text, Image } from "react-native";
-// import React from "react";
-
-// export default function location() {
-//   return (
-//     <View className=" items-center bg-white h-full">
-//       <View className="border-2 border-red-600 bg-[#FFFFFF] w-full px-8">
-//         <Image
-//           className="h-[528.55px] w-[328.67px]"
-//           source={require("../../../assets/images/location.png")}
-//         />
-//       </View>
-//       <View className="my-5">
-//         <Text className="text-[17px] font-[600] leading-[22px] -tracking-[0.43]">
-//           Location access
-//         </Text>
-//         <Text className="my-2 text-[13px] font-normal leading-[18px] -tracking-[0.08]">
-//           Don't miss your ride and important updates location based updates like
-//           traffic details.
-//         </Text>
-//       </View>
-//     </View>
-//   );
-// }
-
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StyleSheet, Image } from "react-native";
 
 import { Link, Stack, router } from "expo-router";
 import React, { useState } from "react";
 import { Text, View, Pressable } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
 import {
   GestureDetector,
   Gesture,
@@ -110,14 +83,14 @@ export default function OnboardingScreen() {
               <Animated.Text
                 entering={SlideInRight}
                 exiting={SlideOutLeft}
-                className="text-[17px] font-[600] leading-[22px] -tracking-[0.43]"
+                className="text-[17px] font-[600] leading-[22px] tracking-[-0.43]"
               >
                 {data.title}
               </Animated.Text>
               <Animated.Text
                 entering={SlideInRight.delay(50)}
                 exiting={SlideOutLeft}
-                className="my-2 text-[13px] font-normal leading-[18px] -tracking-[0.08]"
+                className="my-2 text-[13px] font-normal leading-[18px] tracking-[-0.08]"
               >
                 {data.description}
               </Animated.Text>
