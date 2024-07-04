@@ -15,7 +15,7 @@ export default function MapIndex() {
           className='w-[20px] h-[20px]'
           source={require('../../../assets/images/search.png')}
         />
-              <TextInput className=' font-normal text-[17px] leading-[22px] tracking-[0.43px]'
+              <TextInput className='font-normal text-[17px] leading-[22px] tracking-[0.43px] px-2'
                       placeholder="Going somewhere?.."
                       // onChangeText={onChangeText}
                       // value={text}
