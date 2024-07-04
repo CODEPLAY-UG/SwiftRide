@@ -68,7 +68,7 @@ export default function OnboardingScreen() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View className="">
-        <Stack.Screen options={{ headerShown: false }} />
+        <Stack.Screen options={{ headerTitle: "" }} />
 
         <GestureDetector gesture={swipes}>
           <View
