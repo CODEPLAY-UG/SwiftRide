@@ -11,7 +11,11 @@ export default function RootIndex() {
   return (
     <SafeAreaView className="h-full w-full flex justify-center items-center">
       <Stack.Screen
-        options={{ title: "Welcome", headerTitleAlign: "center" }}
+        options={{
+          title: "Welcome",
+          headerTitleAlign: "center",
+          // headerBackTitle: "Judas",
+        }}
       />
       <Text className="uppercase font-bold text-lg text-[#ffd700]">
         Welcome to expo
