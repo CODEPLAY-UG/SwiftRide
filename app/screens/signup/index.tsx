@@ -8,7 +8,7 @@ export default function SignUpIndex() {
       <Stack.Screen
         options={{ title: "Sign Up", headerTitleAlign: "center" }}
       />
-      <Text className="text-[12px] mt-1 font-normal leading-[16px]">
+      <Text className="text-[12px] mt-1 font-normal leading-[16px] py-[16px]">
         Enter the name you would like to go by
       </Text>
       <TextInput
