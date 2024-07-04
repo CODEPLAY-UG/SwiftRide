@@ -4,15 +4,16 @@ export default function SignUpLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
-        headerTintColor: "#000",
+        // headerShown: true,
+        // headerTintColor: "#ffd700",
+        headerTitle: "Sign up",
         headerTitleStyle: {
-          fontWeight: "bold",
+          fontWeight: "semibold",
         },
       }}
     >
       {/* Optionally configure static options outside the route.*/}
-      <Stack.Screen name="index" options={{headerTitle:""}} />
+      <Stack.Screen name="index" options={{}} />
       <Stack.Screen name="location" options={{}} />
     </Stack>
   );
