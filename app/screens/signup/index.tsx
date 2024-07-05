@@ -1,8 +1,28 @@
 import { View, Text, TextInput, Pressable, Image } from "react-native";
-import React from "react";
-import { Link, Stack } from "expo-router";
+import React, { useState } from "react";
+import { Link, router, Stack } from "expo-router";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../features/userData/userDataSlice";
 
 export default function SignUpIndex() {
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+
+  const handleNameChange = (newName: string) => {
+    setName(newName);
+  };
+
+  const handleNextScreen = () => {
+    // Dispatch the name to the store
+    dispatch(
+      setUserData({
+        name,
+        phoneNumber: "",
+      })
+    );
+    // Navigate to the next screen (e.g., using navigation library)
+    router.push("./phoneNumber");
+  };
   return (
     <View className="bg-white h-full w-full px-5">
       <Stack.Screen
@@ -14,17 +34,18 @@ export default function SignUpIndex() {
       <TextInput
         className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
         placeholder="Name"
-        // onChangeText={(newText) => setText(newText)}
+        onChangeText={handleNameChange}
         // defaultValue={text}
       />
       <View className="items-center">
-        <Link href="./phoneNumber" className="mt-[56px]" asChild>
-          <Pressable className="bg-[#636363] w-[361px] h-[52px] items-center justify-center rounded-[99px]">
-            <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-              Continue
-            </Text>
-          </Pressable>
-        </Link>
+        <Pressable
+          onPress={handleNextScreen}
+          className="bg-[#636363] mt-[56px] w-[361px] h-[52px] items-center justify-center rounded-[99px]"
+        >
+          <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+            Continue
+          </Text>
+        </Pressable>
         <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
           Or
         </Text>

@@ -16,7 +16,7 @@ export default function Activity() {
         Welcome {userData.name}
       </Text>
       <Text className="text-xl font-semibold text-[#ffd700] mt-2">
-        Your Phone Number is: {userData.phoneNumber}
+        Your Phone Number is: +256 {userData.phoneNumber}
       </Text>
     </SafeAreaView>
   );
