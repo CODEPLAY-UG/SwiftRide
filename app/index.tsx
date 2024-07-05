@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function RootIndex() {
   const handleLocation = () => {
-    router.push("/screens/signup/location");
+    router.push("/(tabs)");
   };
 
   return (
@@ -29,7 +29,7 @@ export default function RootIndex() {
         onPress={handleLocation}
         className="mt-3 bg-[#00ffff] py-2 px-4 rounded"
       >
-        <Text className="text-[#3a1a6c] text-lg">Go to location</Text>
+        <Text className="text-[#3a1a6c] text-lg">Go to home</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
