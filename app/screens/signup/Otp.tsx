@@ -29,7 +29,7 @@ export default function Otp() {
             and the <Text className="text-[#0078D4]">Privacy Policy</Text>
           </Text>
         </View>
-        <Link href="./signup" className="mt-[16px]" asChild>
+        <Link href="./location" className="mt-[16px]" asChild>
           <Pressable className=" bg-[#636363] w-[361px] h-[52px] items-center justify-center rounded-[99px]">
             <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
               Agree and Continue
