@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["nativewind", "Pressable", "signup", "tailwindcss"]
+  "cSpell.words": ["nativewind", "Pressable", "signup", "tailwindcss"],
+  "gitdoc.enabled": false
 }

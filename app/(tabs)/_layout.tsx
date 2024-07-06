@@ -4,17 +4,28 @@ import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { View, Image, Text } from "react-native";
+import { View, Image, Text, processColor } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
+      // screenOptions={{
+      //   tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+      //   headerShown: false,
+      //   headerTitleAlign: "center",
+      // }}
+
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        // headerShown: true,
+        // headerTintColor: "#ffd700",
         headerShown: false,
         headerTitleAlign: "center",
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        headerTitleStyle: {
+          fontWeight: "semibold",
+        },
       }}
     >
       <Tabs.Screen
@@ -44,6 +55,8 @@ export default function TabLayout() {
         name="activity"
         options={{
           title: "",
+          headerShown: true,
+          headerTitle: "Rider History",
           tabBarIcon: ({ color, focused }) => (
             <View className="mt-4 justify-center items-center space-y-1">
               <Image

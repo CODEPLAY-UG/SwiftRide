@@ -12,7 +12,7 @@ export default function RootIndex() {
     <SafeAreaView className="h-full w-full flex justify-center items-center">
       <Stack.Screen
         options={{
-          title: "Welcome",
+          headerTitle: "Welcome",
           headerTitleAlign: "center",
           // headerBackTitle: "Judas",
         }}
