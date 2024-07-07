@@ -1,7 +1,7 @@
-import { Tabs } from "expo-router";
+import { router, Tabs } from "expo-router";
 import React from "react";
 
-// import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import { ArrowLeft } from "lucide-react-native";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { View, Image, Text, processColor } from "react-native";
@@ -11,15 +11,7 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      // screenOptions={{
-      //   tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-      //   headerShown: false,
-      //   headerTitleAlign: "center",
-      // }}
-
       screenOptions={{
-        // headerShown: true,
-        // headerTintColor: "#ffd700",
         headerShown: false,
         headerTitleAlign: "center",
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
@@ -56,6 +48,9 @@ export default function TabLayout() {
         options={{
           title: "",
           headerShown: true,
+          headerLeft: () => (
+            <ArrowLeft className="ml-4" onPress={router.back} color="black" />
+          ),
           headerTitle: "Rider History",
           tabBarIcon: ({ color, focused }) => (
             <View className="mt-4 justify-center items-center space-y-1">
