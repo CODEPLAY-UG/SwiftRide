@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Camera } from "lucide-react-native";
 import { useSelector } from "react-redux"; // Import useSelector
 import { RootState } from "../store"; // Adjust the path
 import { Stack } from "expo-router";
@@ -12,7 +13,7 @@ export default function Activity() {
     <SafeAreaView className="justify-center items-center bg-[#32cd32] h-full">
       <Stack.Screen
         options={{
-          
+          // headerLeft: () => <Camera />,
         }}
       />
       <Text className="text-xl font-semibold text-[#ffd700] uppercase">
