@@ -1,11 +1,11 @@
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
-import { Link, Stack, router } from "expo-router";
+import { Link, Redirect, Stack, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function RootIndex() {
   const handleLocation = () => {
-    router.push("/(tabs)");
+    router.push("/screens/tasks");
   };
 
   return (
@@ -13,6 +13,7 @@ export default function RootIndex() {
       <Stack.Screen
         options={{
           title: "Welcome",
+          headerShown: false,
           headerTitleAlign: "center",
           // headerBackTitle: "Judas",
         }}
@@ -29,8 +30,9 @@ export default function RootIndex() {
         onPress={handleLocation}
         className="mt-3 bg-[#00ffff] py-2 px-4 rounded"
       >
-        <Text className="text-[#3a1a6c] text-lg">Go to home</Text>
+        <Text className="text-[#3a1a6c] text-lg">Go to tasks</Text>
       </TouchableOpacity>
+      {/* <Redirect href="/screens/signup" /> */}
     </SafeAreaView>
   );
 }
