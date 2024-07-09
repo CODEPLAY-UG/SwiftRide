@@ -24,6 +24,18 @@ export default function RootIndex() {
           <Text className="text-[#3a1a6c] text-lg">Go to map</Text>
         </Pressable>
       </Link>
+
+      <Link href="/screens/payment" className="mt-5" asChild>
+        <Pressable className="">
+          <Text className="text-[#2fc4ff] text-lg">Go to topup</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/screens/payment/addcard" className="mt-5" asChild>
+        <Pressable className="">
+          <Text className="text-[#ff2f5f] text-lg">Go to add card</Text>
+        </Pressable>
+      </Link>
     </SafeAreaView>
   );
 }
