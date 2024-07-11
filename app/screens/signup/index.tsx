@@ -37,7 +37,7 @@ export default function SignUpIndex() {
         onChangeText={handleNameChange}
         // defaultValue={text}
       />
-      <View className="items-center">
+      <View className="items-center" >
         <Pressable
           onPress={handleNextScreen}
           className="bg-[#636363] mt-[56px] w-[361px] h-[52px] items-center justify-center rounded-[99px]"

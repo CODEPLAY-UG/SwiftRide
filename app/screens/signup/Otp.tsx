@@ -4,7 +4,7 @@ import { Stack, Link } from "expo-router";
 
 export default function Otp() {
   return (
-    <View className="bg-white h-full w-full px-5">
+    <View className="bg-white h-full w-full px-6">
       <Stack.Screen options={{ title: "otp", headerTitleAlign: "center" }} />
       <Text className="text-[12px] mt-1 font-normal py-[12px] leading-[16px]">
         Enter OTP code
@@ -14,13 +14,13 @@ export default function Otp() {
       <Text className="text-[12px] mt-1 font-normal  leading-[16px] ">
         Code sent via SMS to number
       </Text>
-      <View className="flex gap-[12px] mt-[20px] w-[361px] items-center">
-        <View className="pt-[24px] px-[16px] pb-[8px] gap-[12px] flex-row ">
+      <View className="flex gap-[12px] mt-[20px] w-[361px] justify-center">
+        <View className="pt-[24px] px-[16px] pb-[8px] gap-[16px] flex-row ">
           <Image
-            className="h-4 w-4"
+            className="h-4 w-4 p-[4px]"
             source={require("../../../assets/images/warning.png")}
           />
-          <Text>
+          <Text className="text-[#616161]">
             By selecting Agree and Continue, I agree to SwiftRide's{" "}
             <Text className="text-[#0078D4]">
               {" "}
@@ -29,8 +29,9 @@ export default function Otp() {
             and the <Text className="text-[#0078D4]">Privacy Policy</Text>
           </Text>
         </View>
-        <Link href="./location" className="mt-[16px]" asChild>
-          <Pressable className=" bg-[#636363] w-[361px] h-[52px] items-center justify-center rounded-[99px]">
+        <Link  href="./location" asChild className="items-center ">
+        
+          <Pressable className="bg-[#636363] w-[361px] h-[52px] items-center justify-center rounded-[99px]">
             <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
               Agree and Continue
             </Text>
