@@ -1,10 +1,11 @@
 import { View, Text, Image, TextInput, Pressable } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const addCard = () => {
   return (
-    <View className="w-100 flex-1">
+    <SafeAreaView className="w-100 flex-1">
       <Stack.Screen
         options={{
           headerShown: true,
@@ -29,7 +30,7 @@ const addCard = () => {
             className="h-[45] w-[45]"
             source={require("../../../../assets/images/card.png")}
           />
-          <TextInput className="" />
+          <TextInput keyboardType="numeric" className="w-[75%]" />
         </View>
       </View>
 
@@ -40,17 +41,17 @@ const addCard = () => {
           </Text>
 
           <View className="flex-row items-center space-x-1 my-3">
-            <TextInput className="" />
+            <TextInput keyboardType="numeric" className="w-[100%]" />
           </View>
         </View>
 
         <View className="w-[35%] border-b-2">
           <Text className="leading-[22px] text-[20px] font-[400] ">
-            Card Number
+            Cvv Code
           </Text>
 
           <View className="flex-row items-center space-x-1 my-3">
-            <TextInput className="" />
+            <TextInput keyboardType="numeric" className="w-[100%]" />
           </View>
         </View>
       </View>
@@ -62,7 +63,7 @@ const addCard = () => {
           </Text>
         </Pressable>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
