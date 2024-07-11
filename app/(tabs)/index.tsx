@@ -1,93 +1,70 @@
-import { View, Image, Text, TextInput } from "react-native";
-import React, { useState, useEffect } from "react";
-import { Stack } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import * as Location from "expo-location";
+import { Image, StyleSheet, Platform } from 'react-native';
 
-export default function TabIndex() {
-  const [location, setLocation] = useState<Location.LocationObject | null>(
-    null
-  );
-  const [errorMsg, setErrorMsg] = useState<string>("");
+import { HelloWave } from '@/components/HelloWave';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  if (!location) {
-    return (
-      <SafeAreaView className="bg-[#FFFFFF] h-full w-full pt-3">
-        <Stack.Screen options={{ headerShown: false }} />
-        <View className="bg-[#F0F0F0] mx-[5%] flex-row mb-2 items-center justify-between py-2 px-4 rounded-[24px]">
-          <View className="flex-row items-center space-x-2">
-            <Image
-              className="w-[20px] h-[20px]"
-              source={require("@assets/images/search.png")}
-            />
-            <TextInput
-              className=" font-normal text-[17px] leading-[22px] tracking-[0.43px]"
-              placeholder="Going somewhere?.."
-            />
-          </View>
-          <View className="">
-            <Image
-              className="w-[20px] h-[20px]"
-              source={require("@assets/images/mic.png")}
-            />
-          </View>
-        </View>
-        <View className="flex-1 justify-center items-center">
-          {errorMsg ? <Text>{errorMsg}</Text> : <Text>Loading...</Text>}
-        </View>
-      </SafeAreaView>
-    );
-  }
-
+export default function HomeScreen() {
   return (
-    <SafeAreaView className="bg-[#FFFFFF] h-full w-full pt-3">
-      <Stack.Screen options={{ headerShown: false }} />
-      <View className="bg-[#F0F0F0] mx-[5%] flex-row mb-2 items-center justify-between py-2 px-4 rounded-[24px]">
-        <View className="flex-row items-center space-x-2">
-          <Image
-            className="w-[20px] h-[20px]"
-            source={require("@assets/images/search.png")}
-          />
-          <TextInput
-            className=" font-normal text-[17px] leading-[22px] tracking-[0.43px]"
-            placeholder="Going somewhere?.."
-          />
-        </View>
-        <View className="">
-          <Image
-            className="w-[20px] h-[20px]"
-            source={require("@assets/images/mic.png")}
-          />
-        </View>
-      </View>
-      <View className="flex-1">
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          showsMyLocationButton
-          showsUserLocation
-          initialRegion={{
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          className="h-full w-full"
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={
+        <Image
+          source={require('@/assets/images/partial-react-logo.png')}
+          style={styles.reactLogo}
         />
-      </View>
-    </SafeAreaView>
+      }>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Welcome!</ThemedText>
+        <HelloWave />
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText>
+          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+          Press{' '}
+          <ThemedText type="defaultSemiBold">
+            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
+          </ThemedText>{' '}
+          to open developer tools.
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText>
+          Tap the Explore tab to learn more about what's included in this starter app.
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText>
+          When you're ready, run{' '}
+          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
+          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+        </ThemedText>
+      </ThemedView>
+    </ParallaxScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
+  },
+  reactLogo: {
+    height: 178,
+    width: 290,
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
+  },
+});
