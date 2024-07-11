@@ -13,5 +13,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "class-variance-authority.d.ts"
-  ]
+, "app/screens/safetyfeatures"  ]
 }
