@@ -1,6 +1,5 @@
 import { View, Text, TextInput } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { Stack } from 'expo-router'
 import { Search } from 'lucide-react-native'
 
@@ -11,11 +10,12 @@ export default function EmergencyContacts() {
         <Stack.Screen options={{ title: "Emergency contacts", headerTitleAlign: "center" }} />
 
         <Text className='py-[12px] px-[16px]'>Choose Contact</Text>
-        <View className='bg-[#F0F0F0] rounded-[24px] h-[36px] w-[343px]  flex-row'>
-        <Search color='#616161'/>
-        <TextInput className=''
+        <View className='bg-[#F0F0F0] rounded-[24px] h-[36px] w-[343px] flex-row items-center mx-6'>
+        <Search color='#616161' size={20} className='px-4'/>
+        <TextInput className='flex-1'
         placeholder='Search'
-        placeholderTextColor="#616161"/>
+        placeholderTextColor="#616161"
+        selectionColor='#808080'/>
         </View>
         <Text className='text-center'>Select Contact</Text>
         
