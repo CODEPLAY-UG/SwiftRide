@@ -14,13 +14,15 @@ export default function Otp() {
       <Text className="text-[12px] mt-1 font-normal  leading-[16px] ">
         Code sent via SMS to number
       </Text>
-      <View className="flex gap-[12px] mt-[20px] w-[361px] justify-center">
-        <View className="pt-[24px] px-[16px] pb-[8px] gap-[16px] flex-row ">
-          <Image
-            className="h-4 w-4 p-[4px]"
-            source={require("../../../assets/images/warning.png")}
-          />
-          <Text className="text-[#616161]">
+      <View className="flex gap-[12px]  mt-[60px] justify-center">
+        <View className="pt-[24px] pr-[19px] justify-center pb-[8px] gap-x-[17px] w-[] flex-row i ">
+          <View className=" p-[2px]">
+            <Image
+              
+              source={require("../../../assets/images/icon2.png")}
+            />
+          </View>
+          <Text className="text-[#616161] mb -[16px]">
             By selecting Agree and Continue, I agree to SwiftRide's{" "}
             <Text className="text-[#0078D4]">
               {" "}
@@ -29,16 +31,16 @@ export default function Otp() {
             and the <Text className="text-[#0078D4]">Privacy Policy</Text>
           </Text>
         </View>
-        <Link  href="./location" asChild className="items-center ">
+        <Link  href="./location" asChild className="items-center flex">
         
-          <Pressable className="bg-[#636363] w-[361px] h-[52px] items-center justify-center rounded-[99px]">
+          <Pressable className=" flex bg-[#636363] h-[52px] items-center justify-center rounded-[99px]">
             <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-              Agree and Continue
+              Agree and continue
             </Text>
           </Pressable>
         </Link>
         <Link href="./signup" asChild>
-          <Pressable className=" w-[361px] h-[52px] items-center justify-center">
+          <Pressable className=" h-[52px] items-center justify-center">
             <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px] p">
               I did not receive a code
             </Text>
