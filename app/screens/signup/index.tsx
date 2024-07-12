@@ -46,6 +46,10 @@ export default function SignUpIndex() {
             Continue
           </Text>
         </Pressable>
+
+
+
+
         <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
           Or
         </Text>
