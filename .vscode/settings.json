@@ -1,6 +1,4 @@
 {
   "cSpell.words": ["nativewind", "Pressable", "signup", "tailwindcss"],
-  "gitdoc.enabled": false,
-  "spellright.language": ["en"],
-  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
+  "gitdoc.enabled": false
 }
