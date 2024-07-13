@@ -42,7 +42,7 @@ export default function PhoneNumber() {
       <View className="items-center">
            <Pressable
         onPress={handleSaveUserData}
-        className="mt-[56px] bg-[#636363] w-[361px] h-[52px] items-center justify-center rounded-[99px]"
+        className="mt-[56px] bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]"
       >
         <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
           Continue
