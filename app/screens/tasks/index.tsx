@@ -4,7 +4,7 @@ import { router, Stack } from "expo-router";
 
 export default function TaskIndex() {
   const handleLocationreagan = () => {
-    router.push("/screens/safety");
+    router.push("./reagan");
   };
   return (
     <View className="h-full justify-center gap-5 items-center">
