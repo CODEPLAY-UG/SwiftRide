@@ -2,40 +2,31 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Mic, Search, X } from "lucide-react-native";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
+import Button from "@/components/core/Button";
 
 export default function Index() {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <Stack.Screen options={{ headerShown: false }} />
-      <View className="flex-row items-center justify-between mt-80 mx-4">
-        <View className="flex-row bg-[#F0F0F0] rounded-[24px] h-[36px] flex-1 items-center">
-          <View className="px-3">
-            <Search color="#616161" size={20} />
-          </View>
-          <TextInput
-            className="flex-1 font-normal text-[17px] text-[#616161] leading-[22px] tracking-[0.43px]"
-            onChangeText={setText}
-            placeholder="Search"
-            value={text}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          />
-          <TouchableOpacity className="mx-[12px]">
-            {text.length > 0 ? (
-              <View className="bg-[#616161] p-[3px] rounded-full">
-                <X color="white" size={16} />
-              </View>
-            ) : (
-              <Mic color="#616161" size={20} />
-            )}
-          </TouchableOpacity>
-        </View>
-        {isFocused && <Text className="text-gray-700 ml-2">Cancel</Text>}
-      </View>
+    <SafeAreaView className="flex-1 bg-white justify-center items-center">
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTitle: "Hold Up",
+          headerTitleAlign: "center",
+        }}
+      />
+
+      <TouchableOpacity
+        onPress={() => router.push("./test")}
+        className="py-2 flex justify-center items-center"
+      >
+        <Text className="bg-orange-500 text-xl py-1 px-4 w-fit rounded-3xl">
+          Tiba
+        </Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
