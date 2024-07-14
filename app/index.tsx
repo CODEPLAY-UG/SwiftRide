@@ -30,6 +30,12 @@ export default function RootIndex() {
       >
         <Text className="text-[#3a1a6c] text-lg">Go to tasks</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => router.push("/screens/home")}
+        className="mt-3 bg-[#ffd700] py-2 px-4 rounded"
+      >
+        <Text className="text-[#3a1a6c] text-lg">Go to map</Text>
+      </TouchableOpacity>
       {/* <Redirect href="/screens/signup" /> */}
     </SafeAreaView>
   );
