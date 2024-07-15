@@ -1,4 +1,4 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput,TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
 import { Search } from 'lucide-react-native'
@@ -18,6 +18,11 @@ export default function EmergencyContacts() {
         selectionColor='#808080'/>
         </View>
         <Text className='text-center p-[16px]'>Select Contact</Text>
+        <View className='items-center'>
+       <TouchableOpacity className='bg-[#636363] h-[52px] w-[361px] rounded-full justify-center items-center'>
+          <Text className='text-[#FFFFFF]'>Add Contact</Text>
+       </TouchableOpacity>
+       </View>
         
     </View>
    
