@@ -36,10 +36,10 @@ export default function EmergencyContacts() {
           source={require("@assets/images/pink.png")}
         />
         <View className="">
-          <Text className="text-[17px] font-[600] text-[#242424] leading-[22px] tracking-[-0.43]">
+          <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43]">
             Niklaus Wirth
           </Text>
-          <Text className="text-[13px] font-normal text-[#808080] leading-[18px] tracking-[-0.08]">
+          <Text className="text-[13px] text-[#808080] leading-[18px] tracking-[-0.08]">
             +256 792348567
           </Text>
         </View>
