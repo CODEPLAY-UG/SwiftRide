@@ -19,7 +19,7 @@ export default function TaskIndex() {
         <Text>Reagan</Text>
       </TouchableOpacity>
       <TouchableOpacity className="">
-        <Text>Scout</Text>
+        <Text>Scott</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => router.push("./Tiba")} className="">
         <Text className="bg-[#32cd32] text-[#ffd700] text-xl px-5 py-1 rounded-md border-2 border-[#ffd700]">
