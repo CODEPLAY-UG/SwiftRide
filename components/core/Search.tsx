@@ -4,9 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Mic, Search, X } from "lucide-react-native";
 import { Stack } from "expo-router";
 
-export default function SearchComponent() {
+export default function SearchComponent({ placeholder = "Search" }) {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+
   return (
     <View className="flex-row items-center justify-between mt-2 mx-4">
       <View className="flex-row bg-[#F0F0F0] rounded-[24px] h-[36px] flex-1 items-center">
@@ -16,12 +17,12 @@ export default function SearchComponent() {
         <TextInput
           className="flex-1 font-normal text-[17px] text-[#616161] leading-[22px] tracking-[0.43px]"
           onChangeText={setText}
-          placeholder="Search"
+          placeholder={placeholder}
           value={text}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
-        <TouchableOpacity className="mx-[12px]">
+        <TouchableOpacity className="mx-[12px]" onPress={() => setText("")}>
           {text.length > 0 ? (
             <View className="bg-[#616161] p-[3px] rounded-full">
               <X color="white" size={16} />
@@ -32,7 +33,11 @@ export default function SearchComponent() {
         </TouchableOpacity>
       </View>
 
-      {isFocused && <Text className="text-gray-700 ml-2">Cancel</Text>}
+      {isFocused && (
+        <TouchableOpacity onPress={() => setText("")}>
+          <Text className="text-gray-700 ml-2">Cancel</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

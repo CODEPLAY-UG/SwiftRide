@@ -13,7 +13,7 @@ export default function test() {
           headerTitleAlign: "center",
         }}
       />
-      <SearchComponent />
+      <SearchComponent placeholder="Going somewhere?" />
     </View>
   );
 }
