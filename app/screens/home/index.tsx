@@ -57,6 +57,7 @@ export default function index() {
       <MapView
         className="h-full w-full"
         // style={styles.map}
+        provider="google"
         initialRegion={{
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
@@ -65,7 +66,8 @@ export default function index() {
         }}
         onRegionChangeComplete={(data) => console.log(data)}
         showsUserLocation={false}
-        // mapType="satelliteFlyover"
+        // mapType="satellite"
+        userInterfaceStyle="dark"
       >
         <Marker
           // key={index}

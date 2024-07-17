@@ -1,10 +1,11 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
+import DrawerContent from "./drawerContent";
 
 export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer>
+      <Drawer drawerContent={() => <DrawerContent children={undefined} />}>
         <Drawer.Screen
           name="index" // This is the name of the page and must match the url from root
           options={{
