@@ -6,7 +6,7 @@ import { MapPin } from "lucide-react-native";
 
 export default function Placeorder() {
   return (
-    <View className="bg-white h-full w-full px-5">
+    <View className="bg-white h-full">
       <Stack.Screen
         options={{ title: "Your route", headerTitleAlign: "center" }}
       />

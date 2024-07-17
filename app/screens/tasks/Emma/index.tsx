@@ -14,7 +14,7 @@ import { Link } from "expo-router";
 
 export default function User() {
   return (
-    <View className="bg-white h-full w-full px-5">
+    <View className="bg-white h-full">
       <Stack.Screen
         options={{ title: "Your route", headerTitleAlign: "center" }}
       />
@@ -56,13 +56,13 @@ export default function User() {
       </View>
 
       <View className="items-center">
-      <Link href="./placeorder" className="mt-5 mb-2" asChild>
-        <Pressable className="mt-[22px] bg-[#636363] w-full h-[56px] items-center justify-center rounded-[99px]">
-          <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
-            Place order
-          </Text>
+        <Link href="./placeorder" className="mt-5 mb-2" asChild>
+          <Pressable className="mt-[22px] bg-[#636363] w-[330px] h-[56px] items-center justify-center rounded-[99px]">
+            <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
+              Place order
+            </Text>
           </Pressable>
-          </Link>
+        </Link>
       </View>
     </View>
   );
