@@ -31,7 +31,7 @@ export default function User() {
           <View className="flex-row items-center space-x-2">
             <TextInput
               className=" font-normal text-[17px] leading-[22px] tracking-[0.43px]"
-              placeholder="Going somewhere?.."
+              placeholder="Destination.."
             />
           </View>
           <View className=""></View>
