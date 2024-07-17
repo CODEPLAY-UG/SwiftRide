@@ -1,4 +1,4 @@
-rootProject.name = 'SwiftRide'
+rootProject.name = 'frontend_playground'
 
 dependencyResolutionManagement {
   versionCatalogs {
