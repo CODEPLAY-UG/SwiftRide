@@ -29,20 +29,28 @@ export default function PhoneNumber() {
   return (
     <View className="bg-white h-full w-full px-5">
       {/* Other components */}
+      <Text className="text-[12px] mt-1 font-normal leading-[16px] py-[16px]">
+        Enter the name you would like to go by
+      </Text>
       <TextInput
         className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
-        placeholder="Phone number"
+        placeholder="07..."
         value={phoneNumber}
         onChangeText={handlePhoneNumberChange}
+        // defaultValue={text}
       />
-      <Pressable
+      <View className="items-center">
+           <Pressable
         onPress={handleSaveUserData}
-        className="mt-[56px] bg-[#636363] w-[361px] h-[52px] items-center justify-center rounded-[99px]"
+        className="mt-[56px] bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]"
       >
         <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
           Continue
         </Text>
       </Pressable>
+
+      </View>
+     
     </View>
   );
 }
