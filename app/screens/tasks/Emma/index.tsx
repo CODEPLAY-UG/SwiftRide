@@ -1,4 +1,4 @@
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import React from "react";
 import {
   BellIcon,
@@ -10,6 +10,7 @@ import {
 } from "lucide-react-native";
 import Stack from "expo-router/build/layouts/Stack";
 import SearchComponent from "@/components/core/Search";
+import { Link } from "expo-router";
 
 export default function User() {
   return (
@@ -48,10 +49,20 @@ export default function User() {
         </Text>
       </View>
 
-      <View className="mx-4 justify-between items-center">
+      <View className="mx-4 py-2 justify-between items-center">
         <Text className="text-[#242424] text-[13px]  leading-[18px] tracking-[-0.08]">
           Your recent destinations will appear here.
         </Text>
+      </View>
+
+      <View className="items-center">
+      <Link href="./placeorder" className="mt-5 mb-2" asChild>
+        <Pressable className="mt-[22px] bg-[#636363] w-full h-[56px] items-center justify-center rounded-[99px]">
+          <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
+            Place order
+          </Text>
+          </Pressable>
+          </Link>
       </View>
     </View>
   );
