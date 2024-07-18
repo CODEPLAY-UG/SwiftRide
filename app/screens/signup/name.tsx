@@ -30,7 +30,7 @@ export default function SignUpIndex() {
         options={{ title: "Sign Up", headerTitleAlign: "center" }}
       />
       <StatusBar style="dark" />
-      <Text className="text-[12px] mt-1 font-normal leading-[16px] py-[16px]">
+      <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
         Enter the name you would like to go by
       </Text>
       <TextInput
@@ -42,7 +42,7 @@ export default function SignUpIndex() {
       <View className="items-center">
         <Pressable
           onPress={handleNextScreen}
-          className="bg-[#636363] mt-[56px] w-[361px] h-[52px] items-center justify-center rounded-[99px]"
+          className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]"
         >
           <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
             Continue
@@ -51,7 +51,7 @@ export default function SignUpIndex() {
         <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
           Or
         </Text>
-        <Pressable className="space-x-3 border border-[#636363] flex-row w-[361px] h-[52px] items-center justify-center rounded-[99px]">
+        <Pressable className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]">
           <Image
             className="h-5 w-5"
             source={require("../../../assets/images/googleLogo.png")}
@@ -60,7 +60,7 @@ export default function SignUpIndex() {
             Continue with Google
           </Text>
         </Pressable>
-        <Pressable className="space-x-3 border border-[#636363] flex-row w-[361px] h-[52px] mt-4  items-center justify-center rounded-[99px]">
+        <Pressable className="space-x-3 border border-[#636363] flex-row w-full h-[52px] mt-4  items-center justify-center rounded-[99px]">
           <Image
             className="h-5 w-5"
             source={require("../../../assets/images/appleLogo.png")}
