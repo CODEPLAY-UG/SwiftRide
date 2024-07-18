@@ -27,7 +27,7 @@ export default function Index() {
           Current user location
         </Text>
       </View>
-      <SearchComponent setIsTyping={setIsTyping} />
+      <SearchComponent setIsTyping={setIsTyping} placeholder="Destination" />
       {isTyping && (
         <View className="mt-2">
           <ProgressBar indeterminate color="#636363" className="h-[1px]" />
