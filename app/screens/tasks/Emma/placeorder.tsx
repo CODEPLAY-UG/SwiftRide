@@ -1,15 +1,32 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import SearchComponent from "@/components/core/Search";
 import { Stack } from "expo-router";
-import { ChevronRight, Lock, MapPin, MapPinned } from "lucide-react-native";
-import { ProgressBar, MD3Colors, MD2Colors, ActivityIndicator } from "react-native-paper";
+import {
+  CalendarPlus,
+  ChevronRight,
+  Lock,
+  MapPin,
+  MapPinned,
+} from "lucide-react-native";
+import {
+  ProgressBar,
+  MD3Colors,
+  MD2Colors,
+  ActivityIndicator,
+} from "react-native-paper";
 
 export default function Placeorder() {
+  const [isTyping, setIsTyping] = useState(false);
+
   return (
     <View className="bg-white h-full">
       <Stack.Screen
-        options={{ title: "Your route", headerTitleAlign: "center" }}
+        options={{
+          title: "Your route",
+          headerTitleAlign: "center",
+          headerRight: () => <CalendarPlus color="#808080" size={24} />,
+        }}
       />
       <View className="space-y-5 mt-[12px]">
         <View className="flex-row justify-between items-center">
@@ -24,10 +41,15 @@ export default function Placeorder() {
         </View>
       </View>
       <View className="py-2">
-        <SearchComponent placeholder="Destination" />
+        <SearchComponent placeholder="Destination" setIsTyping={setIsTyping} />
         {/* <SearchComponent /> */}
+        {isTyping && (
+          <View className="mt-2">
+            <ProgressBar indeterminate color="#636363" className="h-[1px]" />
+          </View>
+        )}
       </View>
-      
+
       <View className="mx-8 py-4">
         <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">
           Recent destinations
