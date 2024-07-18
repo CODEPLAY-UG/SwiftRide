@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import React, { SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Mic, Search, X } from "lucide-react-native";
 import { Stack } from "expo-router";
@@ -7,6 +7,9 @@ import { Stack } from "expo-router";
 export default function SearchComponent({
   placeholder = "Search",
   setIsTyping,
+}: {
+  placeholder?: string;
+  setIsTyping: Dispatch<SetStateAction<boolean>>;
 }) {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
