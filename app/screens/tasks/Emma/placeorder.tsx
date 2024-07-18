@@ -3,6 +3,7 @@ import React from "react";
 import SearchComponent from "@/components/core/Search";
 import { Stack } from "expo-router";
 import { ChevronRight, Lock, MapPin, MapPinned } from "lucide-react-native";
+import { ProgressBar, MD3Colors, MD2Colors, ActivityIndicator } from "react-native-paper";
 
 export default function Placeorder() {
   return (
@@ -26,6 +27,7 @@ export default function Placeorder() {
         <SearchComponent placeholder="Destination" />
         {/* <SearchComponent /> */}
       </View>
+      
       <View className="mx-8 py-4">
         <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">
           Recent destinations

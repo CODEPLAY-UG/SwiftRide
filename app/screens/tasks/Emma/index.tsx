@@ -11,6 +11,7 @@ import {
 import Stack from "expo-router/build/layouts/Stack";
 import SearchComponent from "@/components/core/Search";
 import { Link } from "expo-router";
+import { ProgressBar } from "react-native-paper";
 
 export default function User() {
   return (
@@ -34,6 +35,7 @@ export default function User() {
         <SearchComponent placeholder="Destination" />
         {/* <SearchComponent /> */}
       </View>
+
       <View className="mx-8 py-4">
         <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">
           Recent destinations
