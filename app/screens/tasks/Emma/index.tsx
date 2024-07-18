@@ -1,7 +1,8 @@
 import { View, Text, TextInput, Pressable } from "react-native";
-import React from "react";
+import React, { SetStateAction, useState } from "react";
 import {
   BellIcon,
+  CalendarPlus,
   ChevronRight,
   Hop,
   MapPin,
@@ -14,10 +15,16 @@ import { Link } from "expo-router";
 import { ProgressBar } from "react-native-paper";
 
 export default function User() {
+  const [isTyping, setIsTyping] = useState(false);
+
   return (
     <View className="bg-white h-full">
       <Stack.Screen
-        options={{ title: "Your route", headerTitleAlign: "center" }}
+        options={{
+          title: "Your route",
+          headerTitleAlign: "center",
+          headerRight: () => <CalendarPlus color="#808080" size={24} />,
+        }}
       />
       <View className="space-y-5 mt-[12px]">
         <View className="flex-row justify-between items-center">
@@ -32,8 +39,13 @@ export default function User() {
         </View>
       </View>
       <View className="py-2">
-        <SearchComponent placeholder="Destination" />
-        {/* <SearchComponent /> */}
+        <SearchComponent placeholder="Destination" setIsTyping={setIsTyping} />
+
+        {isTyping && (
+          <View className="mt-2">
+            <ProgressBar indeterminate color="#636363" className="h-[1px]" />
+          </View>
+        )}
       </View>
 
       <View className="mx-8 py-4">

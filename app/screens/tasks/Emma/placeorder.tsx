@@ -42,7 +42,7 @@ export default function Placeorder() {
       </View>
       <View className="py-2">
         <SearchComponent placeholder="Destination" setIsTyping={setIsTyping} />
-        {/* <SearchComponent /> */}
+
         {isTyping && (
           <View className="mt-2">
             <ProgressBar indeterminate color="#636363" className="h-[1px]" />
