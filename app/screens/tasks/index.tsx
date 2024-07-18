@@ -12,7 +12,7 @@ export default function TaskIndex() {
       <TouchableOpacity className="">
         <Text>Joy</Text>
       </TouchableOpacity>
-      <TouchableOpacity className="">
+      <TouchableOpacity onPress={() => router.push("./leon")} className="">
         <Text>Leon</Text>
       </TouchableOpacity>
       <TouchableOpacity className="">

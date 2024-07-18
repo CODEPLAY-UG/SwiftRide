@@ -1,12 +1,17 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Mic, Search, X } from "lucide-react-native";
 import { Stack } from "expo-router";
 
-export default function SearchComponent() {
+export default function SearchComponent({ setIsTyping }) {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+
+  const handleTextChange = (input: SetStateAction<string>) => {
+    setText(input);
+    setIsTyping(input.length > 0);
+  };
   return (
     <View className="flex-row items-center justify-between mt-2 mx-4">
       <View className="flex-row bg-[#F0F0F0] rounded-[24px] h-[36px] flex-1 items-center">
@@ -15,11 +20,12 @@ export default function SearchComponent() {
         </View>
         <TextInput
           className="flex-1 font-normal text-[17px] text-[#616161] leading-[22px] tracking-[0.43px]"
-          onChangeText={setText}
+          // onChangeText={setText}
           placeholder="Search"
           value={text}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          onChangeText={handleTextChange}
         />
         <TouchableOpacity className="mx-[12px]">
           {text.length > 0 ? (
@@ -35,4 +41,7 @@ export default function SearchComponent() {
       {isFocused && <Text className="text-gray-700 ml-2">Cancel</Text>}
     </View>
   );
+}
+function setIsTyping(arg0: boolean) {
+  throw new Error("Function not implemented.");
 }
