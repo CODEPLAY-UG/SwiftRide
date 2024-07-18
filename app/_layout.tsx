@@ -45,10 +45,12 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="index" options={{}} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="screens/home" options={{ headerShown: false }} />
           <Stack.Screen
             name="screens/signup"
             options={{ headerShown: false }}
           />
+          {/* <Stack.Screen name="screens/tasks" options={{ headerShown: false }} /> */}
           <Stack.Screen name="+not-found" />
         </Stack>
       </ThemeProvider>
