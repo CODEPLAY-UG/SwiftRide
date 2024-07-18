@@ -1,13 +1,20 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Pressable } from "react-native";
 import React from "react";
-import { router, Stack } from "expo-router";
+import { Link, router, Stack } from "expo-router";
 
 export default function TaskIndex() {
   return (
     <View className="h-full justify-center gap-5 items-center">
       <Stack.Screen options={{ title: "Tasks", headerTitleAlign: "center" }} />
       <TouchableOpacity className="">
-        <Text>Emma</Text>
+        <Link href="./Emma" className="mt-5 mb-2" asChild>
+          <Pressable>
+            
+            <Text className="px-4 py-1 bg-[#3d4dfa] text-[#fbf8f8] text-lg rounded-md border-3 border-[#ffd700]">
+              Emma
+            </Text>
+          </Pressable>
+        </Link>
       </TouchableOpacity>
       <TouchableOpacity className="">
         <Text>Joy</Text>
