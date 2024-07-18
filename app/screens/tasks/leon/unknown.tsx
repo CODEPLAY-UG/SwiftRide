@@ -46,30 +46,29 @@ export default function Index() {
       {isTyping && (
         <View className="mt-2">
           <ProgressBar indeterminate color="#636363" className="h-[1px]" />
+          <View className="mx-6 flex-row justify-between items-center mt-3">
+            <View className="flex-row items-center">
+              <SearchX color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
+                  No results for query
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <View className="py-2 mx-6 flex-row justify-between items-center mt-3">
+            <View className="flex-row items-center">
+              <MapPinned color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
+                  Select destination on map
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       )}
-
-      <View className="mx-6 flex-row justify-between items-center mt-3">
-        <View className="flex-row items-center">
-          <SearchX color="#808080" size={24} />
-          <View className="mx-4">
-            <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-              No results for query
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      <View className="py-2 mx-6 flex-row justify-between items-center mt-3">
-        <View className="flex-row items-center">
-          <MapPinned color="#808080" size={24} />
-          <View className="mx-4">
-            <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-              Select destination on map
-            </Text>
-          </View>
-        </View>
-      </View>
     </SafeAreaView>
   );
 }
