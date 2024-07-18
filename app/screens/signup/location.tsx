@@ -40,7 +40,7 @@ export default function OnboardingScreen() {
   const onContinue = () => {
     const isLastScreen = screenIndex === onboardingSteps.length - 1;
     if (isLastScreen) {
-      router.push("/(tabs)/")
+      router.push("./welcome");
     } else {
       setScreenIndex(screenIndex + 1);
     }
@@ -72,54 +72,54 @@ export default function OnboardingScreen() {
 
         <GestureDetector gesture={swipes}>
           <View
-            className="items-center bg-white h-full px-3 "
+            className="items-center justify-between bg-white h-full px-3 "
             key={screenIndex}
           >
             <Animated.View className="" entering={FadeIn} exiting={FadeOut}>
               <Image className="w-[328.6px] h-[528.55px]" source={data.image} />
             </Animated.View>
 
-            <View className="mt-20">
-              <Animated.Text
-                entering={SlideInRight}
-                exiting={SlideOutLeft}
-                className="text-[17px] font-[600] leading-[22px] tracking-[-0.43]"
-              >
-                {data.title}
-              </Animated.Text>
-              <Animated.Text
-                entering={SlideInRight.delay(50)}
-                exiting={SlideOutLeft}
-                className="my-2 text-[13px] font-normal leading-[18px] tracking-[-0.08]"
-              >
-                {data.description}
-              </Animated.Text>
-
-              <View className="justify-between flex-row">
-                <View style={styles.stepIndicatorContainer}>
-                  {onboardingSteps.map((step, index) => (
-                    <View
-                      key={index}
-                      style={[
-                        styles.stepIndicator,
-                        {
-                          backgroundColor:
-                            index === screenIndex ? "black" : "grey",
-                        },
-                      ]}
-                    />
-                  ))}
-                </View>
-
-                <Pressable
-                  onPress={onContinue}
-                  className="bg-black rounded-full h-[56px] w-[56px] justify-center items-center"
+            <View className="py-2">
+              <View className="">
+                <Animated.Text
+                  // entering={SlideInRight}
+                  exiting={SlideOutLeft}
+                  className="text-[17px] font-[600] leading-[22px] tracking-[-0.43]"
                 >
-                  <Image
-                    className="w-5 h-[8px]"
-                    source={require("../../../assets/images/arrow.png")}
-                  />
-                </Pressable>
+                  {data.title}
+                </Animated.Text>
+                <Animated.Text
+                  // entering={SlideInRight.delay(50)}
+                  // exiting={SlideOutLeft}
+                  className="my-2 text-[13px] font-normal leading-[18px] tracking-[-0.08]"
+                >
+                  {data.description}
+                </Animated.Text>
+                <View className="justify-between flex-row">
+                  <View style={styles.stepIndicatorContainer}>
+                    {onboardingSteps.map((step, index) => (
+                      <View
+                        key={index}
+                        style={[
+                          styles.stepIndicator,
+                          {
+                            backgroundColor:
+                              index === screenIndex ? "black" : "grey",
+                          },
+                        ]}
+                      />
+                    ))}
+                  </View>
+                  <Pressable
+                    onPress={onContinue}
+                    className="bg-black rounded-full h-[56px] w-[56px] justify-center items-center"
+                  >
+                    <Image
+                      className="w-5 h-[8px]"
+                      source={require("../../../assets/images/arrow.png")}
+                    />
+                  </Pressable>
+                </View>
               </View>
             </View>
           </View>
