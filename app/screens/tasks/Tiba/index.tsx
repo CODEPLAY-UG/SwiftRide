@@ -1,9 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Mic, Search, X } from "lucide-react-native";
 import { router, Stack } from "expo-router";
-import Button from "@/components/core/Button";
 
 export default function Index() {
   const [text, setText] = useState("");

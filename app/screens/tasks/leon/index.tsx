@@ -9,7 +9,7 @@ import { ProgressBar, MD3Colors } from "react-native-paper";
 export default function Index() {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const [isTyping, setIsTyping] = useState<Boolean>(false);
+  const [isTyping, setIsTyping] = useState(false);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
