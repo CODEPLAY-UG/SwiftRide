@@ -56,42 +56,42 @@ export default function Placeorder() {
         </Text>
       </View>
 
-      <View className="mx-6 flex-row justify-between items-center">
-        <View className="flex-row items-center">
-          <MapPin color="#808080" size={24} />
-          <View className="mx-4">
-            <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-              Address
-            </Text>
-            <Text className=" text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
-              Road, District/City
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      <View className="py-2 mx-6 flex-row justify-between items-center">
-        <View className="flex-row items-center">
-          <MapPin color="#808080" size={24} />
-          <View className="mx-4">
-            <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-              Address
-            </Text>
-            <Text className=" text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
-              Road, District/City
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      <View className="space-y-5 mt-[12px]">
-        <View className="flex-row justify-between items-center">
-          <View className="mx-6 flex-row items-center">
-            <MapPinned color="#808080" size={24} />
+      <View className="space-y-3">
+        <View className="mx-6 flex-row justify-between items-center">
+          <View className="flex-row items-center">
+            <MapPin color="#808080" size={24} />
             <View className="mx-4">
-              <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
-                Select location on map
+              <Text className=" text-[#242424] text-[17px] leading-[22px] tracking-[-0.43]">
+                Address
               </Text>
+              <Text className=" text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
+                Road, District/City
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View className="py-3 mx-6 flex-row justify-between items-center">
+          <View className="flex-row items-center">
+            <MapPin color="#808080" size={24} />
+            <View className="mx-4">
+              <Text className=" text-[#242424] text-[17px] leading-[22px] tracking-[-0.43]">
+                Address
+              </Text>
+              <Text className=" text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
+                Road, District/City
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View className="space-y-5 mt-[12px]">
+          <View className="flex-row justify-between items-center">
+            <View className="mx-6 flex-row items-center">
+              <MapPinned color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
+                  Select location on map
+                </Text>
+              </View>
             </View>
           </View>
         </View>
