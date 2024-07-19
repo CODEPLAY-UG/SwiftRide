@@ -40,7 +40,7 @@ export default function OnboardingScreen() {
   const onContinue = () => {
     const isLastScreen = screenIndex === onboardingSteps.length - 1;
     if (isLastScreen) {
-      router.push("/(tabs)/")
+      router.push("/(tabs)/");
     } else {
       setScreenIndex(screenIndex + 1);
     }
