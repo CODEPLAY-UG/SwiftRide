@@ -37,7 +37,7 @@ export default function Otp() {
         <Link href="./location" className="mt-[16px]" asChild>
           <Pressable className=" bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]">
             <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-              Agree and continue
+                       Agree and continue
             </Text>
           </Pressable>
         </Link>

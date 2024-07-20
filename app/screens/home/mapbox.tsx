@@ -1,6 +1,11 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
+import Mapbox from "@rnmapbox/maps";
+
+Mapbox.setAccessToken(
+  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHluOGxjeXAwM3J1Mm1wbG9wcTJnZzYzIn0.RgeMcoyjxD8bGql5tsKyrA"
+);
 
 export default function mapbox() {
   return (
@@ -12,7 +17,10 @@ export default function mapbox() {
           headerShown: false,
         }}
       />
-      <Text>mapbox</Text>
+      <Text>mapboxes</Text>
+      <View className="h-[300px] w-[300px]">
+        <Mapbox.MapView className="flex-1" />
+      </View>
     </View>
   );
 }

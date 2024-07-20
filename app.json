@@ -27,7 +27,7 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-router"],
+
     "experiments": {
       "typedRoutes": true
     },
@@ -38,6 +38,22 @@
       "eas": {
         "projectId": "89be462b-4772-4154-8777-33892cd8c3e2"
       }
-    }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsVersion": "11.4.0",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHl1NXpncHIwaWFtMmlzMGtmMDdtOGZ0In0.FtMORycn1RuP6bjH67uZRw"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Show current location on map."
+        }
+      ]
+    ]
   }
 }
