@@ -21,7 +21,7 @@ export default function Otp() {
         Code sent via SMS to number
       </Text>
       <View className="gap-3 mt-5 items-center">
-        <View className="pt-6 px-4 pb-2 gap-3 flex-row ">
+        <View className="pt-6 px-4 pb-2 gap-3 flex-row justify-center">
           <View className="p-[2px]">
             <Info size={16} color="#808080" />
           </View>
