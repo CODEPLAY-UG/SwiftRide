@@ -28,40 +28,37 @@ export default function Placeorder() {
           headerRight: () => <CalendarPlus color="#808080" size={24} />,
         }}
       />
-      <View className="space-y-5 mt-[12px]">
-        <View className="flex-row justify-between items-center">
-          <View className="mx-6 flex-row items-center">
-            <MapPin color="#808080" size={24} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
-                Current user location
-              </Text>
+      <View className="space-y-4">
+        <View className="space-y-5 mt-[12px]">
+          <View className="flex-row justify-between items-center">
+            <View className="mx-6 flex-row items-center">
+              <MapPin color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
+                  Current user location
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-      <View className="py-2">
-        <SearchComponent placeholder="Destination" setIsTyping={setIsTyping} />
-        {/* <SearchComponent /> */}
-        {isTyping && (
-          <View className="mt-2">
-            <ProgressBar indeterminate color="#636363" className="h-[1px]" />
-          </View>
-        )}
-      </View>
-
-      <View className="mx-8 py-4">
-        <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">
-          Recent destinations
-        </Text>
-      </View>
-
-      <View className="space-y-3">
+        <View className="py-1">
+          <SearchComponent placeholder="Destination" setIsTyping={setIsTyping} />
+          {isTyping && (
+            <View className="mt-2">
+              <ProgressBar indeterminate color="#636363" className="h-[1px]" />
+            </View>
+          )}
+        </View>
+        <View className="mx-8 py-4">
+          <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">
+            Recent destinations
+          </Text>
+        </View>
         <View className="mx-6 flex-row justify-between items-center">
           <View className="flex-row items-center">
             <MapPin color="#808080" size={24} />
             <View className="mx-4">
-              <Text className=" text-[#242424] text-[17px] leading-[22px] tracking-[-0.43]">
+              <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                 Address
               </Text>
               <Text className=" text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
@@ -70,11 +67,11 @@ export default function Placeorder() {
             </View>
           </View>
         </View>
-        <View className="py-3 mx-6 flex-row justify-between items-center">
+        <View className="py-2 mx-6 flex-row justify-between items-center">
           <View className="flex-row items-center">
             <MapPin color="#808080" size={24} />
             <View className="mx-4">
-              <Text className=" text-[#242424] text-[17px] leading-[22px] tracking-[-0.43]">
+              <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                 Address
               </Text>
               <Text className=" text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
