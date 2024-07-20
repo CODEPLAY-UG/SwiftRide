@@ -13,7 +13,9 @@ export default function test() {
           headerTitleAlign: "center",
         }}
       />
-      <SearchComponent placeholder="Going somewhere?" />
+      <SearchComponent placeholder="Going somewhere?" setIsTyping={function (value: React.SetStateAction<boolean>): void {
+        throw new Error("Function not implemented.");
+      } } />
     </View>
   );
 }
