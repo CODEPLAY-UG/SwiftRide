@@ -18,6 +18,10 @@ export default function TaskIndex() {
       <TouchableOpacity className="">
         <Text>Reagan</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/payment")}
+      className="bg-teal-300 px-4 py-2 rounded-lg border border-teal-400">
+        <Text className="">Team 3</Text>
+      </TouchableOpacity>
       <TouchableOpacity className="">
         <Text>Scout</Text>
       </TouchableOpacity>
