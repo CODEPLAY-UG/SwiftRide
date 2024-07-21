@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Stack } from 'expo-router'
+import { router, Stack } from 'expo-router'
 import { Banknote, ChevronRight, Info, Key, X } from 'lucide-react-native'
 
 export default function Payment() {
@@ -15,7 +15,9 @@ export default function Payment() {
           </View>
             <Text className='text-[15px] leading-5 tracking-[0.23px] w-[248px]'>Add and manage your payment methods using our secure payment system.</Text>
             <View className='justify-center'>
-              <X color='#616161'/>
+              <TouchableOpacity>
+                <X color='#616161'/>
+              </TouchableOpacity>
             </View>
           </View>
           <View className='h-12  justify-center px-4'>
@@ -44,7 +46,8 @@ export default function Payment() {
               </View>
               
               <View className='py-3 px-4'>
-                <TouchableOpacity className='flex-row '>
+                <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/mtn")}
+                 className='flex-row '>
                   <Image
                    source={require("@assets/images/mtnlogo.png")}/>
                     <View className='px-4 grow'>
@@ -58,7 +61,8 @@ export default function Payment() {
               </View>
               
               <View className='py-3 px-4'>
-                <TouchableOpacity className='flex-row' >
+                <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/airtel")}
+                className='flex-row' >
                   <Image
                    source={require("@assets/images/Airtellogo.png")}/>
                     <View className='px-4 grow'>
