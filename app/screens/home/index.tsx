@@ -1,6 +1,7 @@
 import React from "react";
 import Mapbox, {
   Camera,
+  CircleLayer,
   Images,
   LocationPuck,
   PointAnnotation,
@@ -188,16 +189,38 @@ const MapContent = ({
                 puckBearingEnabled
                 puckBearing="heading"
               />
-              <ShapeSource id="bikes" shape={featureCollection(points)}>
+              <ShapeSource id="bikes" cluster shape={featureCollection(points)}>
                 <SymbolLayer
                   id="bike-icons"
                   minZoomLevel={0.5}
                   style={{
                     iconImage: "pin",
-                    iconAllowOverlap: false,
+                    iconAllowOverlap: true,
                     iconSize: 0.4,
                     // iconKeepUpright: true,
                     iconAnchor: "bottom",
+                  }}
+                />
+                {/* <SymbolLayer
+                  id="pointCount"
+                  style={{
+                    textField: ["get", "point_count"],
+                    textSize: 16,
+                    textColor: "#ffffff",
+                    textPitchAlignment: "map",
+                  }}
+                /> */}
+                <CircleLayer
+                  id="clusters"
+                  belowLayerID="pointCount"
+                  filter={["has", "point_count"]}
+                  style={{
+                    circlePitchAlignment: "map",
+                    circleColor: "#AF52DE",
+                    circleRadius: 20,
+                    circleOpacity: 0.7,
+                    circleStrokeWidth: 2,
+                    circleStrokeColor: "white",
                   }}
                 />
                 <Images images={{ pin }} />
