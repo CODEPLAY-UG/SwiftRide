@@ -22,4 +22,4 @@ expo-env.d.ts
 Record.md
 Notes.md
 android/app/google-services.json
-
+.env

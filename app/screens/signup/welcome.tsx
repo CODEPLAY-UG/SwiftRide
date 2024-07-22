@@ -60,7 +60,7 @@ export default function welcome() {
       </View>
       <View className="py-5">
         <Pressable
-          // onPress={() => router.push("./phoneNumber")}
+          onPress={() => router.push("../home")}
           className="bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
         >
           <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">

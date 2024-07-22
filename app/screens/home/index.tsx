@@ -1,5 +1,12 @@
 import React from "react";
-import Mapbox, { Camera, PointAnnotation } from "@rnmapbox/maps";
+import Mapbox, {
+  Camera,
+  Images,
+  LocationPuck,
+  PointAnnotation,
+  ShapeSource,
+  SymbolLayer,
+} from "@rnmapbox/maps";
 import {
   View,
   Text,
@@ -18,11 +25,12 @@ import { Bike, Menu } from "lucide-react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import RideDetails from "@/components/core/RideDetails";
 import MenuContent from "../../../components/core/MenuContent";
+import { featureCollection } from "@turf/helpers";
+import { point } from "@turf/helpers";
+import bikes from "../../../data/bikes.json";
+import { UserLocation } from "@rnmapbox/maps";
 
-Mapbox.setAccessToken(
-  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHluOGxjeXAwM3J1Mm1wbG9wcTJnZzYzIn0.RgeMcoyjxD8bGql5tsKyrA"
-);
-
+Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
 export default function MapboxComponent() {
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
@@ -144,6 +152,10 @@ const MapContent = ({
     );
   };
 
+  const points = bikes.map((bike) => point([bike.longitude, bike.latitude]));
+
+  const pin = require("@assets/images/pin.png");
+
   return (
     <View className="flex-1 justify-center items-center">
       <Stack.Screen
@@ -154,7 +166,11 @@ const MapContent = ({
         }}
       />
       <View className="h-full w-full">
-        <Mapbox.MapView scaleBarEnabled={false} className="w-full h-full">
+        <Mapbox.MapView
+          // styleURL="mapbox://styles/mapbox/dark-v11"
+          scaleBarEnabled={false}
+          className="w-full h-full"
+        >
           {location && (
             <>
               <Camera
@@ -162,27 +178,30 @@ const MapContent = ({
                   location.coords.longitude,
                   location.coords.latitude,
                 ]}
-                zoomLevel={14}
-                animationDuration={2000}
+                zoomLevel={16}
+                followZoomLevel={15}
+                followUserLocation
+                animationDuration={3000}
               />
-              <PointAnnotation
-                id="current-location"
-                coordinate={[
-                  location.coords.longitude,
-                  location.coords.latitude,
-                ]}
-              >
-                <View
+              <LocationPuck
+                pulsing={{ isEnabled: true }}
+                puckBearingEnabled
+                puckBearing="heading"
+              />
+              <ShapeSource id="bikes" shape={featureCollection(points)}>
+                <SymbolLayer
+                  id="bike-icons"
+                  minZoomLevel={0.5}
                   style={{
-                    height: 30,
-                    width: 30,
-                    backgroundColor: "blue",
-                    borderRadius: 15,
-                    borderColor: "white",
-                    borderWidth: 3,
+                    iconImage: "pin",
+                    iconAllowOverlap: false,
+                    iconSize: 0.4,
+                    // iconKeepUpright: true,
+                    iconAnchor: "bottom",
                   }}
                 />
-              </PointAnnotation>
+                <Images images={{ pin }} />
+              </ShapeSource>
             </>
           )}
         </Mapbox.MapView>
