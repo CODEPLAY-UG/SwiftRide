@@ -82,7 +82,8 @@ export default function Payment() {
             </View>
              
               <View className='py-3 px-4'>
-                <TouchableOpacity className='flex-row'>
+                <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/passkey")}
+                className='flex-row'>
                   <Key color='#808080' size={40}/>
                     <View className='px-4 grow'>
                       <Text className='text-[17px]'>Passkeys</Text>
