@@ -23,6 +23,7 @@ export default function Placeorder() {
     <View className="bg-white h-full">
       <Stack.Screen
         options={{
+          headerShown: true,
           title: "Your route",
           headerTitleAlign: "center",
           headerRight: () => <CalendarPlus color="#808080" size={24} />,

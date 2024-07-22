@@ -28,7 +28,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="myapp"/>
         <data android:scheme="com.codeplayug.frontend_playground"/>
-        <data android:scheme="exp+frontendplayground"/>
+        <data android:scheme="exp+swiftride"/>
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" android:exported="false"/>

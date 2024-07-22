@@ -8,7 +8,7 @@ export default function Payment() {
   return (
     <SafeAreaView className='bg-white h-full'>
         <View className=''>
-          <Stack.Screen options={{ title: "Payment", headerTitleAlign: "center" }} />
+          <Stack.Screen options={{ headerShown: true, title: "Payment", headerTitleAlign: "center" }} />
           <View className='flex-row justify-center space-x-4'>
           <View className='justify-center'>
             <Info color='#107C10'/>
@@ -32,7 +32,7 @@ export default function Payment() {
               <Text className='font-semibold tracking-[0.4px] text-[#242424]'>Payment Methods</Text>
             </View>
             <View>
-            
+
               <View className='py-3 px-4'>
                 <TouchableOpacity className='flex-row'>
                   <Banknote color='#808080' size={40}/>
@@ -42,9 +42,9 @@ export default function Payment() {
                       end of the trip.</Text>
                     </View>
                 </TouchableOpacity>
-                
+
               </View>
-              
+
               <View className='py-3 px-4'>
                 <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/mtn")}
                  className='flex-row '>
@@ -59,7 +59,7 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-              
+
               <View className='py-3 px-4'>
                 <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/airtel")}
                 className='flex-row' >
@@ -74,13 +74,13 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-              
+
             </View>
           </View>
           <View className='h-12 justify-center px-4'>
             <Text className='font-semibold tracking-[0.4px] text-[#242424]'>Payment Security</Text>
             </View>
-             
+
               <View className='py-3 px-4'>
                 <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/passkey")}
                 className='flex-row'>
@@ -95,7 +95,7 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-              
+
         </View>
     </SafeAreaView>
   )
