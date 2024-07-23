@@ -6,8 +6,10 @@ export default function TaskIndex() {
   return (
     <View className="h-full justify-center gap-5 items-center">
       <Stack.Screen options={{ title: "Tasks", headerTitleAlign: "center" }} />
-      <TouchableOpacity className="">
-        <Text>Emma</Text>
+      <TouchableOpacity onPress={() => router.push("./emma")} className="">
+        <Text className="bg-[#32cd32] text-[#ffd700] text-xl px-5 py-1 rounded-md border-2 border-[#ffd700]">
+          Emma
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity className="">
         <Text>Joy</Text>
