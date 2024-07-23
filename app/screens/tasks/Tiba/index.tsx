@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Mic, Search, X } from "lucide-react-native";
 import { router, Stack } from "expo-router";
 import Button from "@/components/core/Button";
+import CustomButton from "@/components/core/Button";
 
 export default function Index() {
   const [text, setText] = useState("");
@@ -27,6 +28,9 @@ export default function Index() {
           Tiba
         </Text>
       </TouchableOpacity>
+      <View className="w-full px-2">
+        <CustomButton textColor="text-[#ffd700]" title="Our blades are sharp " onPress={() => {}} />
+      </View>
     </SafeAreaView>
   );
 }
