@@ -24,7 +24,7 @@ export default function Profile() {
         </View>
         <View className="flex-row justify-between items-center">
           <View className="mx-4">
-            <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Name</Text>
+            <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Name</Text>
             <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Phone number {"\n"}Email</Text>
           </View>
           <View className="">
