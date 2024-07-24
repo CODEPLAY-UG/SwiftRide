@@ -1,82 +1,66 @@
-import { View, Text, TextInput, Pressable, Image } from "react-native";
-import React, { useState } from "react";
-import { Link, router, Stack } from "expo-router";
-import { useDispatch } from "react-redux";
-import { setUserData } from "../../features/userData/userDataSlice";
+import { View, Text, ImageBackground, Pressable } from "react-native";
+import React from "react";
+import { ShieldPlus, Smile, TrafficCone } from "lucide-react-native";
+import { router, Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
-export default function SignUpIndex() {
-  const dispatch = useDispatch();
-  const [name, setName] = useState("");
-
-  const handleNameChange = (newName: string) => {
-    setName(newName);
-  };
-
-  const handleNextScreen = () => {
-    // Dispatch the name to the store
-    dispatch(
-      setUserData({
-        name,
-        phoneNumber: "",
-      })
-    );
-    // Navigate to the next screen (e.g., using navigation library)
-    router.push("./phoneNumber");
-  };
+export default function onboarding() {
   return (
-    <View className="bg-white h-full w-full px-5">
-      <Stack.Screen
-        options={{ title: "Sign Up", headerTitleAlign: "center" }}
-      />
-      <Text className="text-[12px] mt-1 font-normal leading-[16px] py-[16px]">
-        Enter the name you would like to go by
-      </Text>
-      <TextInput
-        className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
-        placeholder="Name"
-        onChangeText={handleNameChange}
-        // defaultValue={text}
-      />
-      <View className="items-center">
-        <Pressable
-          onPress={handleNextScreen}
-          className="bg-[#636363] mt-[56px] w-[361px] h-[52px] items-center justify-center rounded-[99px]"
-        >
-          <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-            Continue
-          </Text>
-        </Pressable>
-        <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-          Or
-        </Text>
-        <Pressable className="space-x-3 border border-[#636363] flex-row w-[361px] h-[52px] items-center justify-center rounded-[99px]">
-          <Image
-            className="h-5 w-5"
-            source={require("../../../assets/images/googleLogo.png")}
-          />
-          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-            Continue with Google
-          </Text>
-        </Pressable>
-        <Pressable className="space-x-3 border border-[#636363] flex-row w-[361px] h-[52px] mt-4  items-center justify-center rounded-[99px]">
-          <Image
-            className="h-5 w-5"
-            source={require("../../../assets/images/appleLogo.png")}
-          />
-          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-            Continue with Apple
-          </Text>
-        </Pressable>
-        <Pressable className="space-x-3 flex-row w-[361px] h-[52px] mt-4  items-center justify-center rounded-[99px]">
-          <Image
-            className="h-[15px] w-[15px]"
-            source={require("../../../assets/images/searchLogo.png")}
-          />
-          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-            Find my account
-          </Text>
-        </Pressable>
-      </View>
+    <View className="w-full ">
+      <StatusBar style="light" />
+
+      <Stack.Screen options={{ headerShown: false }} />
+      <ImageBackground
+        className="h-full w-full justify-end"
+        source={require("@assets/images/onboarding.jpg")}
+      >
+        <View className="my-10 ">
+          <View className="">
+            <Text className="text-white text-[34px] font-[700] text-center leading-[41px] tracking-[0.4px]">
+              Ride in greater {"\n"} comfort
+            </Text>
+            <View className="flex-row justify-center  space-x-16 p-8">
+              <View className="items-center">
+                <ShieldPlus size={24} color="white" />
+                <Text className="text-white text-[13px] text-center  leading-[18px] tracking-[-0.08px]">
+                  Safer {"\n"} rides
+                </Text>
+              </View>
+              <View className="items-center">
+                <Smile size={24} color="white" />
+                <Text className="text-white text-[13px] text-center leading-[18px] tracking-[-0.08px]">
+                  More bike {"\n"} options
+                </Text>
+              </View>
+              <View className="items-center justify-center">
+                <TrafficCone size={24} color="white" />
+                <Text className="text-white text-[13px] text-center leading-[18px] tracking-[-0.08px]">
+                  Better {"\n"} navigation
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <View className="px-3 space-y-1">
+            <Pressable
+              // onPress={() => router.push("./login")}
+              className="bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]"
+            >
+              <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+                Log in
+              </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => router.push("./name")}
+              className="space-x-3 flex-row w-full h-[52px] items-center justify-center rounded-[99px]"
+            >
+              <Text className="text-[#ffffff] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+                Sign up
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </ImageBackground>
     </View>
   );
 }

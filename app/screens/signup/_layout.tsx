@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 export default function SignUpLayout() {
   return (
@@ -12,6 +13,7 @@ export default function SignUpLayout() {
         },
       }}
     >
+      
       {/* Optionally configure static options outside the route.*/}
       <Stack.Screen name="index" options={{}} />
       <Stack.Screen name="location" options={{}} />
