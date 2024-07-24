@@ -1,7 +1,7 @@
-import { View, Text, Image, Pressable, Switch } from "react-native";
+import { View, Text, Image, Pressable, Switch, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Stack, router } from "expo-router";
+import { Link, Stack, router } from "expo-router";
 import { BellIcon, ChevronRight, CogIcon, HeartHandshakeIcon, InfoIcon, MessageSquareDot, ScaleIcon, ShieldCheckIcon, SunMoon } from "lucide-react-native";
 
 export default function Profile() {
@@ -42,27 +42,34 @@ export default function Profile() {
 
         <View className="flex-row justify-between items-center ">
           <View className="mx-4 flex-row items-center">
-            <CogIcon color="#808080" size={28} />
+            <Link href="./settings" className="mt-5 mb-2" asChild>
+              <CogIcon color="#808080" size={28} />
+            </Link>
             <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Settings</Text>
+              <Link href="./settings" className="mt-5 mb-2" asChild>
+                <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Settings</Text>
+              </Link>
             </View>
           </View>
           <View className="">
-            <ChevronRight color="#808080" size={20} />
+            <Link href="./settings" className="mt-5 mb-2" asChild>
+              <ChevronRight color="#808080" size={20} />
+            </Link>
           </View>
         </View>
-
-        <View className="flex-row justify-between items-center ">
-          <View className="mx-4 flex-row items-center">
-            <ShieldCheckIcon color="#808080" size={28} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Login & security</Text>
+        <TouchableOpacity onPress={() => router.push("./login&security")} className="">
+          <View className="flex-row justify-between items-center ">
+            <View className="mx-4 flex-row items-center">
+              <ShieldCheckIcon color="#808080" size={28} />
+              <View className="mx-4">
+                <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Login & security</Text>
+              </View>
+            </View>
+            <View className="">
+              <ChevronRight color="#808080" size={20} />
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
+        </TouchableOpacity>
 
         <View className="flex-row justify-between items-center ">
           <View className="mx-4 flex-row items-center">
