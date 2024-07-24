@@ -19,6 +19,7 @@ export default function Profile() {
       />
 
       <View className=" flex h-[136px] gap-x-[2px]">
+      <TouchableOpacity onPress={() => router.push("./accountinfo")} className="">
         <View className="justify-center items-center">
           <Image className="h-[72px] w-[72px]" source={require(".../../../assets/images/profil.png")} />
         </View>
@@ -30,7 +31,8 @@ export default function Profile() {
           <View className="">
             <ChevronRight color="#808080" size={20} />
           </View>
-        </View>
+          </View>
+          </TouchableOpacity>
       </View>
 
       <View className="flex flex-col gap-y-[24px] h-[336px] mt-[2px]">
@@ -71,6 +73,7 @@ export default function Profile() {
           </View>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => router.push("./helpcentre")} className="">
         <View className="flex-row justify-between items-center ">
           <View className="mx-4 flex-row items-center">
             <HeartHandshakeIcon color="#808080" size={28} />
@@ -81,7 +84,8 @@ export default function Profile() {
           <View className="">
             <ChevronRight color="#808080" size={20} />
           </View>
-        </View>
+          </View>
+          </TouchableOpacity>
 
         <View className="flex-row justify-between items-center ">
           <View className="mx-4 flex-row items-center">
