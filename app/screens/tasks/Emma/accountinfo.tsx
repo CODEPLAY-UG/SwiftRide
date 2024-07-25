@@ -53,8 +53,8 @@ export default function Accountinfo() {
         </View>
 
         <View className="py-[5px] flex-row justify-between items-center ">
-          <View className="flex-row items-center">
-            <UserRoundXIcon color="#808080" size={28} />
+          <View className="mx-4 flex-row items-center">
+            <UserRoundXIcon color="#808080" size={20} />
             <View className="mx-4">
               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Account deletion</Text>
             </View>

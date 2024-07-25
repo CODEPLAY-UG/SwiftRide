@@ -13,7 +13,7 @@ export default function Acounts() {
     <View className="bg-white h-full w-full px-5">
       <Stack.Screen options={{ title: "Login & security", headerTitleAlign: "center" }} />
 
-      <View className=" space-y-5 mt-[12px]">
+      <View className="space-y-5 mt-[16px]">
         <View className="flex-row justify-between items-center">
           <View className="">
             <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Connected accounts</Text>
