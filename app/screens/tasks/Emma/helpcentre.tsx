@@ -19,7 +19,7 @@ export default function Helpcentre() {
         
         <View className="flex-row justify-between items-center">
           <View className="flex-row items-center">
-            <SparklesIcon color="#808080" size={28} />
+            <SparklesIcon color="#808080" size={24} />
             <View className="mx-4">
               <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Getting started with SwiftRide</Text>
               <Text className=" text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">An introduction to how the app works</Text>
@@ -33,7 +33,7 @@ export default function Helpcentre() {
 
         <View className="flex-row justify-between items-center ">
           <View className="flex-row items-center">
-            <WalletIcon color="#808080" size={28} />
+            <WalletIcon color="#808080" size={24} />
             <View className="mx-4">
               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Paying for your trip</Text>
               <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Find out how we price our rides</Text>
