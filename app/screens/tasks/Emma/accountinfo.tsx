@@ -21,7 +21,7 @@ export default function Accountinfo() {
     <View className="bg-white h-full w-full px-5">
       <Stack.Screen options={{ title: "Account info", headerTitleAlign: "center" }} />
 
-      <View className="space-y-6 mt-[16px]">
+      <View className="space-y-8 mt-[16px]">
         <View className="flex-row justify-between items-center">
           <View className="mx-4">
             <Text className="text-[#616161]  text-[13px] font-normal leading-[18px] py-[5px] tracking-tighter[-0.08]">Name</Text>
