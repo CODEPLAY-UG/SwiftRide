@@ -1,42 +1,45 @@
-import { Text, Pressable } from "react-native";
 import React from "react";
-import { cva } from "class-variance-authority";
+import { Pressable, Text } from "react-native";
 
-type ButtonProps = {
-  variant?: "primary" | "secondary";
-  children: React.ReactNode;
-  onPress?: () => void;
-};
+interface CustomButtonProps {
+  title: string;
+  onPress: () => void;
+  bgColor?: string;
+  textColor?: string;
+  width?: string | number;
+  height?: string | number;
+  borderRadius?: number;
+  fontSize?: number;
+  fontWeight?: string;
+  leading?: number;
+  tracking?: number;
+}
 
-const buttonVariants = cva(
-  "px-4 py-2 rounded-lg font-semibold hover:opacity-50 ",
-  {
-    variants: {
-      variant: {
-        primary: "bg-gradient-to-r from-primary-500 to primary-700 text-black",
-        secondary: "bg-gray-500 text-white",
-      },
-    },
-    defaultVariants: {
-      variant: "primary",
-    },
-  }
-);
-
-export default function Button({
-  variant,
-  // className,
-  children,
+const CustomButton: React.FC<CustomButtonProps> = ({
+  title,
   onPress,
-  ...props
-}: ButtonProps) {
+  bgColor = "bg-[#636363]",
+  textColor = "text-white",
+  width = "w-full",
+  height = "h-[52px]",
+  borderRadius = "rounded-[99px]",
+  fontSize = "text-[17px]",
+  fontWeight = "font-[600]",
+  leading = "leading-[22px]",
+  tracking = "tracking-[-0.43px]",
+}) => {
   return (
     <Pressable
       onPress={onPress}
-      className={buttonVariants({ variant })}
-      {...props}
+      className={`${bgColor} ${width} ${height} ${borderRadius} items-center justify-center`}
     >
-      <Text>{children}</Text>
+      <Text
+        className={`${textColor} ${fontSize} ${fontWeight} ${leading} ${tracking}`}
+      >
+        {title}
+      </Text>
     </Pressable>
   );
-}
+};
+
+export default CustomButton;
