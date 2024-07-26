@@ -30,19 +30,21 @@ export default function settings() {
             <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
           </View>
         </View>
-        <View className="flex-row justify-between items-center">
-          <View className="flex-row items-center">
-            <Lock color="#808080" size={24} />
-            <View className="mx-4">
-              <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Privacy</Text>
-              <Text className=" text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Manage the data you share with us</Text>
+        <TouchableOpacity onPress={() => router.push("./privacy")} className="">
+          <View className="flex-row justify-between items-center">
+            <View className="flex-row items-center">
+              <Lock color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Privacy</Text>
+                <Text className=" text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Manage the data you share with us</Text>
+              </View>
+            </View>
+
+            <View className="">
+              <ChevronRight color="#808080" size={20} />
             </View>
           </View>
-
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
+        </TouchableOpacity>
 
         <View className="flex-row justify-between items-center ">
           <View className="flex-row items-center">
