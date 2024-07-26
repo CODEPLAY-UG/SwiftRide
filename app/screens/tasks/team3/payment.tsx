@@ -6,14 +6,14 @@ import { Banknote, ChevronRight, Info, Key, X } from 'lucide-react-native'
 
 export default function Payment() {
   return (
-    <SafeAreaView className='bg-white h-full'>
-        <View className=''>
+    
+        <View className='bg-white h-full'>
           <Stack.Screen options={{ title: "Payment", headerTitleAlign: "center" }} />
-          <View className='flex-row justify-center space-x-4'>
+          <View className='flex-row justify-center space-x-4 py-3'>
           <View className='justify-center'>
             <Info color='#107C10'/>
           </View>
-            <Text className='text-[15px] leading-5 tracking-[0.23px] w-[248px]'>Add and manage your payment methods using our secure payment system.</Text>
+            <Text className='text-[15px] leading-5 tracking-[0.23px] w-[248px] '>Add and manage your payment methods using our secure payment system.</Text>
             <View className='justify-center'>
               <TouchableOpacity>
                 <X color='#616161'/>
@@ -21,7 +21,7 @@ export default function Payment() {
             </View>
           </View>
           <View className='h-12  justify-center px-4'>
-            <Text className='font-bold  tracking-[0.4px] text-[#242424]'>Wallet balance</Text>
+            <Text className='text-[17px] font-semibold  tracking-[0.4px] text-[#242424]'>Wallet balance</Text>
           </View>
           <View className='h-[78px]  justify-center items-center flex-row'>
             <Text className='text-[17px]'>UGX</Text>
@@ -29,7 +29,7 @@ export default function Payment() {
           </View>
           <View className=''>
             <View className='h-12 justify-center px-4'>
-              <Text className='font-semibold tracking-[0.4px] text-[#242424]'>Payment Methods</Text>
+              <Text className='text-[17px] font-semibold tracking-[0.4px] text-[#242424]'>Payment Methods</Text>
             </View>
             <View>
             
@@ -78,7 +78,7 @@ export default function Payment() {
             </View>
           </View>
           <View className='h-12 justify-center px-4'>
-            <Text className='font-semibold tracking-[0.4px] text-[#242424]'>Payment Security</Text>
+            <Text className='text-[17px] font-semibold tracking-[0.4px] text-[#242424]'>Payment Security</Text>
             </View>
              
               <View className='py-3 px-4'>
@@ -97,6 +97,6 @@ export default function Payment() {
               </View>
               
         </View>
-    </SafeAreaView>
+    
   )
 }
