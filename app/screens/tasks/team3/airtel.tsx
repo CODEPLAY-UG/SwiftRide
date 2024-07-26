@@ -49,7 +49,7 @@ export default function AirtelMobileMoney() {
                 transparent={true}
                 animationType='slide'
                 >
-                <View className='h-1/2 mt-auto bg-[#FFFFFF] rounded-t-lg border'>
+                <View className='h-1/3 mt-auto bg-[#FFFFFF] rounded-t-lg border'>
                     
                             <View className='justify-center items-center h-[52px]'>
                                 <Text className='font-semibold text-[20px] leading-[25px] tracking-[-0.45px]'>Remove (payment method)</Text>
@@ -70,7 +70,7 @@ export default function AirtelMobileMoney() {
                         <View className='px-4 pt-3'>
                              <Pressable
                                 onPress={()=> setIsModalVisible(false)}
-                                className="bg-[#C50F1F] w-full h-[52px] items-center justify-center rounded-[99px]">
+                                className="bg-[#FFFFFF] w-full h-[52px] items-center justify-center rounded-[99px]">
                                  <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
                                      Cancel
                                  </Text>
