@@ -11,6 +11,8 @@ export default function AirtelMobileMoney() {
     const [isTyping,setIsTyping] =useState(false)
     const [input,setInput] =useState('')
 
+    const textColor = isTyping || input !== '' ? '#FFFFFF' : '#BDBDBD';
+
     const handleInputChange = (text: string) => {
       setInput(text.trim());
   
@@ -72,7 +74,9 @@ export default function AirtelMobileMoney() {
               
               ]}
             >
-              <Text className="text-[#BDBDBD] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+              <Text className=" text-[17px] font-[600] leading-[22px] tracking-[-0.43px]"
+              style={[{ color: textColor }]}
+              >
                 Confirm
               </Text>
             </Pressable>
