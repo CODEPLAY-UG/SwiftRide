@@ -92,14 +92,16 @@ export default function Index() {
           </View>
         </View>
 
-        <Pressable
-          onPress={() => router.push("./unknown")}
-          // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
-          className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]">
-          <Text className="text-white font-[400] text-[17px]">
-            Confirm destination
-          </Text>
-        </Pressable>
+        <View className="px-4">
+          <Pressable
+            onPress={() => router.push("./order")}
+            // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
+            className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]">
+            <Text className="text-white font-[400] text-[17px]">
+              Confirm destination
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );
