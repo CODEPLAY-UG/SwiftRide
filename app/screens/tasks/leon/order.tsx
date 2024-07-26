@@ -253,8 +253,8 @@ const MapContent = ({
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
             <BottomSheetHeader title="Trip Summary" />
-            {/* <TripSummary /> */}
-            <PaymentMode />
+            <TripSummary />
+            {/* <PaymentMode /> */}
           </BottomSheetView>
         </BottomSheet>
       )}
