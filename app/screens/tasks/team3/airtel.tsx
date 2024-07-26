@@ -7,6 +7,30 @@ import { useState } from 'react'
 
 export default function AirtelMobileMoney() {
     const [isModalVisible,setIsModalVisible] =useState(false)
+    const [errorMessage, setErrorMessage] = useState<string>('');
+    const [isTyping,setIsTyping] =useState(false)
+    const [input,setInput] =useState('')
+
+    const handleInputChange = (text: string) => {
+      setInput(text.trim());
+  
+      if (text.trim() === '') {
+        setIsTyping(false);
+        setErrorMessage('');
+      } else {
+        const numberValue = parseFloat(text);
+        if (numberValue >= 5000) {
+          setIsTyping(true);
+          setErrorMessage('');
+        } else {
+          setIsTyping(false);
+          setErrorMessage('The minimum amount is UGX 5,000. Please increase your amount.');
+        }
+        
+      }
+    };
+
+
   return (
     <SafeAreaView className='bg-white h-full'>
         <View>
@@ -31,13 +55,22 @@ export default function AirtelMobileMoney() {
                           placeholderTextColor='#616161'
                           selectionColor='#808080'
                           keyboardType='numeric'
+                          value={input}
+                          onChangeText={handleInputChange}
                         />
               </View>
           </View>
+             <View className='px-10'>
+                {errorMessage ? <Text className='text-red-400'>{errorMessage}</Text> : null}
+             </View>
           <View className='px-4 pt-12'>
           <Pressable
               
-              className="bg-[#F0F0F0] w-full h-[52px] items-center justify-center rounded-full"
+              className=" w-full h-[52px] items-center justify-center rounded-full"
+              style={[
+                { backgroundColor: isTyping || input !== '' ? '#636363' : '#F0F0F0' },
+              
+              ]}
             >
               <Text className="text-[#BDBDBD] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
                 Confirm
