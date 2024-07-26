@@ -2,7 +2,7 @@ import { View, Text, TextInput, Pressable } from "react-native";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../features/userData/userDataSlice";
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import { RootState } from "../../store";
 import { StatusBar } from "expo-status-bar";
 
@@ -24,15 +24,18 @@ export default function PhoneNumber() {
       })
     );
     // You can also navigate to another screen or perform any other action
-    router.push("./otp");
+    router.push("./Otp");
   };
 
   return (
     <View className="bg-white h-full w-full px-4">
+      <Stack.Screen
+        options={{ title: "Sign Up", headerTitleAlign: "center" }}
+      />
       <StatusBar style="dark" />
       {/* Other components */}
       <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
-        Enter the name you would like to go by
+        Enter the phone number you would like to use
       </Text>
       <TextInput
         className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"

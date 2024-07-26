@@ -18,7 +18,7 @@ export default function welcome() {
             We cant wait for you to try out some of our exciting features
           </Text>
         </View>
-        <View className="flex-row space-x-8 py-4">
+        <View className="flex-row space-x-4 py-4">
           <View className="h-10 w-10 bg-[#313131] rounded-full items-center justify-center">
             <BriefcaseBusiness size={24} color="#FFFFFF" />
           </View>
@@ -31,7 +31,7 @@ export default function welcome() {
             </Text>
           </View>
         </View>
-        <View className="flex-row space-x-8 py-4">
+        <View className="flex-row space-x-4 py-4">
           <View className="h-10 w-10 bg-[#313131] rounded-full items-center justify-center">
             <Bike size={24} color="#FFFFFF" />
           </View>
@@ -44,7 +44,7 @@ export default function welcome() {
             </Text>
           </View>
         </View>
-        <View className="flex-row space-x-8 py-4">
+        <View className="flex-row space-x-4 py-4">
           <View className="h-10 w-10 bg-[#313131] rounded-full items-center justify-center">
             <UserCheck size={24} color="#FFFFFF" />
           </View>
@@ -60,7 +60,7 @@ export default function welcome() {
       </View>
       <View className="py-5">
         <Pressable
-          // onPress={() => router.push("./phoneNumber")}
+          onPress={() => router.push("../home")}
           className="bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
         >
           <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
