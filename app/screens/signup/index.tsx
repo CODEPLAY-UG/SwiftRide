@@ -43,7 +43,7 @@ export default function onboarding() {
 
           <View className="px-3 space-y-1">
             <Pressable
-              // onPress={() => router.push("./login")}
+              onPress={() => router.push("/screens/login")}
               className="bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]"
             >
               <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
