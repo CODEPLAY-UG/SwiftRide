@@ -109,7 +109,7 @@ export default function MtnMobileMoney() {
                           <View className='px-4 pt-3'>
                                <Pressable
                                   onPress={()=> setIsModalVisible(false)}
-                                  className="bg-[#FFFFFF] w-full h-[52px] items-center justify-center rounded-[99px]">
+                                  className="bg-[#F0F0F0] w-full h-[52px] items-center justify-center rounded-[99px]">
                                    <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
                                        Cancel
                                    </Text>
