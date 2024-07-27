@@ -36,7 +36,7 @@ export default function login() {
     <View className="bg-white h-full w-full px-4">
       <Stack.Screen options={{ title: "Log in", headerTitleAlign: "center" }} />
       <StatusBar style="dark" />
-      <View className="m-4">
+      <View className="mx-1 py-6">
         <View className="">
           <Text className="text-[#242424] text-[20px] font-semibold leading-[25px] tracking-tighter[-0.45]">Welcome back (userName)</Text>
         </View>
