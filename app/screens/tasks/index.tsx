@@ -20,8 +20,8 @@ export default function TaskIndex() {
       </TouchableOpacity>
       <TouchableOpacity
        onPress={handleLocationreagan} 
-       className="">
-        <Text className="bg-blue-500 py-2 px-8 text-white font-semibold rounded-full">Reagan</Text>
+       className="bg-blue-500 py-2 px-8 rounded-lg border border-[blue]">
+        <Text className=" text-white font-semibold">Reagan</Text>
       </TouchableOpacity>
       <TouchableOpacity className="">
         <Text>Scout</Text>
