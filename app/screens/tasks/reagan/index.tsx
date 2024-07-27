@@ -1,19 +1,18 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { router, Stack } from 'expo-router'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { BookUser, ChevronRight, ContactRound, Headset, HeartHandshake, Newspaper, ReceiptText, Upload } from 'lucide-react-native'
+import { BookUser, ChevronRight, ContactRound, Headset, HeartHandshake, Newspaper, PhoneCall, ReceiptText, Upload } from 'lucide-react-native'
 
 export default function Safety() {
     const handleLocation = () => {
         router.push("./emergencyindex");
       };
   return (
-    <SafeAreaView className=''>
+    <View className='bg-[#FFFFFF] h-full'>
         <Stack.Screen options={{ title: "Safety", headerTitleAlign: "center" }} />
       <View className='justify-center items-center gap-[10px]'>
       <Image className='w-[200px] h-[200px] '
-      source={require('@assets/images/safetyheader.png')}/>
+      source={require('@assets/images/Security-header.png')}/>
       </View>
       <View className='px-5 gap-4'>
       <Text className=' pt-2  pb-6 text-[#616161]'>Enable your safety features for a smooth and safe journey.</Text>
@@ -63,7 +62,13 @@ export default function Safety() {
             <ChevronRight color='#616161'/>
             </TouchableOpacity>
             </View>
+        <View><TouchableOpacity className='py-3 h-12 flex-row space-x-4'>
+        <PhoneCall color='#808080' className='px-4'/>
+            <Text className='grow'>Call support now</Text>
+            </TouchableOpacity>
+            </View>
       </View>
-    </SafeAreaView>
+      
+    </View>
   )
 }
