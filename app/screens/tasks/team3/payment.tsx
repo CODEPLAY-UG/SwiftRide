@@ -6,14 +6,14 @@ import { Banknote, ChevronRight, Info, Key, X } from 'lucide-react-native'
 
 export default function Payment() {
   return (
-    <SafeAreaView className='bg-white h-full'>
-        <View className=''>
-          <Stack.Screen options={{ headerShown: true, title: "Payment", headerTitleAlign: "center" }} />
-          <View className='flex-row justify-center space-x-4'>
+    
+        <View className='bg-white h-full'>
+          <Stack.Screen options={{ title: "Payment", headerTitleAlign: "center" }} />
+          <View className='flex-row justify-center space-x-4 py-3'>
           <View className='justify-center'>
             <Info color='#107C10'/>
           </View>
-            <Text className='text-[15px] leading-5 tracking-[0.23px] w-[248px]'>Add and manage your payment methods using our secure payment system.</Text>
+            <Text className='text-[15px] leading-5 tracking-[0.23px] w-[248px] '>Add and manage your payment methods using our secure payment system.</Text>
             <View className='justify-center'>
               <TouchableOpacity>
                 <X color='#616161'/>
@@ -21,7 +21,7 @@ export default function Payment() {
             </View>
           </View>
           <View className='h-12  justify-center px-4'>
-            <Text className='font-bold  tracking-[0.4px] text-[#242424]'>Wallet balance</Text>
+            <Text className='text-[17px] font-semibold  tracking-[0.4px] text-[#242424]'>Wallet balance</Text>
           </View>
           <View className='h-[78px]  justify-center items-center flex-row'>
             <Text className='text-[17px]'>UGX</Text>
@@ -29,10 +29,10 @@ export default function Payment() {
           </View>
           <View className=''>
             <View className='h-12 justify-center px-4'>
-              <Text className='font-semibold tracking-[0.4px] text-[#242424]'>Payment Methods</Text>
+              <Text className='text-[17px] font-semibold tracking-[0.4px] text-[#242424]'>Payment Methods</Text>
             </View>
             <View>
-
+            
               <View className='py-3 px-4'>
                 <TouchableOpacity className='flex-row'>
                   <Banknote color='#808080' size={40}/>
@@ -42,9 +42,9 @@ export default function Payment() {
                       end of the trip.</Text>
                     </View>
                 </TouchableOpacity>
-
+                
               </View>
-
+              
               <View className='py-3 px-4'>
                 <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/mtn")}
                  className='flex-row '>
@@ -59,7 +59,7 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-
+              
               <View className='py-3 px-4'>
                 <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/airtel")}
                 className='flex-row' >
@@ -74,13 +74,13 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-
+              
             </View>
           </View>
           <View className='h-12 justify-center px-4'>
-            <Text className='font-semibold tracking-[0.4px] text-[#242424]'>Payment Security</Text>
+            <Text className='text-[17px] font-semibold tracking-[0.4px] text-[#242424]'>Payment Security</Text>
             </View>
-
+             
               <View className='py-3 px-4'>
                 <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/passkey")}
                 className='flex-row'>
@@ -95,8 +95,8 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-
+              
         </View>
-    </SafeAreaView>
+    
   )
 }
