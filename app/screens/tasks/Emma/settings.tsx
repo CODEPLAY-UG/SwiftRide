@@ -26,7 +26,7 @@ export default function settings() {
           </View>
 
           <View className="">
-            {/* <Switch /> */}
+            
             <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
           </View>
         </View>
