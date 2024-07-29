@@ -19,7 +19,7 @@ import {
   Pressable,
 } from "react-native";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeft, Bike, Menu } from "lucide-react-native";
@@ -239,7 +239,9 @@ const MapContent = ({
         </View>
       </Pressable>
 
-      <Pressable onPress={handleMenuPress} className="absolute top-10 left-5">
+      <Pressable
+        onPress={() => router.push("../")}
+        className="absolute top-10 left-5">
         <View className="bg-white rounded-full p-4 justify-center items-center">
           <ArrowLeft color="#808080" size={24} />
         </View>
