@@ -21,7 +21,7 @@ export default function PaymentMode() {
           </View>
           <Pressable
             onPress={() => router.push("../")}
-            className="flex-row items-center justify-center bg-[#107C10] rounded-[99px] h-10 px-3 ">
+            className="flex-row items-center justify-center bg-[#107C10] rounded-[99px] h-10 px-3 space-x-1">
             <Plus color="#ffffff" size={16} />
             <Text className="text-[#ffffff]">Deposit</Text>
           </Pressable>

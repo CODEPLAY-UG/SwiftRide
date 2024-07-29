@@ -263,7 +263,7 @@ const MapContent = ({
 
             {!isPaymentDetailsOpen && (
               <>
-                <BottomSheetHeader title="Trip Summary" />
+                <BottomSheetHeader title="Select payment method" />
                 <PaymentMode />
               </>
             )}
