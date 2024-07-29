@@ -19,7 +19,7 @@ import {
   Pressable,
 } from "react-native";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Bike, Menu } from "lucide-react-native";
@@ -234,7 +234,10 @@ const MapContent = ({
           )}
         </Mapbox.MapView>
       </View>
-      <Pressable onPress={() => {}} className="absolute bottom-5">
+      <Pressable
+        onPress={() => router.push("./search_first_user")}
+        className="absolute bottom-5"
+      >
         <View className="bg-black rounded-full w-20 h-20 justify-center items-center">
           <Bike color="white" size={24} />
         </View>

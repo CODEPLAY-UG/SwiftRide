@@ -19,7 +19,7 @@ export default function RootIndex() {
       <Text className="uppercase font-bold text-lg text-[#ffd700]">
         Welcome to expo
       </Text>
-      <Link href="/screens/signup" className="mt-5 mb-2" asChild>
+      <Link href="/screens/onBoarding" className="mt-5 mb-2" asChild>
         <Pressable>
           <Text className="text-[#32cd32] text-lg">Go to sign up</Text>
         </Pressable>
@@ -44,7 +44,7 @@ export default function RootIndex() {
           Go to google maps
         </Text>
       </TouchableOpacity>
-      {/* <Redirect href="/screens/signup" /> */}
+      {/* <Redirect href="/screens/onBoarding" /> */}
     </SafeAreaView>
   );
 }

@@ -9,7 +9,6 @@ export default function TaskIndex() {
       <TouchableOpacity className="">
         <Link href="./Emma" className="mt-5 mb-2" asChild>
           <Pressable>
-            
             <Text className="px-4 py-1 bg-[#3d4dfa] text-[#fbf8f8] text-lg rounded-md border-3 border-[#ffd700]">
               Emma
             </Text>
@@ -25,8 +24,10 @@ export default function TaskIndex() {
       <TouchableOpacity className="">
         <Text>Reagan</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/payment")}
-      className="bg-teal-300 px-4 py-2 rounded-lg border border-teal-400">
+      <TouchableOpacity
+        onPress={() => router.push("/screens/tasks/team3/payment")}
+        className="bg-teal-300 px-4 py-2 rounded-lg border border-teal-400"
+      >
         <Text className="">Team 3</Text>
       </TouchableOpacity>
       <TouchableOpacity className="">

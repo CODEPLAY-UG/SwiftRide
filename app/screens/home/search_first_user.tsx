@@ -70,9 +70,9 @@ export default function User() {
             </Text>
           </View>
           <View className="items-center">
-            <Link href="./placeorder" className="mt-5 mb-2" asChild>
+            <Link href="" className="mt-5 mb-2" asChild>
               <Pressable className="mt-[22px] bg-[#636363] w-[330px] h-[56px] items-center justify-center rounded-[99px]">
-                <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
+                <Text className="text-center text-white text-[17px] font-semibold leading-[22px] tracking-[-0.43]">
                   Place order
                 </Text>
               </Pressable>
