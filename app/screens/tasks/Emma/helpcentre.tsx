@@ -1,12 +1,18 @@
-import { View, Text, TextInput, Pressable, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
+import { View, Switch, Text, TextInput, Pressable, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
 import React, { useState } from "react";
 import { Link, router, Stack, Tabs } from "expo-router";
 
 import { ArrowLeft, BellIcon, ChevronRight, Lock, Phone, SparklesIcon, SunMoon, WalletIcon } from "lucide-react-native";
 import { Button } from "react-native-paper";
+import CustomSwitch from "@/CustomSwitch";
 
 export default function Helpcentre() {
   function handleHelpcentre(text: string): void {}
+
+  const [contacts, setContacts] = useState(false);
+  const toggleContacts = () => {
+    setContacts((previousState) => !previousState);
+  };
 
   return (
     <View className="bg-white h-full w-full px-5">
@@ -38,6 +44,10 @@ export default function Helpcentre() {
           <View className="">
             <ChevronRight color="#808080" size={20} />
           </View>
+        </View>
+
+        <View>
+          <CustomSwitch isEnabled={contacts} toggleSwitch={setContacts} />
         </View>
       </View>
     </View>

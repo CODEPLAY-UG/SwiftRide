@@ -1,11 +1,14 @@
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Link, Redirect, Stack, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function RootIndex() {
   const handleLocation = () => {
     router.push("/screens/tasks");
+    
+
   };
 
   return (

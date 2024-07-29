@@ -3,11 +3,18 @@ import React, { useState } from "react";
 import { Link, router, Stack, Tabs } from "expo-router";
 import { Button } from "react-native-paper";
 import { Switch } from "react-native-paper";
+import CustomSwitch from "@/CustomSwitch";
 
 export default function Acounts() {
-  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+  const [google, setGoogle] = useState(false);
+  const toggleGoogle = () => {
+    setGoogle((previousState) => !previousState);
+  };
 
-  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+  const [apple, setApple] = useState(false);
+  const toggleApple = () => {
+    setApple((previousState) => !previousState);
+  };
 
   return (
     <View className="bg-white h-full w-full px-8">
@@ -30,8 +37,9 @@ export default function Acounts() {
               <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">example@gmail.com</Text>
             </View>
           </View>
-          <View className="">
-            <Switch className={"w-[31px] h-[51px] rounded-[20px]"} value={isSwitchOn} onValueChange={onToggleSwitch} />
+
+          <View>
+            <CustomSwitch isEnabled={google} toggleSwitch={setGoogle} />
           </View>
         </View>
         <View className="flex-row justify-between items-center">
@@ -42,8 +50,8 @@ export default function Acounts() {
               <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">example@gmail.com</Text>
             </View>
           </View>
-          <View className="">
-            <Switch className={"w-[31px] h-[51px] rounded-[20px]"} onValueChange={onToggleSwitch} />
+          <View>
+            <CustomSwitch isEnabled={apple} toggleSwitch={setApple} />
           </View>
         </View>
       </View>
