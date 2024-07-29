@@ -23,31 +23,57 @@ export default function LoginIndex() {
     //   })
     // );
     // Navigate to the next screen (e.g., using navigation library)
-    router.push("./phoneNumber");
+    router.push("./login_OTP");
   };
   return (
     <View className="bg-white h-full w-full px-5">
-      <Stack.Screen options={{ title: "Log in", headerTitleAlign: "center" }} />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          title: "Log in",
+          headerTitleAlign: "center",
+        }}
+      />
       <StatusBar style="dark" />
-      <Text className="text-[12px] font-normal leading-[16px] py-[16px]">Enter your mobile number</Text>
+      <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
+        Enter your mobile number
+      </Text>
       <TextInput
         className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
         placeholder="07......"
         onChangeText={handleNameChange}
+        keyboardType="numeric"
         // defaultValue={text}
       />
       <View className="items-center">
-        <Pressable className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]">
-          <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">Continue</Text>
+        <Pressable
+          onPress={() => router.push("./login_OTP")}
+          className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]"
+        >
+          <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+            Continue
+          </Text>
         </Pressable>
-        <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">Or</Text>
+        <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+          Or
+        </Text>
         <Pressable className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]">
-          <Image className="h-5 w-5" source={require("../../../assets/images/googleLogo.png")} />
-          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">Continue with Google</Text>
+          <Image
+            className="h-5 w-5"
+            source={require("../../../assets/images/googleLogo.png")}
+          />
+          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+            Continue with Google
+          </Text>
         </Pressable>
         <Pressable className="space-x-3 border border-[#636363] flex-row w-full h-[52px] mt-4  items-center justify-center rounded-[99px]">
-          <Image className="h-5 w-5" source={require("../../../assets/images/appleLogo.png")} />
-          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">Continue with Apple</Text>
+          <Image
+            className="h-5 w-5"
+            source={require("../../../assets/images/appleLogo.png")}
+          />
+          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+            Continue with Apple
+          </Text>
         </Pressable>
       </View>
     </View>

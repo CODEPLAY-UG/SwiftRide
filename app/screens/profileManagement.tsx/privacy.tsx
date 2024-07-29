@@ -14,7 +14,7 @@ export default function Privacy() {
 
   return (
     <View className="bg-white h-full w-full px-5">
-      <Stack.Screen options={{ title: "Privacy centre", headerTitleAlign: "center" }} />
+      <Stack.Screen options={{headerShown: true, title: "Privacy centre", headerTitleAlign: "center" }} />
       <View className="space-y-8 mt-[12px]">
         <View className="flex-row justify-between items-center">
           <View className="flex-row items-center">

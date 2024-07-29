@@ -7,7 +7,12 @@ import { StatusBar } from "expo-status-bar";
 export default function welcome() {
   return (
     <View className="px-4 h-full justify-between">
-      <Stack.Screen options={{ headerTitle: "" }} />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          title: "",
+        }}
+      />
       <StatusBar style="dark" />
       <View className="">
         <View className="mb-8">

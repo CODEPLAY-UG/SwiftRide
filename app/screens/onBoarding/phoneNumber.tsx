@@ -30,7 +30,11 @@ export default function PhoneNumber() {
   return (
     <View className="bg-white h-full w-full px-4">
       <Stack.Screen
-        options={{ title: "Sign Up", headerTitleAlign: "center" }}
+        options={{
+          headerShown: true,
+          title: "Sign up",
+          headerTitleAlign: "center",
+        }}
       />
       <StatusBar style="dark" />
       {/* Other components */}
