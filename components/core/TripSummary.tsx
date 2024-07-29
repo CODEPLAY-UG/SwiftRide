@@ -1,9 +1,15 @@
 import { View, Text, Pressable } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Stack } from "expo-router";
 import { Banknote, Info, Star } from "lucide-react-native";
 
-export default function TripSummary() {
+export default function TripSummary(props) {
+  const [status, isStatus] = useState(false);
+
+  const changeStatus = () => {
+    props.setIsPaymentDetailsOpen(isStatus((prev) => !prev));
+  };
+
   return (
     <View className="px-5 h-[80%] justify-between">
       <View className="">
@@ -30,7 +36,7 @@ export default function TripSummary() {
               </Text>
             </View>
           </View>
-          <Pressable>
+          <Pressable onPress={changeStatus}>
             <Text className="flex-row items-center justify-center border rounded-[99px] h-fit px-2 py-[5px]">
               change
             </Text>

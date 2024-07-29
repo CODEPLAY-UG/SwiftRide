@@ -1,9 +1,9 @@
 import { View, Text, Pressable } from "react-native";
 import React from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { Banknote, Circle, CircleCheck, Info, Plus } from "lucide-react-native";
 
-export default function TripSummary() {
+export default function PaymentMode() {
   return (
     <View className="px-5 h-[80%] justify-between">
       <View className="">
@@ -19,10 +19,11 @@ export default function TripSummary() {
               </Text>
             </View>
           </View>
-          <Pressable>
-            <Text className="flex-row items-center justify-center border rounded-[99px] h-fit px-2 py-[5px]">
-              <Plus color="#107C10" size={16} /> Deposit
-            </Text>
+          <Pressable
+            onPress={() => router.push("../")}
+            className="flex-row items-center justify-center bg-[#107C10] rounded-[99px] h-10 px-3 ">
+            <Plus color="#ffffff" size={16} />
+            <Text className="text-[#ffffff]">Deposit</Text>
           </Pressable>
         </View>
 

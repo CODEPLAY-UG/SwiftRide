@@ -158,7 +158,7 @@ const MapContent = ({
   );
 
   const pin = require("@assets/images/pin.png");
-  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(false);
+  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -252,9 +252,21 @@ const MapContent = ({
           enablePanDownToClose={true}
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
-            <BottomSheetHeader title="Trip Summary" />
-            <TripSummary />
-            {/* <PaymentMode /> */}
+            {isPaymentDetailsOpen && (
+              <>
+                <BottomSheetHeader title="Trip Summary" />
+                <TripSummary
+                  setIsPaymentDetailsOpen={setIsPaymentDetailsOpen}
+                />
+              </>
+            )}
+
+            {!isPaymentDetailsOpen && (
+              <>
+                <BottomSheetHeader title="Trip Summary" />
+                <PaymentMode />
+              </>
+            )}
           </BottomSheetView>
         </BottomSheet>
       )}
