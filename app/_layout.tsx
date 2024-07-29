@@ -54,7 +54,7 @@ export default function RootLayout() {
           >
             <Stack.Screen name="index" options={{}} />
             <Stack.Screen name="(tabs)" options={{}} />
-            <Stack.Screen name="screens/home" options={{}} />
+            <Stack.Screen name="screens/home/index" options={{}} />
             <Stack.Screen name="screens/signup" options={{}} />
             <Stack.Screen name="+not-found" />
           </Stack>

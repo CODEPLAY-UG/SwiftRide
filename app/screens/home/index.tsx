@@ -189,7 +189,12 @@ const MapContent = ({
                 puckBearingEnabled
                 puckBearing="heading"
               />
-              <ShapeSource id="bikes" cluster shape={featureCollection(points)}>
+              <ShapeSource
+                onPress={() => handleRideDetailsPress(0)}
+                id="bikes"
+                cluster
+                shape={featureCollection(points)}
+              >
                 <SymbolLayer
                   id="bike-icons"
                   minZoomLevel={0.5}
@@ -229,10 +234,7 @@ const MapContent = ({
           )}
         </Mapbox.MapView>
       </View>
-      <Pressable
-        onPress={() => handleRideDetailsPress(0)}
-        className="absolute bottom-5"
-      >
+      <Pressable onPress={() => {}} className="absolute bottom-5">
         <View className="bg-black rounded-full w-20 h-20 justify-center items-center">
           <Bike color="white" size={24} />
         </View>
