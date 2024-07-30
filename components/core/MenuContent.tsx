@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -11,12 +11,15 @@ import {
   Scale,
   ShieldPlus,
 } from "lucide-react-native";
+import { router } from "expo-router";
 
 export default function MenuContent() {
-  
   return (
     <SafeAreaView className="px-5">
-      <View className="flex-row items-center mt-10 space-x-3">
+      <TouchableOpacity
+        onPress={() => router.push("/screens/profileManagement")}
+        className="flex-row items-center mt-10 space-x-3"
+      >
         <View className="rounded-full h-14 w-14 justify-center items-center bg-[#636363]">
           <Image
             className="w-8 h-8"
@@ -34,15 +37,18 @@ export default function MenuContent() {
             Account centre
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
       <View className="my-5 space-y-6 ">
-        <View className="flex-row space-x-5 items-center">
+        <TouchableOpacity
+          onPress={() => router.push("/screens/payments/payment")}
+          className="flex-row space-x-5 items-center"
+        >
           <Banknote color="#242424" size={20} />
           <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">
             Payments
           </Text>
-        </View>
+        </TouchableOpacity>
         <View className="flex-row space-x-5 items-center">
           <Cog color="#242424" size={20} />
           <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">
