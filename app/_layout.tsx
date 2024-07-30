@@ -6,8 +6,9 @@ import {
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import "react-native-reanimated";
+import { Drawer } from "expo-router/drawer";
 
 import { store } from "./store";
 import { Provider } from "react-redux";
@@ -15,6 +16,7 @@ import { Provider } from "react-redux";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 import { NativeWindStyleSheet } from "nativewind";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -42,15 +44,20 @@ export default function RootLayout() {
   return (
     <Provider store={store}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="index" options={{}} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="screens/signup"
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+              animation: "slide_from_right",
+              animationDuration: 1000, // Slow down the animation duration to 1000ms (1 second)
+            }}
+          >
+            <Stack.Screen name="index" options={{}} />
+            {/* <Stack.Screen name="screens/home" options={{}} /> */}
+            <Stack.Screen name="screens/onBoarding" options={{}} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </GestureHandlerRootView>
       </ThemeProvider>
     </Provider>
   );

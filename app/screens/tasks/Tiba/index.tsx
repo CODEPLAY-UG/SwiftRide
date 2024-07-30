@@ -1,9 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Mic, Search, X } from "lucide-react-native";
 import { router, Stack } from "expo-router";
-import Button from "@/components/core/Button";
 import CustomButton from "@/components/core/Button";
 
 export default function Index() {
@@ -17,6 +15,14 @@ export default function Index() {
           headerShown: true,
           headerTitle: "Hold Up",
           headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: 17, // Adjust the font size
+            fontWeight: "bold", // Adjust the font weight
+          },
+          headerStyle: {
+            // height: 100, // Set the desired height for the header
+            backgroundColor: "#fdd700", // Optional: set the background color
+          },
         }}
       />
 
@@ -24,13 +30,10 @@ export default function Index() {
         onPress={() => router.push("./test")}
         className="py-2 flex justify-center items-center"
       >
-        <Text className="bg-orange-500 text-xl py-1 px-4 w-fit rounded-3xl">
-          Tiba
+        <Text className="bg-orange-500 text-lg py-1 px-5 w-fit rounded-3xl">
+          Search
         </Text>
       </TouchableOpacity>
-      <View className="w-full px-2">
-        <CustomButton textColor="text-[#ffd700]" title="Our blades are sharp " onPress={() => {}} />
-      </View>
     </SafeAreaView>
   );
 }

@@ -19,17 +19,18 @@ import {
   Pressable,
 } from "react-native";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { router, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Bike, Menu } from "lucide-react-native";
+import { ArrowLeft, Bike, Menu } from "lucide-react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import RideDetails from "@/components/core/RideDetails";
-import MenuContent from "../../../components/core/MenuContent";
+import MenuContent from "@components/core/MenuContent";
 import { featureCollection } from "@turf/helpers";
 import { point } from "@turf/helpers";
-import bikes from "../../../data/bikes.json";
+import bikes from "@data/bikes.json";
 import { UserLocation } from "@rnmapbox/maps";
+import TripSummary from "@/components/core/TripSummary";
+import PaymentMode from "@/components/core/PaymentMode";
 
 Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
 export default function MapboxComponent() {
@@ -37,7 +38,7 @@ export default function MapboxComponent() {
     null
   );
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const [isRideDetailsOpen, setIsRideDetailsOpen] = useState(false);
+  const [isRideDetailsOpen, setIsRideDetailsOpen] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const rideSheetRef = useRef<BottomSheet>(null);
@@ -105,8 +106,7 @@ export default function MapboxComponent() {
           animationType="fade"
           transparent={true}
           visible={isMenuOpen}
-          onRequestClose={closeMenu}
-        >
+          onRequestClose={closeMenu}>
           <TouchableWithoutFeedback onPress={closeMenu}>
             <View style={styles.overlay}>
               <View style={styles.menuContainer}>
@@ -153,9 +153,12 @@ const MapContent = ({
     );
   };
 
-  const points = bikes.map((bike) => point([bike.longitude, bike.latitude]));
+  const points = bikes.map((bike: { longitude: number; latitude: number }) =>
+    point([bike.longitude, bike.latitude])
+  );
 
   const pin = require("@assets/images/pin.png");
+  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(false);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -170,8 +173,7 @@ const MapContent = ({
         <Mapbox.MapView
           // styleURL="mapbox://styles/mapbox/dark-v11"
           scaleBarEnabled={false}
-          className="w-full h-full"
-        >
+          className="w-full h-full">
           {location && (
             <>
               <Camera
@@ -189,12 +191,7 @@ const MapContent = ({
                 puckBearingEnabled
                 puckBearing="heading"
               />
-              <ShapeSource
-                onPress={() => handleRideDetailsPress(0)}
-                id="bikes"
-                cluster
-                shape={featureCollection(points)}
-              >
+              <ShapeSource id="bikes" cluster shape={featureCollection(points)}>
                 <SymbolLayer
                   id="bike-icons"
                   minZoomLevel={0.5}
@@ -235,9 +232,8 @@ const MapContent = ({
         </Mapbox.MapView>
       </View>
       <Pressable
-        onPress={() => router.push("./search_first_user")}
-        className="absolute bottom-5"
-      >
+        // onPress={() => handleRideDetailsPress(0)}
+        className="absolute bottom-5">
         <View className="bg-black rounded-full w-20 h-20 justify-center items-center">
           <Bike color="white" size={24} />
         </View>
@@ -245,7 +241,7 @@ const MapContent = ({
 
       <Pressable onPress={handleMenuPress} className="absolute top-10 left-5">
         <View className="bg-white rounded-full p-4 justify-center items-center">
-          <Menu color="#808080" size={24} />
+          <ArrowLeft color="#808080" size={24} />
         </View>
       </Pressable>
 
@@ -254,11 +250,11 @@ const MapContent = ({
           ref={rideSheetRef}
           snapPoints={snapPoints}
           enablePanDownToClose={true}
-          onClose={() => setIsRideDetailsOpen(false)}
-        >
+          onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
-            <BottomSheetHeader title="Ride Details" />
-            <RideDetails />
+            <BottomSheetHeader title="Trip Summary" />
+            <TripSummary />
+            {/* <PaymentMode /> */}
           </BottomSheetView>
         </BottomSheet>
       )}

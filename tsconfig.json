@@ -4,7 +4,10 @@
     "strict": true,
     "paths": {
       "@/*": ["./*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@components/*": ["./components/*"],
+      "@data/*": ["./data/*"],
+      "@screens/*": ["./app/screens*"]
     }
   },
   "include": [
@@ -12,6 +15,7 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "class-variance-authority.d.ts"
-  ]
+    "class-variance-authority.d.ts",
+    "CustomSwitch.js"
+, "app/screens/profileManagement"  ]
 }

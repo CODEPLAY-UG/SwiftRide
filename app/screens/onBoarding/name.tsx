@@ -27,7 +27,11 @@ export default function SignUpIndex() {
   return (
     <View className="bg-white h-full w-full px-5">
       <Stack.Screen
-        options={{ title: "Sign Up", headerTitleAlign: "center" }}
+        options={{
+          headerShown: true,
+          title: "Sign up",
+          headerTitleAlign: "center",
+        }}
       />
       <StatusBar style="dark" />
       <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
