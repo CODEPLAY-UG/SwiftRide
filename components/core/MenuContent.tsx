@@ -2,6 +2,7 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
+  Banknote,
   ChevronRight,
   Cog,
   HeartHandshake,
@@ -12,6 +13,7 @@ import {
 } from "lucide-react-native";
 
 export default function MenuContent() {
+  
   return (
     <SafeAreaView className="px-5">
       <View className="flex-row items-center mt-10 space-x-3">
@@ -35,6 +37,12 @@ export default function MenuContent() {
       </View>
 
       <View className="my-5 space-y-6 ">
+        <View className="flex-row space-x-5 items-center">
+          <Banknote color="#242424" size={20} />
+          <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">
+            Payments
+          </Text>
+        </View>
         <View className="flex-row space-x-5 items-center">
           <Cog color="#242424" size={20} />
           <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">

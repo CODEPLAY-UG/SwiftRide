@@ -12,6 +12,10 @@ export default function Getting() {
           headerShown: true,
           title: "Getting started with SwiftRide",
           headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: 17, // Adjust the font size
+            fontWeight: "semibold", // Adjust the font weight
+          },
         }}
       />
       <View className="">
