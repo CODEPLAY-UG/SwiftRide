@@ -36,14 +36,7 @@ export default function RootIndex() {
       >
         <Text className="text-[#3a1a6c] text-lg uppercase">Go to mapbox</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => router.push("/screens/home/map")}
-        className="mt-3 bg-[#c97c5d] py-2 px-4 rounded"
-      >
-        <Text className="text-[#3a1a6c] text-lg uppercase">
-          Go to google maps
-        </Text>
-      </TouchableOpacity>
+
       {/* <Redirect href="/screens/onBoarding" /> */}
     </SafeAreaView>
   );
