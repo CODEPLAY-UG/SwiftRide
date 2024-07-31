@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   CalendarPlus,
@@ -22,8 +22,20 @@ import SearchComponent from "@/components/core/Search";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { ProgressBar, MD3Colors } from "react-native-paper";
 import addresses from "@data/address.json";
+import BikeType from "@/components/core/BikeType";
+
+const BottomSheetHeader = ({ title }: { title: string }) => {
+  return (
+    <View className="items-center justify-center border-b-[1px] p-1 border-b-[#f0f0f0]">
+      <Text className="text-[17px] text-[#242424] py-2 font-[600] leading-[22px] tracking-[-0.43px]">
+        {title}
+      </Text>
+    </View>
+  );
+};
 
 export default function Index() {
+  const [isAddress, setIsAddress] = useState(false);
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
@@ -37,6 +49,10 @@ export default function Index() {
       item.road.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.city.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const rideSheetRef = useRef<BottomSheet>(null);
+  const [snapPoints, setSnapPoints] = useState(["0%"]);
+  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -94,7 +110,12 @@ export default function Index() {
           ) : (
             <View>
               {filteredAddresses.slice(0, 2).map((item, index) => (
-                <Pressable onPress={() => router.push("./order")} key={index}>
+                <Pressable
+                  onPress={() => {
+                    setIsAddress((prev) => !prev);
+                    setSnapPoints(["55%"]);
+                  }}
+                  key={index}>
                   <View className="flex-row justify-between items-center mt-3">
                     <View className="mx-6 flex-row items-center">
                       <MapPin color="#808080" size={24} />
@@ -127,7 +148,10 @@ export default function Index() {
               {filteredAddresses.length != 0 ? (
                 <View className="px-4">
                   <Pressable
-                    onPress={() => router.push("./order")}
+                    onPress={() => {
+                      setIsAddress((prev) => !prev);
+                      setSnapPoints(["55%"]);
+                    }}
                     // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
                     className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]">
                     <Text className="text-white font-[400] text-[17px]">
@@ -178,6 +202,19 @@ export default function Index() {
             </View>
           </View>
         </View>
+      )}
+
+      {isAddress && (
+        <BottomSheet
+          ref={rideSheetRef}
+          snapPoints={snapPoints}
+          enablePanDownToClose={true}
+          onClose={() => setIsAddress((prev) => !prev)}>
+          <BottomSheetView>
+            <BottomSheetHeader title="Choose bike type" />
+            <BikeType />
+          </BottomSheetView>
+        </BottomSheet>
       )}
     </SafeAreaView>
   );
