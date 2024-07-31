@@ -32,6 +32,7 @@ import { UserLocation } from "@rnmapbox/maps";
 import ConfirmLoading from "@/components/core/ConfirmLoading";
 import PaymentMode from "@/components/core/PaymentMode";
 import { ProgressBar } from "react-native-paper";
+import ConfirmDriver from "@/components/core/ConfirmDriver";
 
 Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
 export default function MapboxComponent() {
@@ -44,7 +45,7 @@ export default function MapboxComponent() {
 
   const rideSheetRef = useRef<BottomSheet>(null);
 
-  const snapPoints = ["40%"];
+  const [snapPoints, setSnapPoints] = useState(["40%"]);
 
   const handleRideDetailsPress = useCallback((index: number) => {
     rideSheetRef.current?.snapToIndex(index);
@@ -159,7 +160,28 @@ const MapContent = ({
   );
 
   const pin = require("@assets/images/pin.png");
-  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
+
+  const [message, setMessage] = useState("Confirming your trip");
+  const [per, setPer] = useState(0.3);
+  const [isDriver, setIsDriver] = useState(false);
+  const [snapPoints1, setSnapPoints1] = useState(["40%"]);
+
+  useEffect(() => {
+    let timer;
+    timer = setTimeout(() => {
+      setMessage("Confirming your trip");
+      setPer(0.5);
+    }, 2500); // 5 seconds
+    timer = setTimeout(() => {
+      setMessage("Connecting to your driver");
+      setPer(0.7);
+      setSnapPoints1(["50%"]);
+      setIsDriver(true);
+    }, 5000); // 5 seconds
+
+    // Cleanup the timeout if the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -251,24 +273,15 @@ const MapContent = ({
       {isRideDetailsOpen && (
         <BottomSheet
           ref={rideSheetRef}
-          snapPoints={snapPoints}
+          snapPoints={snapPoints1}
           enablePanDownToClose={false}
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
-            {isPaymentDetailsOpen && (
-              <>
-                <BottomSheetHeader title="Confirming your trip" />
-                <ProgressBar
-                  indeterminate
-                  color="#636363"
-                  className="h-[1px]"
-                />
+            <BottomSheetHeader title={message} />
+            <ProgressBar progress={per} color="#636363" className="h-[1px]" />
 
-                <ConfirmLoading
-                  setIsPaymentDetailsOpen={setIsPaymentDetailsOpen}
-                />
-              </>
-            )}
+            {!isDriver && <ConfirmLoading />}
+            {isDriver && <ConfirmDriver />}
           </BottomSheetView>
         </BottomSheet>
       )}

@@ -9,16 +9,7 @@ import {
   ProgressBar,
 } from "react-native-paper";
 
-export default function ConfirmLoading(props: {
-  setIsPaymentDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
-  const [status, isStatus] = useState(false);
-
-  const changeStatus = () => {
-    isStatus((prev) => !prev);
-    props.setIsPaymentDetailsOpen(status);
-  };
-
+export default function ConfirmLoading() {
   return (
     <View className="px-5 h-[80%] justify-between">
       <View className="px-4 mt-2">
