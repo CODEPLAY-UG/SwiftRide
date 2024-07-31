@@ -43,7 +43,7 @@ export default function MapboxComponent() {
 
   const rideSheetRef = useRef<BottomSheet>(null);
 
-  const snapPoints = ["40%"];
+  const snapPoints = ["45%"];
 
   const handleRideDetailsPress = useCallback((index: number) => {
     rideSheetRef.current?.snapToIndex(index);
