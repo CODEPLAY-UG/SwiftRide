@@ -19,7 +19,7 @@ import {
   Pressable,
 } from "react-native";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeft, Bike, Menu } from "lucide-react-native";
@@ -158,7 +158,7 @@ const MapContent = ({
   );
 
   const pin = require("@assets/images/pin.png");
-  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(false);
+  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -239,7 +239,9 @@ const MapContent = ({
         </View>
       </Pressable>
 
-      <Pressable onPress={handleMenuPress} className="absolute top-10 left-5">
+      <Pressable
+        onPress={() => router.push("../")}
+        className="absolute top-10 left-5">
         <View className="bg-white rounded-full p-4 justify-center items-center">
           <ArrowLeft color="#808080" size={24} />
         </View>
@@ -252,9 +254,21 @@ const MapContent = ({
           enablePanDownToClose={true}
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
-            <BottomSheetHeader title="Trip Summary" />
-            <TripSummary />
-            {/* <PaymentMode /> */}
+            {isPaymentDetailsOpen && (
+              <>
+                <BottomSheetHeader title="Trip Summary" />
+                <TripSummary
+                  setIsPaymentDetailsOpen={setIsPaymentDetailsOpen}
+                />
+              </>
+            )}
+
+            {!isPaymentDetailsOpen && (
+              <>
+                <BottomSheetHeader title="Select payment method" />
+                <PaymentMode />
+              </>
+            )}
           </BottomSheetView>
         </BottomSheet>
       )}
