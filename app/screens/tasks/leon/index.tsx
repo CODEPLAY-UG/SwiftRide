@@ -4,6 +4,9 @@ import {
   TextInput,
   TouchableOpacity,
   Pressable,
+  StyleSheet,
+  Modal,
+  TouchableWithoutFeedback,
 } from "react-native";
 import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -51,8 +54,6 @@ export default function Index() {
   );
 
   const rideSheetRef = useRef<BottomSheet>(null);
-  const [snapPoints, setSnapPoints] = useState(["0%"]);
-  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -112,8 +113,7 @@ export default function Index() {
               {filteredAddresses.slice(0, 2).map((item, index) => (
                 <Pressable
                   onPress={() => {
-                    setIsAddress((prev) => !prev);
-                    setSnapPoints(["55%"]);
+                    setIsAddress(true);
                   }}
                   key={index}>
                   <View className="flex-row justify-between items-center mt-3">
@@ -149,8 +149,7 @@ export default function Index() {
                 <View className="px-4">
                   <Pressable
                     onPress={() => {
-                      setIsAddress((prev) => !prev);
-                      setSnapPoints(["55%"]);
+                      setIsAddress(true);
                     }}
                     // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
                     className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]">
@@ -205,17 +204,42 @@ export default function Index() {
       )}
 
       {isAddress && (
-        <BottomSheet
-          ref={rideSheetRef}
-          snapPoints={snapPoints}
-          enablePanDownToClose={true}
-          onClose={() => setIsAddress((prev) => !prev)}>
-          <BottomSheetView>
-            <BottomSheetHeader title="Choose bike type" />
-            <BikeType />
-          </BottomSheetView>
-        </BottomSheet>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={true}
+          onRequestClose={() => setIsAddress(false)}>
+          <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
+            <View style={styles.overlay}>
+              <View style={styles.menuContainer}>
+                <BikeType setIsAddress={setIsAddress} />
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
       )}
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  menuContainer: {
+    height: "50%",
+    width: "100%",
+    backgroundColor: "white",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+});

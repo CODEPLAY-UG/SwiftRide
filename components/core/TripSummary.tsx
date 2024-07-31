@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import React, { useState } from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { Banknote, Info, Star } from "lucide-react-native";
 import { Badge, Chip } from "react-native-paper";
 
@@ -10,8 +10,7 @@ export default function TripSummary(props: {
   const [status, isStatus] = useState(false);
 
   const changeStatus = () => {
-    isStatus((prev) => !prev);
-    props.setIsPaymentDetailsOpen(status);
+    props.setIsPaymentDetailsOpen(false);
   };
 
   return (
@@ -66,7 +65,9 @@ export default function TripSummary(props: {
         </Pressable>
 
         <Pressable
-          onPress={() => {}}
+          onPress={() => {
+            router.push("./searching_driver");
+          }}
           className="bg-[#636363] w-full h-[45px] items-center justify-center rounded-[99px]">
           <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
             Order ride

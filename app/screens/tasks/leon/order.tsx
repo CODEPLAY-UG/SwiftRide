@@ -100,22 +100,6 @@ export default function MapboxComponent() {
         rideSheetRef={rideSheetRef}
         snapPoints={snapPoints}
       />
-
-      {isMenuOpen && (
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={isMenuOpen}
-          onRequestClose={closeMenu}>
-          <TouchableWithoutFeedback onPress={closeMenu}>
-            <View style={styles.overlay}>
-              <View style={styles.menuContainer}>
-                <MenuContent />
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-        </Modal>
-      )}
     </View>
   );
 }
@@ -251,26 +235,32 @@ const MapContent = ({
         <BottomSheet
           ref={rideSheetRef}
           snapPoints={snapPoints}
-          enablePanDownToClose={true}
+          enablePanDownToClose={false}
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
-            {isPaymentDetailsOpen && (
-              <>
-                <BottomSheetHeader title="Trip Summary" />
-                <TripSummary
-                  setIsPaymentDetailsOpen={setIsPaymentDetailsOpen}
-                />
-              </>
-            )}
-
-            {!isPaymentDetailsOpen && (
-              <>
-                <BottomSheetHeader title="Select payment method" />
-                <PaymentMode />
-              </>
-            )}
+            <BottomSheetHeader title="Trip Summary" />
+            <TripSummary setIsPaymentDetailsOpen={setIsPaymentDetailsOpen} />
           </BottomSheetView>
         </BottomSheet>
+      )}
+
+      {!isPaymentDetailsOpen && (
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={true}
+          onRequestClose={() => {}}>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              setIsPaymentDetailsOpen(true);
+            }}>
+            <View style={styles.overlay}>
+              <View style={styles.menuContainer}>
+                <PaymentMode />
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
       )}
     </View>
   );
@@ -287,11 +277,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   menuContainer: {
-    height: "100%",
-    width: "75%",
+    height: "40%",
+    width: "100%",
     backgroundColor: "white",
     position: "absolute",
-    top: 0,
+    bottom: 0,
     left: 0,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 });

@@ -11,9 +11,12 @@ import {
   Plus,
   Zap,
 } from "lucide-react-native";
-import { RadioButton } from "react-native-paper";
 
-export default function PaymentMode() {
+export default function BikeType({
+  setIsAddress,
+}: {
+  setIsAddress: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const bikes = ["Standard bike", "E-Bike", "Cargo bike"];
   const [select, setSelect] = useState(bikes[0]);
   const selectedItem = [
@@ -23,6 +26,11 @@ export default function PaymentMode() {
 
   return (
     <View className="px-5 h-[80%] justify-between">
+      <View className="my-2">
+        <Text className="text-[17px] text-[#242424] text-center py-2 font-[600] leading-[22px] tracking-[-0.43px]">
+          Choose bike type
+        </Text>
+      </View>
       <View className="">
         <Pressable
           className={select == bikes[0] ? selectedItem[0] : selectedItem[1]}
@@ -99,6 +107,7 @@ export default function PaymentMode() {
       <Pressable
         onPress={() => {
           router.push("./order");
+          setIsAddress(false);
         }}
         // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
         className="mt-3 bg-[#636363] h-[45px] items-center justify-center rounded-[99px]">
