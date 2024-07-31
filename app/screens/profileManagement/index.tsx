@@ -27,13 +27,13 @@ export default function Profile() {
         <View className="flex-row justify-between items-center">
         
           <View className="mx-4">
-          <TouchableOpacity onPress={() => router.push("./accountinfo")} className="">
+          <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
             <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Name</Text>
               <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Phone number {"\n"}Email</Text>
               </TouchableOpacity>
           </View>
           <View className="">
-          <TouchableOpacity onPress={() => router.push("./accountinfo")} className="">
+          <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
               <ChevronRight color="#808080" size={20} />
               </TouchableOpacity>
             </View>
@@ -67,7 +67,7 @@ export default function Profile() {
             </Link>
           </View>
         </View>
-        <TouchableOpacity onPress={() => router.push("./login&security")} className="">
+        <TouchableOpacity onPress={() => router.push("./login&Security")} className="">
           <View className="flex-row justify-between items-center ">
             <View className="mx-4 flex-row items-center">
               <ShieldCheckIcon color="#808080" size={28} />
@@ -81,7 +81,7 @@ export default function Profile() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push("./helpcentre")} className="">
+        <TouchableOpacity onPress={() => router.push("./helpCentre")} className="">
         <View className="flex-row justify-between items-center ">
           <View className="mx-4 flex-row items-center">
             <HeartHandshakeIcon color="#808080" size={28} />

@@ -42,7 +42,7 @@ export default function Helpcentre() {
         }}
       />
       <View className="space-y-5 mt-[12px]">
-        <TouchableOpacity onPress={() => router.push("./getting")} className="">
+        <TouchableOpacity onPress={() => router.push("./gettingStarted")} className="">
           <View className="flex-row justify-between items-center">
             <View className="flex-row items-center">
               <SparklesIcon color="#808080" size={24} />

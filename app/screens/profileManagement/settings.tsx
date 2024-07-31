@@ -55,7 +55,7 @@ export default function settings() {
             <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
           </View>
         </View>
-        <TouchableOpacity onPress={() => router.push("./privacy")} className="">
+        <TouchableOpacity onPress={() => router.push("./privacyCentre")} className="">
           <View className="flex-row justify-between items-center">
             <View className="flex-row items-center">
               <Lock color="#808080" size={24} />
