@@ -8,6 +8,11 @@ export default function PaymentMode() {
   const [checked, setChecked] = useState("four");
   return (
     <View className="px-5 h-[80%] justify-between">
+      <View className="my-2">
+        <Text className="text-[17px] text-[#242424] text-center py-2 font-[600] leading-[22px] tracking-[-0.43px]">
+          Select payment method
+        </Text>
+      </View>
       <View className="">
         <View className="flex-row space-x-5 justify-between item-center mt-3">
           <View className="p-1 flex-row items-center space-x-2">
