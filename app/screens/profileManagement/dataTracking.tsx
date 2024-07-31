@@ -5,7 +5,7 @@ import { Link, router, Stack, Tabs } from "expo-router";
 import { ArrowLeft, BellIcon, ChevronRight, DotIcon, Info, Lock, Phone, SparklesIcon, SunMoon, WalletIcon } from "lucide-react-native";
 import { Button } from "react-native-paper";
 
-export default function Paying() {
+export default function tracking() {
   function handlePaying(text: string): void {}
 
   return (
@@ -13,7 +13,7 @@ export default function Paying() {
       <Stack.Screen
         options={{
           headerShown: true,
-          title: "Paying for your trip",
+          title: "Device tracking",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontSize: 17, // Adjust the font size
@@ -22,7 +22,7 @@ export default function Paying() {
         }}
       />
 
-      <Stack.Screen options={{ title: "Device tracking", headerTitleAlign: "center" }} />
+      
 
       <View className="space-y-8 mt-[12px]">
         <View className="flex-row justify-between items-center px-5 ">

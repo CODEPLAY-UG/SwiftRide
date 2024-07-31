@@ -96,7 +96,7 @@ export default function settings() {
         </View>
         </TouchableOpacity>
 
-          
+        <TouchableOpacity onPress={() => router.push("./communication")} className="">
         <View className="flex-row justify-between items-center  ">
           <View className="flex-row items-center">
             <Phone color="#808080" size={24} />
@@ -113,7 +113,8 @@ export default function settings() {
           <View className="">
             <ChevronRight color="#808080" size={20} />
           </View>
-        </View>
+          </View>
+          </TouchableOpacity>
       </View>
     </View>
   );
