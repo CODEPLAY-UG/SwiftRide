@@ -18,7 +18,7 @@ import {
   X,
 } from "lucide-react-native";
 import { Link, router, Stack } from "expo-router";
-import SearchComponent from "@/components/core/Search1";
+import SearchComponent from "@/components/core/search1";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { ProgressBar, MD3Colors } from "react-native-paper";
 import addresses from "@data/address.json";
@@ -94,7 +94,9 @@ export default function Index() {
           ) : (
             <View>
               {filteredAddresses.slice(0, 2).map((item, index) => (
-                <Pressable onPress={() => router.push("./order")} key={index}>
+                <Pressable
+                  onPress={() => router.push("./confirm_order")}
+                  key={index}>
                   <View className="flex-row justify-between items-center mt-3">
                     <View className="mx-6 flex-row items-center">
                       <MapPin color="#808080" size={24} />
@@ -127,7 +129,7 @@ export default function Index() {
               {filteredAddresses.length != 0 ? (
                 <View className="px-4">
                   <Pressable
-                    onPress={() => router.push("./order")}
+                    onPress={() => router.push("./confirm_order")}
                     // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
                     className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]">
                     <Text className="text-white font-[400] text-[17px]">
