@@ -94,21 +94,21 @@ export default function Index() {
           ) : (
             <View>
               {filteredAddresses.slice(0, 2).map((item, index) => (
-                <View
-                  key={index}
-                  className="flex-row justify-between items-center mt-3">
-                  <View className="mx-6 flex-row items-center">
-                    <MapPin color="#808080" size={24} />
-                    <View className="mx-4">
-                      <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-                        {item.address}
-                      </Text>
-                      <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
-                        {item.road}, {item.city}
-                      </Text>
+                <Pressable onPress={() => router.push("./order")} key={index}>
+                  <View className="flex-row justify-between items-center mt-3">
+                    <View className="mx-6 flex-row items-center">
+                      <MapPin color="#808080" size={24} />
+                      <View className="mx-4">
+                        <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
+                          {item.address}
+                        </Text>
+                        <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
+                          {item.road}, {item.city}
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
+                </Pressable>
               ))}
 
               <View className="space-y-4 mt-[12px]">
