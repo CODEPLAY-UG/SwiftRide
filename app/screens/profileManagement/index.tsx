@@ -49,7 +49,7 @@ export default function Profile() {
             <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">App settings</Text>
           </View>
         </View>
-
+        <TouchableOpacity onPress={() => router.push("./settings")} className="">
         <View className="flex-row justify-between items-center ">
           <View className="mx-4 flex-row items-center">
             <Link href="./settings" className="mt-5 mb-2" asChild>
@@ -66,7 +66,10 @@ export default function Profile() {
               <ChevronRight color="#808080" size={20} />
             </Link>
           </View>
-        </View>
+          </View>
+          </TouchableOpacity>
+
+        <Link href="./login&Security" className="mt-5 mb-2" asChild>
         <TouchableOpacity onPress={() => router.push("./login&Security")} className="">
           <View className="flex-row justify-between items-center ">
             <View className="mx-4 flex-row items-center">
@@ -80,7 +83,7 @@ export default function Profile() {
             </View>
           </View>
         </TouchableOpacity>
-
+        </Link>
         <TouchableOpacity onPress={() => router.push("./helpCentre")} className="">
         <View className="flex-row justify-between items-center ">
           <View className="mx-4 flex-row items-center">

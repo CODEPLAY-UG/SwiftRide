@@ -23,11 +23,11 @@ export default function Appearance() {
   };
 
   return (
-    <View className="bg-white h-full w-full px-5">
+    <View className="bg-white h-full w-full px-4">
       <Stack.Screen
         options={{
           headerShown: true,
-          title: "Paying for your trip",
+          title: "Appearance",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontSize: 17, // Adjust the font size
@@ -57,12 +57,12 @@ export default function Appearance() {
           </View>
         </View>
 
-        <View className="flex-row items-center">
+        <View className="flex-row justify-between items-center">
           <View className="mx-4">
             <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Use device settings</Text>
-            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">The app will adapt to your device's display{"\n"}theme.</Text>
+            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">The app will adapt to your device's display {"\n"}theme.</Text>
           </View>
-          <View>
+          <View className="">
             <CustomSwitch isEnabled={usedevicesettings} toggleSwitch={setUsedevicesettings} />
           </View>
         </View>

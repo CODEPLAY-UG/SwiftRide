@@ -9,8 +9,8 @@ export default function Paying() {
   function handlePaying(text: string): void {}
 
   return (
-      <View className="bg-white h-full w-full px-4">
-          <Stack.Screen
+    <View className="bg-white h-full w-full px-4">
+      <Stack.Screen
         options={{
           headerShown: true,
           title: "Paying for your trip",
@@ -21,13 +21,13 @@ export default function Paying() {
           },
         }}
       />
-      
+
       <Stack.Screen options={{ title: "Device tracking", headerTitleAlign: "center" }} />
 
       <View className="space-y-8 mt-[12px]">
         <View className="flex-row justify-between items-center px-5 ">
           <View className="mb-12">
-            <Info size={20} color="#107C10" strokeWidth={4} />
+            <Info size={20} color="#107C10" strokeWidth={3} />
           </View>
           <View className="mx-4">
             <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">To ensure your journey is safe and fast, we collect and use data at every stage of your trip. This includes before you start, while you're on your way, and after you've arrived at your destination.</Text>
