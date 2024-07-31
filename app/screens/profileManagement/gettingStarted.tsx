@@ -20,7 +20,7 @@ export default function Getting() {
       />
       <View className="">
         <View className="">
-          <View className="justify-between py-5 items-center">
+          <View className="justify-between py-1 items-center">
             <Image
               className="h-[180px] w-[100%] rounded-[16px]"
               source={require("@assets/images/rider.png")}
