@@ -251,7 +251,7 @@ const MapContent = ({
         <BottomSheet
           ref={rideSheetRef}
           snapPoints={snapPoints}
-          enablePanDownToClose={true}
+          enablePanDownToClose={false}
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
             {isPaymentDetailsOpen && (
