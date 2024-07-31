@@ -30,6 +30,7 @@ export default function settings() {
 
   return (
     <View className="bg-white h-full w-full px-5">
+      
       <Stack.Screen
         options={{
           headerShown: true,
@@ -75,6 +76,7 @@ export default function settings() {
           </View>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => router.push("./appearance")} className="">
         <View className="flex-row justify-between items-center ">
           <View className="flex-row items-center">
             <SunMoon color="#808080" size={24} />
@@ -92,7 +94,9 @@ export default function settings() {
             <ChevronRight color="#808080" size={20} />
           </View>
         </View>
+        </TouchableOpacity>
 
+          
         <View className="flex-row justify-between items-center  ">
           <View className="flex-row items-center">
             <Phone color="#808080" size={24} />
