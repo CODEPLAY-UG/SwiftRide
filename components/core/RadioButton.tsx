@@ -16,6 +16,7 @@ function RadioButton({ checked, onPress }: RadioButtonProps) {
     </Pressable>
   );
 }
+
 const styles = StyleSheet.create({
   checkboxBase: {
     width: 24,
@@ -26,9 +27,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#cccccc",
     backgroundColor: "transparent",
+    opacity: 0, // Set opacity to 0 to make it invisible
   },
   checkboxChecked: {
     backgroundColor: "#efefd0",
+    opacity: 1, // Set opacity to 1 to make it visible when checked
   },
 });
 

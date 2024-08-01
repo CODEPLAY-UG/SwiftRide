@@ -16,7 +16,6 @@ import GoogleIcon from "@/assets/svgs/google";
 import AppleIcon from "@/assets/svgs/apple";
 import { Checkbox, RadioButton, Switch } from "react-native-paper";
 import CheckBox from "@/components/core/CheckBox";
-import IOSLikeSwitch from "@/components/core/IOSLikeSwitch";
 import Toggle from "@/components/core/Toggle";
 
 export default function test() {
