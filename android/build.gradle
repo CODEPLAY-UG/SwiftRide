@@ -1,11 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-android {
-    defaultConfig {
-        applicationId "com.codeplayug.frontend_playground"  // Update this line
-        // ... other configurations ...
-    }
-    // ... other configurations ...
-}
+
 buildscript {
     ext {
         buildToolsVersion = findProperty('android.buildToolsVersion') ?: '34.0.0'
