@@ -22,3 +22,4 @@ expo-env.d.ts
 .md
 android/app/google-services.json
 .env
+tasks

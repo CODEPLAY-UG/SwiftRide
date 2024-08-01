@@ -60,7 +60,8 @@
     "react-native-svg-transformer": "^1.5.0",
     "react-native-web": "~0.19.10",
     "react-redux": "^9.1.2",
-    "rn-inkpad": "^1.0.0"
+    "rn-inkpad": "^1.0.0",
+    "expo-linear-gradient": "~13.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -73,5 +74,9 @@
     "tailwindcss": "^3.3.2",
     "typescript": "~5.3.3"
   },
+  "resolutions": {
+    "expo-linear-gradient": "~13.0.2"
+  },
+  
   "private": true
 }

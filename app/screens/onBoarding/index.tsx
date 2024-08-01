@@ -3,6 +3,7 @@ import React from "react";
 import { ShieldPlus, Smile, TrafficCone } from "lucide-react-native";
 import { router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function onboarding() {
   return (
@@ -10,6 +11,7 @@ export default function onboarding() {
       <StatusBar style="light" />
 
       <Stack.Screen options={{ headerShown: false }} />
+
       <ImageBackground
         className="h-full w-full justify-end"
         source={require("@assets/images/onboarding.jpg")}

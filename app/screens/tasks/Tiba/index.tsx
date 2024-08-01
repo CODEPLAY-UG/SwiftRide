@@ -9,7 +9,7 @@ export default function Index() {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <SafeAreaView className="flex-1 bg-white justify-center items-center">
+    <SafeAreaView className="flex-1 bg-white items-center">
       <Stack.Screen
         options={{
           headerShown: true,
@@ -28,10 +28,18 @@ export default function Index() {
 
       <TouchableOpacity
         onPress={() => router.push("./test")}
-        className="py-2 flex justify-center items-center"
+        className="py-2 flex  items-center"
       >
         <Text className="bg-orange-500 text-lg py-1 px-5 w-fit rounded-3xl">
-          Search
+          PlayGround
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => router.push("./features")}
+        className="py-2 flex  items-center"
+      >
+        <Text className="bg-[#bfcc94] text-lg py-1 px-5 w-fit rounded-3xl">
+          Features
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
