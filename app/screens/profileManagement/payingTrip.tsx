@@ -10,8 +10,7 @@ export default function Paying() {
 
   return (
     <View className="bg-white h-full w-full px-4">
-
-<Stack.Screen
+      <Stack.Screen
         options={{
           headerShown: true,
           title: "Paying for your trip",
@@ -22,7 +21,7 @@ export default function Paying() {
           },
         }}
       />
-      
+
       <View className="">
         <View className="">
           <View className="justify-between py-1 items-center">
@@ -71,6 +70,7 @@ export default function Paying() {
           <View className="px-4">
             <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">2. Requesting a Ride and Making a Payment</Text>
             <View className="mt-2">
+              
               <View className="flex-row pr-4">
                 <View className="">
                   <DotIcon color="#808080" size={16} />
