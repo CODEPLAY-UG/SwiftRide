@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SwiftRide",
-    "slug": "frontend_playground",
+    "slug": "SwiftRide",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
