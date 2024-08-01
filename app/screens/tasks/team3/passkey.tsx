@@ -7,7 +7,7 @@ import { Fingerprint, ScanFace, SquareAsterisk } from 'lucide-react-native'
 export default function PassKey() {
   return (
     <View className='bg-white h-full'>
-        <Stack.Screen options={{ title: "Pass Key", headerTitleAlign: "center"}}/>
+        <Stack.Screen options={{ title: "Pass Key", headerTitleAlign: "center", headerShown: true}}/>
         <View className='justify-center items-center'>
         <Image
             source={require("@assets/images/passkey.png")}/>
