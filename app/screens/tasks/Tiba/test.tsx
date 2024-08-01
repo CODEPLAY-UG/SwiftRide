@@ -25,6 +25,12 @@ export default function test() {
   const [checked, setChecked] = React.useState("first");
   const [isOn, setIsOn] = useState(false);
 
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+
+  const handlePress = (option: number) => {
+    setSelectedOption(option);
+  };
+
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   return (
@@ -66,20 +72,6 @@ export default function test() {
         <AppleIcon className="" width={50} height={50} />
       </View>
 
-      <View className="py-1">
-        <RadioButton
-          value="first"
-          color="#32cd32"
-          status={checked === "first" ? "checked" : "unchecked"}
-          onPress={() => setChecked("first")}
-        />
-        <RadioButton
-          value="second"
-          status={checked === "second" ? "checked" : "unchecked"}
-          onPress={() => setChecked("second")}
-        />
-      </View>
-
       <CheckBox />
 
       <View className="justify-center items-center">
@@ -96,3 +88,4 @@ export default function test() {
     </View>
   );
 }
+

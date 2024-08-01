@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import Tick from "@/assets/svgs/tick";
+import CheckMark from "@/assets/svgs/checkmark";
 
 function MyCheckbox() {
   const [checked, setChecked] = useState(false);
@@ -10,7 +10,7 @@ function MyCheckbox() {
       onPress={() => setChecked(!checked)}
     >
       {checked && (
-        <Tick
+        <CheckMark
           className=""
           // onPress={function (): void {}}
           width={20}

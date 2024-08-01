@@ -1,6 +1,6 @@
 import * as React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
-const Tick = (props: SvgProps) => (
+const CheckMark = (props: SvgProps) => (
   <Svg
     width={24}
     height={24}
@@ -16,4 +16,4 @@ const Tick = (props: SvgProps) => (
     <Path d="M20 6 9 17l-5-5" />
   </Svg>
 );
-export default Tick;
+export default CheckMark;

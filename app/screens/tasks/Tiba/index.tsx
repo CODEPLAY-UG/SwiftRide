@@ -35,7 +35,7 @@ export default function Index() {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => router.push("./features")}
+        onPress={() => router.push("./trinity")}
         className="py-2 flex  items-center"
       >
         <Text className="bg-[#bfcc94] text-lg py-1 px-5 w-fit rounded-3xl">
