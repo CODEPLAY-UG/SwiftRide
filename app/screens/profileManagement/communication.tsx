@@ -5,6 +5,7 @@ import { Link, router, Stack, Tabs } from "expo-router";
 import { ArrowLeft, BellIcon, BellRingIcon, ChevronRight, CircleCheckIcon, DotIcon, Info, Lock, Phone, SparklesIcon, SunMoon, WalletIcon } from "lucide-react-native";
 import { Button, Checkbox, RadioButton, Switch, DefaultTheme } from "react-native-paper";
 import { setStatusBarHidden } from "expo-status-bar";
+import Svg, { Path, Rect, SvgProps } from "react-native-svg";
 
 export default function Communication() {
   function handlePaying(text: string): void {}
@@ -12,6 +13,8 @@ export default function Communication() {
   const [value, setValue] = React.useState("first");
 
   const [checked, setChecked] = React.useState("first");
+
+  const checkedBox = (props: SvgProps) => <Svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}></Svg>;
 
   return (
     <View className="bg-white h-full w-full px-4">
@@ -46,7 +49,7 @@ export default function Communication() {
         <View className="space-y-4 px-4">
           <View className="flex-row justify-between items-center">
             <View className="flex-row items-center">
-              <RadioButton value="first" status={checked === "first" ? "checked" : "unchecked"} onPress={() => setChecked("first")} color="#6200ee" uncheckedColor="#ffffff" />
+              <RadioButton value="first" status={checked === "first" ? "checked" : "unchecked"} onPress={() => setChecked("first")} color="#636363" uncheckedColor="#ffffff" />
               <View className="mx-4">
                 <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Calls</Text>
               </View>
@@ -57,7 +60,7 @@ export default function Communication() {
           </View>
           <View className="flex-row justify-between items-center">
             <View className="flex-row items-center">
-              <RadioButton value="second" status={checked === "second" ? "checked" : "unchecked"} onPress={() => setChecked("second")} color="#6200ee" uncheckedColor="#ffffff" />
+              <RadioButton value="second" status={checked === "second" ? "checked" : "unchecked"} onPress={() => setChecked("second")} color="#636363" uncheckedColor="#ffffff" />
               <View className="mx-4">
                 <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Chat</Text>
               </View>
@@ -66,7 +69,7 @@ export default function Communication() {
 
           <View className="flex-row justify-between items-center">
             <View className="flex-row items-center">
-              <RadioButton value="third" status={checked === "third" ? "checked" : "unchecked"} onPress={() => setChecked("third")} color="#6200ee" uncheckedColor="#ffffff" />
+              <RadioButton value="third" status={checked === "third" ? "checked" : "unchecked"} onPress={() => setChecked("third")} color="#636363" uncheckedColor="#ffffff" />
               <View className="mx-4">
                 <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Call or chat</Text>
               </View>
@@ -84,7 +87,10 @@ export default function Communication() {
           <View className="flex-row justify-between items-center px-4">
             <View className="flex-row items-center ">
               <View className="">
-                <Checkbox status={checked ? "checked" : "unchecked"} color="#636363" onPress={() => {}} />
+                <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+                  <Rect width={24} height={24} rx={12} fill="#636363" />
+                  <Path d="M8.85355 12.1465C8.65829 11.9512 8.34171 11.9512 8.14645 12.1465C7.95118 12.3417 7.95118 12.6583 8.14645 12.8536L10.6464 15.3536C10.8543 15.5615 11.1959 15.546 11.3841 15.3201L16.3841 9.3201C16.5609 9.10797 16.5322 8.79268 16.3201 8.6159C16.108 8.43912 15.7927 8.46778 15.6159 8.67992L10.9664 14.2593L8.85355 12.1465Z" fill="white" />
+                </Svg>
               </View>
               <View className="mx-4">
                 <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Recommendations</Text>
@@ -97,7 +103,10 @@ export default function Communication() {
             <View className="flex-row items-center ">
               <View className=" ">
                 <View className="">
-                  <Checkbox status={checked ? "checked" : "unchecked"} color="#636363" onPress={() => {}} />
+                  <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+                    <Rect width={24} height={24} rx={12} fill="#636363" />
+                    <Path d="M8.85355 12.1465C8.65829 11.9512 8.34171 11.9512 8.14645 12.1465C7.95118 12.3417 7.95118 12.6583 8.14645 12.8536L10.6464 15.3536C10.8543 15.5615 11.1959 15.546 11.3841 15.3201L16.3841 9.3201C16.5609 9.10797 16.5322 8.79268 16.3201 8.6159C16.108 8.43912 15.7927 8.46778 15.6159 8.67992L10.9664 14.2593L8.85355 12.1465Z" fill="white" />
+                  </Svg>
                 </View>
               </View>
               <View className="mx-4">
@@ -110,7 +119,10 @@ export default function Communication() {
             <View className="flex-row items-center ">
               <View className=" ">
                 <View className="">
-                  <Checkbox status={checked ? "checked" : "unchecked"} color="#636363" onPress={() => {}} />
+                  <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+                    <Rect width={24} height={24} rx={12} fill="#636363" />
+                    <Path d="M8.85355 12.1465C8.65829 11.9512 8.34171 11.9512 8.14645 12.1465C7.95118 12.3417 7.95118 12.6583 8.14645 12.8536L10.6464 15.3536C10.8543 15.5615 11.1959 15.546 11.3841 15.3201L16.3841 9.3201C16.5609 9.10797 16.5322 8.79268 16.3201 8.6159C16.108 8.43912 15.7927 8.46778 15.6159 8.67992L10.9664 14.2593L8.85355 12.1465Z" fill="white" />
+                  </Svg>
                 </View>
               </View>
               <View className="mx-4">
