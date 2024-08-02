@@ -13,22 +13,26 @@ export default function Privacy() {
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   return (
-    <View className="bg-white h-full w-full px-5">
-      <Stack.Screen options={{headerShown: true, title: "Privacy centre", headerTitleAlign: "center" }} />
+    <View className="bg-white h-full w-full px-4">
+
+      
+      <Stack.Screen options={{ headerShown: true, title: "Privacy centre", headerTitleAlign: "center" }} />
       <View className="space-y-8 mt-[12px]">
-        <View className="flex-row justify-between items-center">
-          <View className="flex-row items-center">
-            <ShapesIcon color="#808080" size={24} />
-            <View className="mx-4">
-              <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Data tracking</Text>
-              <Text className=" text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Discover the types of data we collect</Text>
+        <TouchableOpacity onPress={() => router.push("./dataTracking")} className="">
+          <View className="flex-row justify-between items-center">
+            <View className="flex-row items-center">
+              <ShapesIcon color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Data tracking</Text>
+                <Text className=" text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Discover the types of data we collect</Text>
+              </View>
+            </View>
+            <View className="">
+              <ChevronRight color="#808080" size={20} />
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
-
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("./diviceLocation")} className="">
         <View className="flex-row justify-between items-center ">
           <View className="flex-row items-center">
             <MapPinIcon color="#808080" size={24} />
@@ -41,7 +45,9 @@ export default function Privacy() {
             <ChevronRight color="#808080" size={20} />
           </View>
         </View>
+        </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => router.push("./liveLocation")} className="">
         <View className="flex-row justify-between items-center ">
           <View className="flex-row items-center">
             <RadioIcon color="#808080" size={24} />
@@ -53,7 +59,8 @@ export default function Privacy() {
           <View className="">
             <ChevronRight color="#808080" size={20} />
           </View>
-        </View>
+          </View>
+          </TouchableOpacity>
       </View>
     </View>
   );

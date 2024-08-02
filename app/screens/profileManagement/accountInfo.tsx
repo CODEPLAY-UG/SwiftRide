@@ -39,7 +39,7 @@ export default function Accountinfo() {
   }
 
   return (
-    <View className="bg-white h-full w-full px-5">
+    <View className="bg-white h-full w-full px-4">
       <Stack.Screen
         options={{
           headerShown: true,
