@@ -6,7 +6,7 @@ import { Banknote, ChevronRight, Info, Key, X } from 'lucide-react-native'
 
 export default function Payment() {
   return (
-    
+
         <View className='bg-white h-full'>
           <Stack.Screen options={{ title: "Payment", headerTitleAlign: "center", headerShown: true }} />
           <View className='flex-row justify-center space-x-4 py-3'>
@@ -32,7 +32,7 @@ export default function Payment() {
               <Text className='text-[17px] font-semibold tracking-[0.4px] text-[#242424]'>Payment Methods</Text>
             </View>
             <View>
-            
+
               <View className='py-3 px-4'>
                 <TouchableOpacity className='flex-row'>
                   <Banknote color='#808080' size={40}/>
@@ -42,11 +42,11 @@ export default function Payment() {
                       end of the trip.</Text>
                     </View>
                 </TouchableOpacity>
-                
+
               </View>
-              
+
               <View className='py-3 px-4'>
-                <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/mtn")}
+                <TouchableOpacity onPress={() => router.push("./mtn")}
                  className='flex-row '>
                   <Image
                    source={require("@assets/images/mtnlogo.png")}/>
@@ -59,9 +59,9 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-              
+
               <View className='py-3 px-4'>
-                <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/airtel")}
+                <TouchableOpacity onPress={() => router.push("./airtel")}
                 className='flex-row' >
                   <Image
                    source={require("@assets/images/Airtellogo.png")}/>
@@ -74,13 +74,13 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-              
+
             </View>
           </View>
           <View className='h-12 justify-center px-4'>
             <Text className='text-[17px] font-semibold tracking-[0.4px] text-[#242424]'>Payment Security</Text>
             </View>
-             
+
               <View className='py-3 px-4'>
                 <TouchableOpacity onPress={() => router.push("/screens/tasks/team3/passkey")}
                 className='flex-row'>
@@ -95,8 +95,8 @@ export default function Payment() {
                     </View>
                 </TouchableOpacity>
               </View>
-              
+
         </View>
-    
+
   )
 }
