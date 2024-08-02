@@ -29,8 +29,10 @@ import { featureCollection } from "@turf/helpers";
 import { point } from "@turf/helpers";
 import bikes from "@data/bikes.json";
 import { UserLocation } from "@rnmapbox/maps";
-import TripSummary from "@/components/core/TripSummary";
+import ConfirmLoading from "@/components/core/ConfirmLoading";
 import PaymentMode from "@/components/core/PaymentMode";
+import { ProgressBar } from "react-native-paper";
+import ConfirmDriver from "@/components/core/ConfirmDriver";
 
 Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
 export default function MapboxComponent() {
@@ -43,7 +45,7 @@ export default function MapboxComponent() {
 
   const rideSheetRef = useRef<BottomSheet>(null);
 
-  const snapPoints = ["45%"];
+  const [snapPoints, setSnapPoints] = useState(["40%"]);
 
   const handleRideDetailsPress = useCallback((index: number) => {
     rideSheetRef.current?.snapToIndex(index);
@@ -100,6 +102,22 @@ export default function MapboxComponent() {
         rideSheetRef={rideSheetRef}
         snapPoints={snapPoints}
       />
+
+      {isMenuOpen && (
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={isMenuOpen}
+          onRequestClose={closeMenu}>
+          <TouchableWithoutFeedback onPress={closeMenu}>
+            <View style={styles.overlay}>
+              <View style={styles.menuContainer}>
+                <MenuContent />
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
+      )}
     </View>
   );
 }
@@ -142,7 +160,28 @@ const MapContent = ({
   );
 
   const pin = require("@assets/images/pin.png");
-  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
+
+  const [message, setMessage] = useState("Confirming your trip");
+  const [per, setPer] = useState(0.3);
+  const [isDriver, setIsDriver] = useState(false);
+  const [snapPoints1, setSnapPoints1] = useState(["40%"]);
+
+  useEffect(() => {
+    let timer;
+    timer = setTimeout(() => {
+      setMessage("Confirming your trip");
+      setPer(0.5);
+    }, 2500); // 5 seconds
+    timer = setTimeout(() => {
+      setMessage("Connecting to your driver");
+      setPer(0.7);
+      setSnapPoints1(["50%"]);
+      setIsDriver(true);
+    }, 5000); // 5 seconds
+
+    // Cleanup the timeout if the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -234,33 +273,17 @@ const MapContent = ({
       {isRideDetailsOpen && (
         <BottomSheet
           ref={rideSheetRef}
-          snapPoints={snapPoints}
+          snapPoints={snapPoints1}
           enablePanDownToClose={false}
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
-            <BottomSheetHeader title="Trip Summary" />
-            <TripSummary setIsPaymentDetailsOpen={setIsPaymentDetailsOpen} />
+            <BottomSheetHeader title={message} />
+            <ProgressBar progress={per} color="#636363" className="h-[1px]" />
+
+            {!isDriver && <ConfirmLoading />}
+            {isDriver && <ConfirmDriver />}
           </BottomSheetView>
         </BottomSheet>
-      )}
-
-      {!isPaymentDetailsOpen && (
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={true}
-          onRequestClose={() => {}}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              setIsPaymentDetailsOpen(true);
-            }}>
-            <View style={styles.overlay}>
-              <View style={styles.menuContainer}>
-                <PaymentMode />
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-        </Modal>
       )}
     </View>
   );
@@ -277,13 +300,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   menuContainer: {
-    height: "40%",
-    width: "100%",
+    height: "100%",
+    width: "75%",
     backgroundColor: "white",
     position: "absolute",
-    bottom: 0,
+    top: 0,
     left: 0,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
   },
 });
