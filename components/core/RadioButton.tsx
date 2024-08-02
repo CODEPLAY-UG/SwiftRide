@@ -12,7 +12,7 @@ function RadioButton({ checked, onPress }: RadioButtonProps) {
       style={[styles.checkboxBase, checked && styles.checkboxChecked]}
       onPress={onPress}
     >
-      {checked && <CheckMark width={20} height={20} stroke={"#1be7ff"} />}
+      {checked && <CheckMark width={20} height={20} stroke={"#636363"} />}
     </Pressable>
   );
 }
@@ -23,14 +23,14 @@ const styles = StyleSheet.create({
     height: 24,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 12, // Changed to make it circular, consistent with iOS look
+    // borderRadius: 12, // Changed to make it circular, consistent with iOS look
     borderWidth: 2,
-    borderColor: "#cccccc",
+    borderColor: "transparent",
     backgroundColor: "transparent",
     opacity: 0, // Set opacity to 0 to make it invisible
   },
   checkboxChecked: {
-    backgroundColor: "#efefd0",
+    backgroundColor: "transparent",
     opacity: 1, // Set opacity to 1 to make it visible when checked
   },
 });
