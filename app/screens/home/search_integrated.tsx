@@ -96,16 +96,18 @@ export default function Index() {
                 </View>
               </View>
               <View className="space-y-5 mt-[12px]">
-                <View className="flex-row justify-between items-center">
-                  <View className="mx-6 flex-row items-center">
-                    <MapPinned color="#808080" size={24} />
-                    <View className="mx-4">
-                      <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
-                        Select location on map
-                      </Text>
+                <Pressable onPress={() => router.push("./search_map")}>
+                  <View className="flex-row justify-between items-center">
+                    <View className="mx-6 flex-row items-center">
+                      <MapPinned color="#808080" size={24} />
+                      <View className="mx-4">
+                        <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
+                          Select location on map
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
+                </Pressable>
               </View>
             </>
           ) : (
@@ -133,16 +135,18 @@ export default function Index() {
               ))}
 
               <View className="space-y-4 mt-[12px]">
-                <View className="flex-row justify-between items-center">
-                  <View className="mx-6 flex-row items-center">
-                    <MapPinned color="#808080" size={24} />
-                    <View className="mx-4">
-                      <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
-                        Select location on map
-                      </Text>
+                <Pressable onPress={() => router.push("./search_map")}>
+                  <View className="flex-row justify-between items-center">
+                    <View className="mx-6 flex-row items-center">
+                      <MapPinned color="#808080" size={24} />
+                      <View className="mx-4">
+                        <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
+                          Select location on map
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
+                </Pressable>
               </View>
 
               {filteredAddresses.length != 0 ? (
@@ -152,7 +156,7 @@ export default function Index() {
                       setIsAddress(true);
                     }}
                     // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
-                    className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]">
+                    className="mt-[56px] bg-[#636363] h-[45px] items-center justify-center rounded-[99px]">
                     <Text className="text-white font-[400] text-[17px]">
                       Confirm destination
                     </Text>
@@ -188,16 +192,15 @@ export default function Index() {
               </Text>
             </View>
             <View className="items-center">
-              <Link href="../Emma/placeorder" className="mt-5 mb-2" asChild>
-                <Pressable
-                  className="mt-[22px] bg-[#636363] w-[330px] h-[56px] items-center justify-center rounded-[99px]"
-                  // className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
-                >
-                  <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
-                    Place order
-                  </Text>
-                </Pressable>
-              </Link>
+              <Pressable
+                onPress={() => router.push("./")}
+                className="mt-[22px] bg-[#636363] w-[330px] h-[45px] items-center justify-center rounded-[99px]"
+                // className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
+              >
+                <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
+                  Place order
+                </Text>
+              </Pressable>
             </View>
           </View>
         </View>

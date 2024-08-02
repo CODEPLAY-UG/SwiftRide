@@ -20,7 +20,7 @@ export default function BikeType({
   const bikes = ["Standard bike", "E-Bike", "Cargo bike"];
   const [select, setSelect] = useState(bikes[0]);
   const selectedItem = [
-    "border-[#b3b3b3] bg-[#e0e0e0] rounded-[16px] mt-3 px-4 py-2",
+    "border-[#b3b3b3] bg-[#e0e0e0] rounded-[16px] mt-3 px-4 py-2 shadow-md",
     "rounded-[16px] mt-3 px-4 py-2",
   ];
 
