@@ -14,8 +14,6 @@ export default function Privacy() {
 
   return (
     <View className="bg-white h-full w-full px-4">
-
-      
       <Stack.Screen options={{ headerShown: true, title: "Privacy centre", headerTitleAlign: "center" }} />
       <View className="space-y-8 mt-[12px]">
         <TouchableOpacity onPress={() => router.push("./dataTracking")} className="">
@@ -32,35 +30,35 @@ export default function Privacy() {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("./diviceLocation")} className="">
-        <View className="flex-row justify-between items-center ">
-          <View className="flex-row items-center">
-            <MapPinIcon color="#808080" size={24} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Device location</Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Check if we can access your location</Text>
+        <TouchableOpacity onPress={() => router.push("./deviceLocation")} className="">
+          <View className="flex-row justify-between items-center ">
+            <View className="flex-row items-center">
+              <MapPinIcon color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Device location</Text>
+                <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Check if we can access your location</Text>
+              </View>
+            </View>
+            <View className="">
+              <ChevronRight color="#808080" size={20} />
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push("./liveLocation")} className="">
-        <View className="flex-row justify-between items-center ">
-          <View className="flex-row items-center">
-            <RadioIcon color="#808080" size={24} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Live location</Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">How we share your location in real-time{"\n"}withothers</Text>
+          <View className="flex-row justify-between items-center ">
+            <View className="flex-row items-center">
+              <RadioIcon color="#808080" size={24} />
+              <View className="mx-4">
+                <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Live location</Text>
+                <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">How we share your location in real-time{"\n"}withothers</Text>
+              </View>
+            </View>
+            <View className="">
+              <ChevronRight color="#808080" size={20} />
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-          </View>
-          </TouchableOpacity>
+        </TouchableOpacity>
       </View>
     </View>
   );
