@@ -17,7 +17,6 @@ export default function LiveLocation() {
     setContacts((previousState) => !previousState);
   };
 
-    
   return (
     <View className="bg-white h-full w-full px-4">
       <Stack.Screen
@@ -38,7 +37,7 @@ export default function LiveLocation() {
             <Info size={20} color="#107C10" strokeWidth={3} />
           </View>
           <View className="px-4">
-            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">We share your live location in specific scenarios to enhance your experience.</Text>
+            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">We share your live location in specific scenarios to enhance your experience.</Text>
           </View>
         </View>
 
