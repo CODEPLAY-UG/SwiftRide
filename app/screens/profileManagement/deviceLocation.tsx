@@ -1,8 +1,7 @@
-import { View, Text, TextInput, Pressable, Image } from "react-native";
+import { View, Text } from "react-native";
 import React, { useState } from "react";
-import { Link, router, Stack, Tabs } from "expo-router";
-import { Button } from "react-native-paper";
-import { Switch } from "react-native-paper";
+import { Stack } from "expo-router";
+
 import CustomSwitch from "@/CustomSwitch";
 import { BellRingIcon, Info } from "lucide-react-native";
 
@@ -32,17 +31,26 @@ export default function DeviceLocation() {
             <Info size={20} color="#107C10" strokeWidth={3} />
           </View>
           <View className="px-5">
-            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Enabling device location sharing enhances your experience.</Text>
+            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">
+              Enabling device location sharing enhances your experience.
+            </Text>
           </View>
         </View>
 
         <View className="flex-row items-center">
           <View className="mx-4">
-            <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Your device settings</Text>
-            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">We have access to your device location.</Text>
+            <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
+              Your device settings
+            </Text>
+            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">
+              We have access to your device location.
+            </Text>
           </View>
           <View>
-            <CustomSwitch isEnabled={yourdivicelocation} toggleSwitch={setYourDeviceLocation} />
+            <CustomSwitch
+              isEnabled={yourdivicelocation}
+              toggleSwitch={setYourDeviceLocation}
+            />
           </View>
         </View>
       </View>
