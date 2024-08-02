@@ -8,7 +8,7 @@ export default function Payment() {
   return (
     
         <View className='bg-white h-full'>
-          <Stack.Screen options={{ title: "Payment", headerTitleAlign: "center" }} />
+          <Stack.Screen options={{ title: "Payment", headerTitleAlign: "center", headerShown: true }} />
           <View className='flex-row justify-center space-x-4 py-3'>
           <View className='justify-center'>
             <Info color='#107C10'/>

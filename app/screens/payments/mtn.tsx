@@ -38,7 +38,7 @@ export default function MtnMobileMoney() {
     
       <SafeAreaView className='bg-white h-full'>
           <View>
-            <Stack.Screen options={{ title: "MTN Mobile Money", headerTitleAlign: "center",
+            <Stack.Screen options={{ title: "MTN Mobile Money", headerTitleAlign: "center", headerShown: true,
             headerRight: ()=> <Trash2 color='#C50F1F' size={24} onPress={()=> setIsModalVisible(true)}/>
       
              }} />
