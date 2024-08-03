@@ -14,7 +14,6 @@ import { DrawerActions } from "@react-navigation/native";
 import Marker from "@/components/core/Marker";
 import GoogleIcon from "@/assets/svgs/google";
 import AppleIcon from "@/assets/svgs/apple";
-import { Checkbox, RadioButton, Switch } from "react-native-paper";
 import CheckBox from "@/components/core/CheckBox";
 import Toggle from "@/components/core/Toggle";
 

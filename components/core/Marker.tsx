@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   ellipseInner: {
-    width: 50,
-    height: 44,
-    borderRadius: 25,
+    width: 43,
+    height: 38,
+    borderRadius: 99,
     backgroundColor: "#AF52DE",
     justifyContent: "center",
     alignItems: "center",

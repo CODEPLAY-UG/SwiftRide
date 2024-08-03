@@ -105,7 +105,8 @@ export default function MapboxComponent() {
           animationType="fade"
           transparent={true}
           visible={isMenuOpen}
-          onRequestClose={closeMenu}>
+          onRequestClose={closeMenu}
+        >
           <TouchableWithoutFeedback onPress={closeMenu}>
             <View style={styles.overlay}>
               <View style={styles.menuContainer}>
@@ -169,7 +170,13 @@ const MapContent = ({
         <Mapbox.MapView
           // styleURL="mapbox://styles/mapbox/dark-v11"
           scaleBarEnabled={false}
-          className="w-full h-full">
+          // compassEnabled={true}
+          // compassViewPosition={3}
+          // logoEnabled
+          attributionEnabled={false}
+          // surfaceView={false}
+          className="w-full h-full"
+        >
           {location && (
             <>
               <Camera
@@ -180,10 +187,16 @@ const MapContent = ({
                 zoomLevel={16}
                 followZoomLevel={15}
                 followUserLocation
-                animationDuration={3000}
+                animationDuration={5000}
               />
+              <UserLocation
+                showsUserHeadingIndicator={true}
+                androidRenderMode="gps"
+              />
+
               <LocationPuck
                 pulsing={{ isEnabled: true }}
+                visible={true}
                 puckBearingEnabled
                 puckBearing="heading"
               />
@@ -191,7 +204,8 @@ const MapContent = ({
                 onPress={() => handleRideDetailsPress(0)}
                 id="bikes"
                 cluster
-                shape={featureCollection(points)}>
+                shape={featureCollection(points)}
+              >
                 <SymbolLayer
                   id="bike-icons"
                   minZoomLevel={0.5}
@@ -233,7 +247,8 @@ const MapContent = ({
       </View>
       <Pressable
         onPress={() => router.push("./search_integrated")}
-        className="absolute bottom-5">
+        className="absolute bottom-5"
+      >
         <View className="bg-black rounded-full w-20 h-20 justify-center items-center">
           <Bike color="white" size={24} />
         </View>
@@ -250,7 +265,8 @@ const MapContent = ({
           ref={rideSheetRef}
           snapPoints={snapPoints}
           enablePanDownToClose={true}
-          onClose={() => setIsRideDetailsOpen(false)}>
+          onClose={() => setIsRideDetailsOpen(false)}
+        >
           <BottomSheetView>
             <BottomSheetHeader title="Ride Details" />
             <RideDetails />
