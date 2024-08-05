@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Pressable,
+  SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
 import SearchComponent from "@/components/core/Search";
@@ -32,10 +33,10 @@ export default function test() {
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   return (
-    <View className="h-full bg-white">
+    <SafeAreaView className="h-full bg-white pt-10">
       <Stack.Screen
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitle: "Here we go",
           headerTitleAlign: "center",
           headerTitleStyle: {
@@ -83,7 +84,6 @@ export default function test() {
       <View className="my-5 p-5 bg-[#ffc8dd]">
         <Marker />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
-

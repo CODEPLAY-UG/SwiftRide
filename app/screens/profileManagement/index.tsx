@@ -20,9 +20,9 @@ import {
   ShieldCheckIcon,
   SunMoon,
 } from "lucide-react-native";
-import profileIcon from "@/assets/svg/profileIcon";
+import profileIcon from "@/assets/svgs/profileIcon";
 import Svg, { Rect, Path, SvgProps } from "react-native-svg";
-import ProfileIcon from "@/assets/svg/profileIcon";
+import ProfileIcon from "@/assets/svgs/profileIcon";
 
 export default function Profile() {
   function onToggleSwitch(value: boolean): void | Promise<void> {

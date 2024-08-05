@@ -19,12 +19,25 @@ export default function User() {
 
   return (
     <View className="bg-white h-full">
-      <Stack.Screen
+      {/* <Stack.Screen
         options={{
           headerShown: true,
           title: "Your route",
           headerTitleAlign: "center",
           headerRight: () => <CalendarPlus color="#808080" size={24} />,
+        }}
+      /> */}
+      <Stack.Screen
+        options={{
+          // headerShown: true,
+          headerTitle: "Your routes",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: 17,
+            fontWeight: "bold",
+          },
+          headerLeft: () => null, // This removes the left icon/button
+          headerRight: () => <CalendarPlus color="#ffd700" size={24} />,
         }}
       />
       <View className="space-y-5 mt-[12px]">

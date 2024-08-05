@@ -30,6 +30,11 @@ import { featureCollection } from "@turf/helpers";
 import { point } from "@turf/helpers";
 import bikes from "../../../data/bikes.json";
 import { UserLocation } from "@rnmapbox/maps";
+import {
+  DrawerActions,
+  NavigationProp,
+  useNavigation,
+} from "@react-navigation/native";
 
 Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
 export default function MapboxComponent() {
@@ -156,6 +161,7 @@ const MapContent = ({
   const points = bikes.map((bike) => point([bike.longitude, bike.latitude]));
 
   const pin = require("@assets/images/pin.png");
+  const navigation = useNavigation();
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -254,7 +260,10 @@ const MapContent = ({
         </View>
       </Pressable>
 
-      <Pressable onPress={handleMenuPress} className="absolute top-10 left-5">
+      <Pressable
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        className="absolute top-10 left-5"
+      >
         <View className="bg-white rounded-full p-4 justify-center items-center">
           <Menu color="#808080" size={24} />
         </View>

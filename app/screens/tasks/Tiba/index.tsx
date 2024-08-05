@@ -9,10 +9,10 @@ export default function Index() {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <SafeAreaView className="flex-1 bg-white items-center">
+    <SafeAreaView className="flex-1 bg-white items-center pt-10">
       <Stack.Screen
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitle: "Hold Up",
           headerTitleAlign: "center",
           headerTitleStyle: {

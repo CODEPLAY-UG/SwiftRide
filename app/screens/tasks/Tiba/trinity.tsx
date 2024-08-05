@@ -4,7 +4,7 @@ import RadioButton from "@components/core/RadioButton";
 import { Stack } from "expo-router";
 
 export default function Trinity() {
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [selectedOption, setSelectedOption] = useState<number>(4);
 
   const handlePress = (option: number) => {
     setSelectedOption(option);
@@ -14,7 +14,7 @@ export default function Trinity() {
     <View style={styles.container}>
       <Stack.Screen
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitle: "Radio Buttons",
           headerTitleAlign: "center",
           headerTitleStyle: {

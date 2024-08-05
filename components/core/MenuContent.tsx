@@ -12,6 +12,7 @@ import {
   ShieldPlus,
 } from "lucide-react-native";
 import { router } from "expo-router";
+import ProfileIcon from "@/assets/svgs/profileIcon";
 
 export default function MenuContent() {
   return (
@@ -21,10 +22,7 @@ export default function MenuContent() {
         className="flex-row items-center mt-10 space-x-3"
       >
         <View className="rounded-full h-14 w-14 justify-center items-center bg-[#636363]">
-          <Image
-            className="w-8 h-8"
-            source={require("@assets/images/person.png")}
-          />
+          <ProfileIcon width={32} height={32} />
         </View>
         <View className="">
           <View className="flex-row items-center space-x-1">
