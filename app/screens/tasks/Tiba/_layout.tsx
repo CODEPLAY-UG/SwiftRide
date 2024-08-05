@@ -7,7 +7,9 @@ export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
-        // screenOptions={}
+        screenOptions={{
+          drawerPosition:"right"
+        }}
         drawerContent={(props) => (
           <MenuContent
             {...props.state}

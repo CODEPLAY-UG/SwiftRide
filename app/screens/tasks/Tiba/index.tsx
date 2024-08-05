@@ -42,6 +42,14 @@ export default function Index() {
           Features
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => router.push("./geoCoding")}
+        className="py-2 flex  items-center"
+      >
+        <Text className="bg-[#f4acb7] text-lg py-1 px-5 w-fit rounded-3xl">
+          Geocoding
+        </Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }

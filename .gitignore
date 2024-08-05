@@ -20,5 +20,5 @@ expo-env.d.ts
 # @end expo-cli
 *.json
 .md
-android/app/google-services.json
+android
 .env

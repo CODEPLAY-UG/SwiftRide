@@ -8,7 +8,6 @@ import {
 import React, { useState } from "react";
 import SearchComponent from "@/components/core/Search";
 import { router, Stack } from "expo-router";
-// import { Switch } from "rn-inkpad";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native";
 import Marker from "@/components/core/Marker";
@@ -81,7 +80,7 @@ export default function test() {
         />
       </View>
 
-      <View className="my-5">
+      <View className="my-5 p-5 bg-[#ffc8dd]">
         <Marker />
       </View>
     </View>

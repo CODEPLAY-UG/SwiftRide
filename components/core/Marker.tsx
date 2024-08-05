@@ -1,18 +1,56 @@
-// Marker.tsx
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useState, useRef } from "react";
+import { View, StyleSheet, Text, Pressable, Animated } from "react-native";
 import { Bike } from "lucide-react-native";
 
-const Marker = () => {
+const Marker = ({ distance = "1.2 km", time = "15 mins" }) => {
+  const [expanded, setExpanded] = useState(false);
+  const animation = useRef(new Animated.Value(0)).current;
+
+  const handlePress = () => {
+    if (expanded) {
+      Animated.timing(animation, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: false,
+      }).start(() => setExpanded(false));
+    } else {
+      setExpanded(true);
+      Animated.timing(animation, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    }
+  };
+
+  const containerStyle = {
+    width: animation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [60, 160],
+    }),
+    height: animation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [54, 50],
+    }),
+  };
+
   return (
-    <View className="py-2" style={styles.markerContainer}>
-      <View style={styles.ellipticalMarker}>
-        <View style={styles.ellipseInner}>
-          <Bike color="white" size={20} />
+    <Pressable onPress={handlePress} style={styles.markerContainer}>
+      <Animated.View style={[styles.ellipticalMarker, containerStyle]}>
+        <View style={styles.row}>
+          <View style={styles.ellipseInner}>
+            <Bike color="white" size={20} />
+          </View>
+          {expanded && (
+            <>
+              <Text style={styles.markerText}>{distance}</Text>
+              <Text style={styles.markerText}>{time}</Text>
+            </>
+          )}
         </View>
-      </View>
-      <View style={styles.markerPointer} />
-    </View>
+      </Animated.View>
+      {!expanded && <View style={styles.markerPointer} />}
+    </Pressable>
   );
 };
 
@@ -21,18 +59,17 @@ export default Marker;
 const styles = StyleSheet.create({
   markerContainer: {
     alignItems: "center",
-    backgroundColor: "blue",
+    backgroundColor: "transparent",
   },
   ellipticalMarker: {
-    width: 60,
-    height: 54,
-    borderRadius: 30,
+    width: 40, // Adjusted width
+    height: 35, // Adjusted height
+    borderRadius: 25, // Adjusted border radius
     backgroundColor: "white",
     borderColor: "white",
-    borderWidth: 2,
+    borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 5,
   },
   ellipseInner: {
     width: 43,
@@ -41,16 +78,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#AF52DE",
     justifyContent: "center",
     alignItems: "center",
+    // padding: 5,
   },
   markerPointer: {
     width: 0,
     height: 0,
-    borderLeftWidth: 13,
-    borderRightWidth: 13,
-    borderTopWidth: 10,
+    borderLeftWidth: 8,
+    borderRightWidth: 8,
+    borderTopWidth: 13,
     borderLeftColor: "transparent",
     borderRightColor: "transparent",
     marginTop: -3,
-    borderTopColor: "white", // Set to white to match the marker background
+    borderTopColor: "white",
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  markerText: {
+    color: "#AF52DE",
+    fontSize: 13,
+    fontWeight: "bold",
+    marginLeft: 5,
   },
 });
