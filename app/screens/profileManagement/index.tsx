@@ -2,7 +2,7 @@ import { View, Text, Image, Pressable, Switch, TouchableOpacity } from "react-na
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack, router } from "expo-router";
-import { BellIcon, ChevronRight, CogIcon, HeartHandshakeIcon, InfoIcon, MessageSquareDot, ScaleIcon, ShieldCheckIcon, SunMoon } from "lucide-react-native";
+import { AlignCenter, BellIcon, ChevronRight, CogIcon, HeartHandshakeIcon, InfoIcon, MessageSquareDot, ScaleIcon, ShieldCheckIcon, SunMoon } from "lucide-react-native";
 import profileIcon from "@/assets/svg/profileIcon";
 import Svg, { Rect, Path, SvgProps } from "react-native-svg";
 import ProfileIcon from "@/assets/svg/profileIcon";
@@ -14,7 +14,7 @@ export default function Profile() {
 
   const profileIcon = (props: { readonly preserveAspectRatio?: string | undefined } & {}) => <Svg width={81} height={80} viewBox="0 0 81 80" fill="none"></Svg>;
   return (
-    <SafeAreaView className="bg-white h-full w-full px-4">
+    <SafeAreaView className="bg-white h-full w-full">
       <Stack.Screen
         options={{
           headerShown: true,
@@ -26,29 +26,30 @@ export default function Profile() {
           },
         }}
       />
-<View className="justify-center items-center mb-[12px] ">
-          <ProfileIcon width={72} height={72} />
-        </View>
-
-
+      <View className="-mt-9 ">
       
-      <View className="flex gap-x-[2px]">
-        
-
-        <View className="flex-row justify-between items-center py-3 pl-3">
-          <View className="">
-            <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
-              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">Name</Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">Phone number {"\n"}Email</Text>
-            </TouchableOpacity>
-          </View>
-          <View className="">
-            <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
-              <ChevronRight color="#808080" size={20} />
-            </TouchableOpacity>
-          </View>
+        <View className="justify-center items-center">
+        <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
+          <ProfileIcon width={72} height={72} />
+          </TouchableOpacity>
         </View>
-      </View>
+        
+          <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
+          <View className="">
+            <View className=" gap-[24px] mt-3 flex-row items-center px-5">
+            <View className="">
+                <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">Name</Text>
+                <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">Phone number {"\n"}Email</Text>
+            </View>
+            <View className="px-44">
+                <ChevronRight color="#808080" size={20} />
+            </View>
+                    </View>
+          </View>
+        </TouchableOpacity>
+      
+      {/* <View className="flex ">
+        
 
       <View className="flex flex-col gap-y-[24px]">
         <View className="flex-row justify-between items-center ">
@@ -157,7 +158,12 @@ export default function Profile() {
         <Pressable className="items-center justify-center ">
           <Text className="  text-[#C50F1F] font-[400]  text-[17px] leading-[22px]">Log out</Text>
         </Pressable>
-      </View>
+      </View> */}
+        
+
+        
+        </View>
+
     </SafeAreaView>
   );
 }
