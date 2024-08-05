@@ -14,24 +14,32 @@ export default function Profile() {
 
   const profileIcon = (props: { readonly preserveAspectRatio?: string | undefined } & {}) => <Svg width={81} height={80} viewBox="0 0 81 80" fill="none"></Svg>;
   return (
-    <SafeAreaView className=" bg-white h-full w-full px-6 flex-1">
+    <SafeAreaView className="bg-white h-full w-full px-4">
       <Stack.Screen
         options={{
           headerShown: true,
-          headerTitle: "Profile",
+          title: "Profile",
+          headerTitleAlign: "left",
+          headerTitleStyle: {
+            fontSize: 28, // Adjust the font size
+           fontWeight: "bold", // Adjust the font weight
+          },
         }}
       />
-
-      <View className=" flex h-[136px] gap-x-[2px]">
-        <View className="justify-center items-center">
+<View className="justify-center items-center mb-[12px] ">
           <ProfileIcon width={72} height={72} />
         </View>
 
-        <View className="flex-row justify-between items-center">
-          <View className="mx-4">
+
+      
+      <View className="flex gap-x-[2px]">
+        
+
+        <View className="flex-row justify-between items-center py-3 pl-3">
+          <View className="">
             <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
-              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Name</Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Phone number {"\n"}Email</Text>
+              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">Name</Text>
+              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">Phone number {"\n"}Email</Text>
             </TouchableOpacity>
           </View>
           <View className="">
@@ -42,15 +50,17 @@ export default function Profile() {
         </View>
       </View>
 
-      <View className="flex flex-col gap-y-[24px] h-[336px] mt-[2px]">
+      <View className="flex flex-col gap-y-[24px]">
         <View className="flex-row justify-between items-center ">
-          <View className="mx-4">
+          <View className="">
             <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">App settings</Text>
           </View>
         </View>
+
+
         <TouchableOpacity onPress={() => router.push("./settings")} className="">
           <View className="flex-row justify-between items-center ">
-            <View className="mx-4 flex-row items-center">
+            <View className="flex-row items-center">
               <Link href="./settings" className="mt-5 mb-2" asChild>
                 <CogIcon color="#808080" size={28} />
               </Link>
@@ -70,7 +80,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./login&Security")} className="">
           <View className="flex-row justify-between items-center ">
-            <View className="mx-4 flex-row items-center">
+            <View className="flex-row items-center">
               <ShieldCheckIcon color="#808080" size={28} />
               <View className="mx-4">
                 <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Login & security</Text>
@@ -84,7 +94,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./helpCentre")} className="">
           <View className="flex-row justify-between items-center ">
-            <View className="mx-4 flex-row items-center">
+            <View className="flex-row items-center">
               <HeartHandshakeIcon color="#808080" size={28} />
               <View className="mx-4">
                 <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Visit help centre</Text>
@@ -97,7 +107,7 @@ export default function Profile() {
         </TouchableOpacity>
 
         <View className="flex-row justify-between items-center ">
-          <View className="mx-4 flex-row items-center">
+          <View className="flex-row items-center">
             <MessageSquareDot color="#808080" size={28} />
             <View className="mx-4">
               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Give us feedback</Text>
@@ -109,7 +119,7 @@ export default function Profile() {
         </View>
 
         <View className="flex-row justify-between items-center ">
-          <View className="mx-4 flex-row items-center">
+          <View className="flex-row items-center">
             <ShieldCheckIcon color="#808080" size={28} />
             <View className="mx-4">
               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Safety & supportk</Text>
@@ -121,7 +131,7 @@ export default function Profile() {
         </View>
 
         <View className="flex-row justify-between items-center ">
-          <View className="mx-4 flex-row items-center">
+          <View className="flex-row items-center">
             <ScaleIcon color="#808080" size={28} />
             <View className="mx-4">
               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Legal</Text>
@@ -133,7 +143,7 @@ export default function Profile() {
         </View>
 
         <View className="flex-row justify-between items-center ">
-          <View className="mx-4 flex-row items-center">
+          <View className="flex-row items-center">
             <InfoIcon color="#808080" size={28} />
             <View className="mx-4">
               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">About</Text>
