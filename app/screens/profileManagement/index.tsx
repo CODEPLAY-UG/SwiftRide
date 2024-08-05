@@ -74,7 +74,7 @@ export default function Profile() {
       <View className="flex flex-col gap-y-[24px] h-[336px] mt-[2px]">
         <View className="flex-row justify-between items-center ">
           <View className="mx-4">
-            <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">
+            <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">
               App settings
             </Text>
           </View>
@@ -90,7 +90,7 @@ export default function Profile() {
               </Link>
               <View className="mx-4">
                 <Link href="./settings" className="mt-5 mb-2" asChild>
-                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">
+                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                     Settings
                   </Text>
                 </Link>
@@ -132,7 +132,7 @@ export default function Profile() {
             <View className="mx-4 flex-row items-center">
               <HeartHandshakeIcon color="#808080" size={28} />
               <View className="mx-4">
-                <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">
+                <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                   Visit help centre
                 </Text>
               </View>
