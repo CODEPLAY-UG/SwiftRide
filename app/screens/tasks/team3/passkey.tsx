@@ -48,7 +48,7 @@ export default function PassKey() {
                 </View>
             </View>
         </View>
-        <View className='pt-12 px-4'>
+        <View className='pt-12 px-4 pb-2'>
         <Pressable
              className="bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]">
         <Text className="text-[#FFFFFF] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
