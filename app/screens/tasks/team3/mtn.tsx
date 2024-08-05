@@ -12,6 +12,8 @@ export default function MtnMobileMoney() {
     const [input,setInput] =useState('')
 
     const textColor = isTyping || input !== '' ? '#FFFFFF' : '#BDBDBD';
+    const borderColor =  input !== '' && parseFloat(input) < 5000 ? 'red' : '#D1D1D1';
+
 
     const handleInputChange = (text: string) => {
       setInput(text.trim());
@@ -54,7 +56,8 @@ export default function MtnMobileMoney() {
             </View>
                 <View className='flex-1 justify-center'>
                     <TextInput
-                            className="text-[17px] py-3 leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
+                            className="text-[17px] py-3 leading-[22px] tracking-[-0.43px] border-b-[1px] "
+                            style={[{ borderBottomColor: borderColor }]}
                             placeholder="Add trip coins"
                             placeholderTextColor='#616161'
                             selectionColor='#808080'
@@ -64,7 +67,7 @@ export default function MtnMobileMoney() {
                           />
                 </View>
             </View>
-             <View className='px-10'>
+             <View className='px-16'>
                 {errorMessage ? <Text className='text-red-400'>{errorMessage}</Text> : null}
              </View>
             <View className='px-4 pt-12'>
@@ -72,7 +75,7 @@ export default function MtnMobileMoney() {
            
                 className=" w-full h-[52px] items-center justify-center rounded-full "
                 style={[
-                  { backgroundColor: isTyping || input !== '' ? '#636363' : '#F0F0F0' },
+                  { backgroundColor: input !== '' && parseFloat(input) >= 5000 ? '#636363' : '#F0F0F0' },
                 
                 ]}
               >
