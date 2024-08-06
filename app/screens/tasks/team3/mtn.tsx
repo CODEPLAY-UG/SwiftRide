@@ -1,7 +1,7 @@
-import { View, Text, TextInput, Pressable, Modal, StyleSheet} from 'react-native'
+import { View, Text, TextInput, Pressable, Modal, StyleSheet, TouchableOpacity} from 'react-native'
 import { Stack } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Info, Plus, Trash2 } from 'lucide-react-native'
+import { CircleX, Info, Plus, Trash2 } from 'lucide-react-native'
 import { useState } from 'react'
 
 export default function MtnMobileMoney() {
@@ -10,9 +10,20 @@ export default function MtnMobileMoney() {
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [isTyping,setIsTyping] =useState(false)
     const [input,setInput] =useState('')
+    const [clear, setClear] = useState<string>('');
 
     const textColor = isTyping || input !== '' ? '#FFFFFF' : '#BDBDBD';
     const borderColor =  input !== '' && parseFloat(input) < 5000 ? 'red' : '#D1D1D1';
+
+    const handleClearChange = (text: string) => {
+      setInput(text);
+    };
+  
+    const clearInput = () => {
+      setInput('');
+      setErrorMessage('');
+    };
+  
 
 
     const handleInputChange = (text: string) => {
@@ -38,13 +49,13 @@ export default function MtnMobileMoney() {
   return (
 
     
-      <SafeAreaView className='bg-white h-full'>
+      <View className='bg-white h-full'>
           <View>
             <Stack.Screen options={{ title: "MTN Mobile Money", headerTitleAlign: "center", headerShown: true,
             headerRight: ()=> <Trash2 color='#C50F1F' size={24} onPress={()=> setIsModalVisible(true)}/>
       
              }} />
-                <View className='flex-row justify-center space-x-4 px-8'>
+                <View className='flex-row justify-center space-x-4 px-8 py-1'>
                 <View className='justify-center'>
                   <Info color='#107C10' size={16}/>
                 </View>
@@ -65,6 +76,14 @@ export default function MtnMobileMoney() {
                             value={input}
                             onChangeText={handleInputChange}
                           />
+                          
+                </View>
+                <View className='justify-center items-center pr-4'>
+                          {input !== '' && (
+                             <TouchableOpacity onPress={clearInput}>
+                                 <CircleX size={24} color="#808080" />
+                            </TouchableOpacity>
+                          )}
                 </View>
             </View>
              <View className='px-16'>
@@ -121,7 +140,7 @@ export default function MtnMobileMoney() {
                   </View>
                   </Modal>
           </View>
-      </SafeAreaView>
+      </View>
     
   )
 }

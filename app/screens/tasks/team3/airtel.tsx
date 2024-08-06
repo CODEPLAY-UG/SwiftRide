@@ -35,13 +35,13 @@ export default function AirtelMobileMoney() {
 
 
   return (
-    <SafeAreaView className='bg-white h-full'>
+    <View className='bg-white h-full'>
         <View>
           <Stack.Screen options={{ title: "AIRTEL Mobile Money", headerTitleAlign: "center", headerShown: true, 
           headerRight: ()=> <Trash2 color='#C50F1F' size={24} onPress={()=> setIsModalVisible(true)}/>
             
            }} />
-              <View className='flex-row justify-center space-x-4 px-8'>
+              <View className='flex-row justify-center space-x-4 px-8 py-1'>
               <View className='justify-center'>
                 <Info color='#107C10' size={16}/>
               </View>
@@ -118,6 +118,6 @@ export default function AirtelMobileMoney() {
                 </View>
                 </Modal>
         </View>
-    </SafeAreaView>
+    </View>
   )
 }
