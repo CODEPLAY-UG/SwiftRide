@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import RadioButton from "@components/core/RadioButton";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
+import ChevronLeft from "@/assets/svgs/chevronLeft";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Trinity() {
   const [selectedOption, setSelectedOption] = useState<number>(4);
@@ -14,16 +16,24 @@ export default function Trinity() {
     <View style={styles.container}>
       <Stack.Screen
         options={{
-          headerShown: false,
-          headerTitle: "Radio Buttons",
+          headerShown: true,
+          headerTitle: "Radio Button",
           headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              activeOpacity={0.9}
+              className="ml-4"
+            >
+              <ChevronLeft stroke={"#616161"} width={24} height={24} />
+            </TouchableOpacity>
+          ),
           headerTitleStyle: {
-            fontSize: 17, // Adjust the font size
-            fontWeight: "bold", // Adjust the font weight
+            fontSize: 17,
+            fontWeight: "bold",
           },
           headerStyle: {
-            // height: 100, // Set the desired height for the header
-            backgroundColor: "#fdd700", // Optional: set the background color
+            backgroundColor: "#fdd700",
           },
         }}
       />

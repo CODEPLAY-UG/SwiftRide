@@ -16,6 +16,7 @@ import GoogleIcon from "@/assets/svgs/google";
 import AppleIcon from "@/assets/svgs/apple";
 import CheckBox from "@/components/core/CheckBox";
 import Toggle from "@/components/core/Toggle";
+import ChevronLeft from "@/assets/svgs/chevronLeft";
 
 export default function test() {
   const [confirmed, setConfirmed] = useState(false);
@@ -36,13 +37,22 @@ export default function test() {
     <SafeAreaView className="h-full bg-white pt-10">
       <Stack.Screen
         options={{
-          headerShown: false,
+          headerShown: true,
           headerTitle: "Here we go",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontSize: 17, // Adjust the font size
             fontWeight: "bold", // Adjust the font weight
           },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              activeOpacity={0.9}
+              className="ml-4"
+            >
+              <ChevronLeft stroke={"#616161"} width={24} height={24} />
+            </TouchableOpacity>
+          ),
         }}
       />
       <SearchComponent
