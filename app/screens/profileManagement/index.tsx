@@ -10,6 +10,9 @@ import SettingsIcon from "@/assets/svgs/settingsIcon";
 import ArrowIcon from "@/assets/svgs/arrowIcon";
 import ShieldIcon from "@/assets/svgs/shieldIcin";
 import HearthandIcon from "@/assets/svgs/hearthandIcon";
+import MessageIcon from "@/assets/svgs/messageIcon";
+import LegalIcon from "@/assets/svgs/legalIcon";
+import AboutIcon from "@/assets/svgs/aboutIcon";
 
 export default function Profile() {
   function onToggleSwitch(value: boolean): void | Promise<void> {
@@ -50,7 +53,7 @@ export default function Profile() {
         </TouchableOpacity>
 
         <View className="-mb-2">
-          <View className=" gap-[24px] mt-3 flex-row items-center px-5">
+          <View className=" gap-[24px] mt-2 flex-row items-center px-5">
             <View className="">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">App settings</Text>
             </View>
@@ -59,7 +62,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./settings")} className="">
           <View className="">
-            <View className=" gap-[24px] mt-3 justify-between flex-row items-center px-5">
+            <View className=" gap-[24px] mt-2 justify-between flex-row items-center px-5">
               <View className="flex-row -mx-3 items-center">
                 <SettingsIcon />
                 <View className="mx-3">
@@ -75,7 +78,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./login&Security")} className="">
           <View className="">
-            <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
               <View className="flex-row -mx-3 items-center">
                 <ShieldIcon />
                 <View className="mx-3">
@@ -91,7 +94,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./helpCentre")} className="">
           <View className="">
-            <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
               <View className="flex-row -mx-3 items-center">
                 <HearthandIcon />
                 <View className="mx-3">
@@ -105,60 +108,73 @@ export default function Profile() {
           </View>
         </TouchableOpacity>
 
-        {/*            
-
-        <View className="flex-row justify-between items-center ">
-          <View className="flex-row items-center">
-            <MessageSquareDot color="#808080" size={28} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]"></Text>
+        <TouchableOpacity onPress={() => router.push("")} className="">
+          <View className="">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+              <View className="flex-row -mx-3 items-center">
+                <MessageIcon />
+                <View className="mx-3">
+                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Give us feedback</Text>
+                </View>
+              </View>
+              <View className="">
+                <ArrowIcon />
+              </View>
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
+        </TouchableOpacity>
 
-        <View className="flex-row justify-between items-center ">
-          <View className="flex-row items-center">
-            <ShieldCheckIcon color="#808080" size={28} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Safety & supportk</Text>
+        <TouchableOpacity onPress={() => router.push("")} className="">
+          <View className="">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+              <View className="flex-row -mx-3 items-center">
+                <ShieldIcon />
+                <View className="mx-3">
+                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]"> Safety & supportk</Text>
+                </View>
+              </View>
+              <View className="">
+                <ArrowIcon />
+              </View>
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
+        </TouchableOpacity>
 
-        <View className="flex-row justify-between items-center ">
-          <View className="flex-row items-center">
-            <ScaleIcon color="#808080" size={28} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Legal</Text>
+        <TouchableOpacity onPress={() => router.push("")} className="">
+          <View className="">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+              <View className="flex-row -mx-3 items-center">
+                <LegalIcon />
+                <View className="mx-3">
+                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]"> Legal</Text>
+                </View>
+              </View>
+              <View className="">
+                <ArrowIcon />
+              </View>
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
+        </TouchableOpacity>
 
-        <View className="flex-row justify-between items-center ">
-          <View className="flex-row items-center">
-            <InfoIcon color="#808080" size={28} />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">About</Text>
+        <TouchableOpacity onPress={() => router.push("")} className="">
+          <View className="">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+              <View className="flex-row -mx-3 items-center">
+                <AboutIcon />
+                <View className="mx-3">
+                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">About</Text>
+                </View>
+              </View>
+              <View className="">
+                <ArrowIcon />
+              </View>
             </View>
           </View>
-          <View className="">
-            <ChevronRight color="#808080" size={20} />
-          </View>
-        </View>
+        </TouchableOpacity>
 
-        <Pressable className="items-center justify-center ">
+        <Pressable className="gap-[24px] mt-2 items-center justify-center ">
           <Text className="  text-[#C50F1F] font-[400]  text-[17px] leading-[22px]">Log out</Text>
         </Pressable>
-      </View> */}
       </View>
     </SafeAreaView>
   );
