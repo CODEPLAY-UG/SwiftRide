@@ -17,6 +17,7 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "class-variance-authority.d.ts",
-    "CustomSwitch.js"
-, "app/screens/profileManagement"  ]
+    "CustomSwitch.js",
+    "app/screens/profileManagement"
+  ]
 }
