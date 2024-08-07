@@ -2,9 +2,9 @@ import * as React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
 const AppleIcon = (props: SvgProps) => (
   <Svg
-    width={20}
-    height={20}
-    viewBox="0 0 20 20"
+    width={40}
+    height={40}
+    viewBox="0 0 40 40"
     fill="none"
     {...props}
   >

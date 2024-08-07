@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
 const GoogleIcon = (props: SvgProps) => (
-  <Svg width={20} height={20} viewBox="0 0 20 20" fill="none" {...props}>
+  <Svg width={40} height={40} viewBox="0 0 40 40" fill="none" {...props}>
     <Path
       d="M18.7509 10.1943C18.7509 9.47489 18.6913 8.94989 18.5624 8.40546H10.1794V11.6526H15.1C15.0009 12.4596 14.4652 13.6749 13.2747 14.4915L13.258 14.6002L15.9085 16.6125L16.0921 16.6305C17.7786 15.104 18.7509 12.8582 18.7509 10.1943Z"
       fill="#4285F4"
