@@ -36,7 +36,10 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 
-Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
+Mapbox.setAccessToken(
+  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHpqbnNjdHIwdHA2MmpzaWM0dXc1d2gzIn0.Lnl4wrKsr0mBViWyq0jouA"
+);
+
 export default function MapboxComponent() {
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
