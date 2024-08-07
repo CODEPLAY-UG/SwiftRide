@@ -45,7 +45,7 @@
         "@rnmapbox/maps",
         {
           "RNMapboxMapsVersion": "11.4.0",
-          "RNMapboxMapsDownloadToken": "${MAPBOX_SECRET_KEY}"
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHpqbnZ6dWMwbmNrMnhzMW5ybWhveWJ5In0.h6X-CLGs7r62shCx1boE6Q"
         }
       ],
       [
