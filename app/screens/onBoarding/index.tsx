@@ -10,6 +10,17 @@ export default function onboarding() {
     <View className="w-full ">
       <StatusBar style="light" />
 
+      <LinearGradient
+        colors={["transparent", "rgba(0,0,0,0.8)"]}
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: "30%", // Adjust this value to control how far up the gradient extends
+        }}
+      />
+
       <Stack.Screen options={{ headerShown: false }} />
 
       <ImageBackground
