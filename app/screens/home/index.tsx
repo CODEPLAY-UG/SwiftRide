@@ -30,15 +30,14 @@ import { featureCollection } from "@turf/helpers";
 import { point } from "@turf/helpers";
 import bikes from "../../../data/bikes.json";
 import { UserLocation } from "@rnmapbox/maps";
+import { MAPBOX_PUBLIC_KEY, MAPBOX_SECRET_KEY } from '@env';
 import {
   DrawerActions,
   NavigationProp,
   useNavigation,
 } from "@react-navigation/native";
 
-Mapbox.setAccessToken(
-  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHpqbnNjdHIwdHA2MmpzaWM0dXc1d2gzIn0.Lnl4wrKsr0mBViWyq0jouA"
-);
+Mapbox.setAccessToken(MAPBOX_PUBLIC_KEY);
 
 export default function MapboxComponent() {
   const [location, setLocation] = useState<Location.LocationObject | null>(
