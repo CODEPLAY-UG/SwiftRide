@@ -1,10 +1,6 @@
-import { View, Text, TextInput, Pressable, Image, TouchableOpacity, GestureResponderEvent } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { Link, router, Stack, Tabs } from "expo-router";
-
-import { ArrowLeft, BellRingIcon, ChevronRight, Lock, Phone, SunMoon } from "lucide-react-native";
-import { Button } from "react-native-paper";
-import { Switch } from "react-native-paper";
+import { router, Stack } from "expo-router";
 import ArrowIcon from "@/assets/svgs/arrowIcon";
 import BellIcon from "@/assets/svgs/bellIcon";
 import RockIcon from "@/assets/svgs/rockIcon";
@@ -41,8 +37,7 @@ export default function settings() {
               </View>
             </View>
             <View className="">
-            <Toggle onToggle={handleNotification} isOn={isNotificationOn} />
-              
+              <Toggle onToggle={handleNotification} isOn={isNotificationOn} />
             </View>
           </View>
         </View>

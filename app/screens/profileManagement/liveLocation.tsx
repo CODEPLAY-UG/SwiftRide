@@ -3,22 +3,22 @@ import React, { useState } from "react";
 import { Link, router, Stack, Tabs } from "expo-router";
 import { Button } from "react-native-paper";
 import { Switch } from "react-native-paper";
-import CustomSwitch from "@/CustomSwitch";
-import { BellRingIcon, Info } from "lucide-react-native";
 
+import Toggle from "@/components/core/Toggle";
+import InfoIcon from "@/assets/svgs/infoIcon";
 export default function LiveLocation() {
-  const [sharewithdrivers, setSharewithdrivers] = useState(false);
-  const toggleSharewithdrivers = () => {
-    setSharewithdrivers((previousState) => !previousState);
+  const [isSharewithdrivers, setIsSharewithdriversOff] = useState(true);
+  const handleSharewithdrivers = () => {
+    setIsSharewithdriversOff((isSharewithdriversOff) => !isSharewithdriversOff);
   };
 
-  const [contacts, setContacts] = useState(false);
-  const toggleContacts = () => {
-    setContacts((previousState) => !previousState);
+  const [isContacts, setIsContactsOff] = useState(true);
+  const handleContacts = () => {
+    setIsContactsOff((isContactsOff) => !isContactsOff);
   };
 
   return (
-    <View className="bg-white h-full w-full px-4">
+    <View className="bg-white h-full w-full">
       <Stack.Screen
         options={{
           headerShown: true,
@@ -31,39 +31,41 @@ export default function LiveLocation() {
         }}
       />
 
-      <View className="space-y-8 mt-[20px]">
-        <View className="flex-row justify-between items-center px-2">
-          <View className="">
-            <Info size={20} color="#107C10" strokeWidth={3} />
-          </View>
-          <View className="px-4">
-            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">We share your live location in specific scenarios to enhance your experience.</Text>
+      <View className="-mt-9">
+        <View className="pt-12">
+          <View className="flex-row justify-between items-center px-4">
+            <View className="">
+              <InfoIcon />
+            </View>
+            <View className="px-4">
+              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">We share your live location in specific scenarios to enhance your experience.</Text>
+            </View>
           </View>
         </View>
 
-        <View className="flex-row items-center">
-          <View className="mx-4">
+        <View className="gap-[24px] mt-2 flex-row items-center px-5">
+          <View className="mx-3">
             <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Share with drivers</Text>
             <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">
               Drivers can view your location 3 minutes {"\n"}
               before pickup to locate you more quickly.
             </Text>
           </View>
-          <View className="px-5">
-            <CustomSwitch isEnabled={sharewithdrivers} toggleSwitch={setSharewithdrivers} />
+          <View className="">
+            <Toggle onToggle={handleContacts} isOn={isContacts} />
           </View>
         </View>
 
-        <View className="flex-row items-center">
-          <View className="mx-4">
+        <View className="gap-[24px] mt-2 flex-row items-center px-5">
+          <View className="mx-3">
             <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Share with select contacts</Text>
             <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">
               Share your trip status with your friends or{"\n"}
               family for safer trips.
             </Text>
           </View>
-          <View className="px-5">
-            <CustomSwitch isEnabled={contacts} toggleSwitch={setContacts} />
+          <View className="">
+            <Toggle onToggle={handleSharewithdrivers} isOn={isSharewithdrivers} />
           </View>
         </View>
       </View>

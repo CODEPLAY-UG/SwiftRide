@@ -1,15 +1,13 @@
 import { View, Text, TextInput, Pressable, Image } from "react-native";
 import React, { useState } from "react";
 import { Link, router, Stack, Tabs } from "expo-router";
-import { Button } from "react-native-paper";
-import { Switch } from "react-native-paper";
+import Toggle from "@/components/core/Toggle";
 import CustomSwitch from "@/CustomSwitch";
-import { BellRingIcon } from "lucide-react-native";
 
 export default function Appearance() {
-  const [lightmode, setLightmode] = useState(false);
-  const toggleLightmode = () => {
-    setLightmode((previousState) => !previousState);
+  const [isLightmode, setIsLightmodeOff] = useState(true);
+  const handleLightmode = () => {
+    setIsLightmodeOff((isLightmodeOff) => !isLightmodeOff);
   };
 
   const [darkmode, setDarkmode] = useState(false);
@@ -36,19 +34,20 @@ export default function Appearance() {
         }}
       />
 
-      <View className="space-y-5 mt-[20px]">
-        <View className="flex-row  justify-between items-center">
-          <View className="mx-4">
-            <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Light mode</Text>
-          </View>
-
-          <View>
-            <CustomSwitch isEnabled={lightmode} toggleSwitch={setLightmode} />
+      <View className="-mt-9">
+        <View className="pt-12">
+          <View className="gap-[24px] mt-2 flex-row items-center px-5">
+            <View className="mx-3">
+              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Light mode</Text>
+            </View>
+            <View className="">
+              <Toggle onToggle={handleLightmode} isOn={isLightmode} />
+            </View>
           </View>
         </View>
 
-        <View className="flex-row justify-between items-center">
-          <View className="mx-4 ">
+        <View className="gap-[24px] mt-2 flex-row items-center px-5">
+          <View className="mx-3 ">
             <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Dark mode</Text>
           </View>
 
@@ -57,8 +56,8 @@ export default function Appearance() {
           </View>
         </View>
 
-        <View className="flex-row justify-between items-center">
-          <View className="mx-4">
+        <View className="gap-[24px] mt-2 flex-row items-center px-5">
+          <View className="mx-3">
             <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Use device settings</Text>
             <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">The app will adapt to your device's display {"\n"}theme.</Text>
           </View>
