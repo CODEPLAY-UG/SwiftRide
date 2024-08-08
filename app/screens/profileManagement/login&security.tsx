@@ -14,19 +14,11 @@ export default function Acounts() {
     setIsGoogleOff((isGoogleOff) => !isGoogleOff);
   };
 
-  const [Apple, setIsAppleOff] = useState(false);
+  const [isAppleOff, setIsAppleOff] = useState(false);
+
   const handleAppleIcon = () => {
-    setIsAppleOff((isAppleOff: any) => !isAppleOff);
+    setIsAppleOff(isAppleOff);
   };
-
-  // function setIsAppleOff(arg0: (isAppleOff: any) => boolean) {
-  //   ("");
-  // }
-
-  // const [apple, set] = useState(true);
-  // const toggleApple = () => {
-  //   setIsAppleOff((isAppleOff) => !isAppleOff);
-  // };
 
   return (
     <View className="bg-white h-full w-full">
@@ -75,7 +67,7 @@ export default function Acounts() {
             </View>
           </View>
           <View>
-            <Toggle onToggle={handleAppleIcon} isOn={setIsAppleOff} />
+            <Toggle onToggle={handleAppleIcon} isOn={isAppleOff} />
           </View>
         </View>
       </View>
