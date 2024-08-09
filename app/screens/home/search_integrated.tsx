@@ -26,6 +26,7 @@ import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { ProgressBar, MD3Colors } from "react-native-paper";
 import addresses from "@data/address.json";
 import BikeType from "@/components/core/BikeType";
+import ChevronLeft from "@/assets/svgs/chevronLeft";
 
 const BottomSheetHeader = ({ title }: { title: string }) => {
   return (
@@ -62,6 +63,15 @@ export default function Index() {
           headerShown: true,
           headerTitle: "Your route",
           headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              activeOpacity={0.9}
+              className="ml-4"
+            >
+              <ChevronLeft stroke={"#616161"} width={24} height={24} />
+            </TouchableOpacity>
+          ),
           headerRight: () => <CalendarPlus color="#808080" size={24} />,
         }}
       />

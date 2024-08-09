@@ -30,7 +30,7 @@ export default function Index() {
       <Stack.Screen
         options={{
           headerShown: true,
-          headerTitle: "Your route",
+          headerTitle: "Your routes",
           headerTitleAlign: "center",
           headerRight: () => <CalendarPlus color="#808080" size={24} />,
         }}

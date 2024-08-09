@@ -1,4 +1,10 @@
-import { View, Text, TextInput, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import React, { SetStateAction, useState } from "react";
 import {
   BellIcon,
@@ -11,8 +17,9 @@ import {
 } from "lucide-react-native";
 import Stack from "expo-router/build/layouts/Stack";
 import SearchComponent from "@/components/core/Search";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { ProgressBar } from "react-native-paper";
+import ChevronLeft from "@/assets/svgs/chevronLeft";
 
 export default function User() {
   const [isTyping, setIsTyping] = useState(false);
@@ -30,13 +37,21 @@ export default function User() {
       <Stack.Screen
         options={{
           // headerShown: true,
-          headerTitle: "Your routes",
+          headerTitle: "Your routed",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontSize: 17,
             fontWeight: "bold",
           },
-          headerLeft: () => null, // This removes the left icon/button
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              activeOpacity={0.9}
+              className="ml-4"
+            >
+              <ChevronLeft stroke={"#616161"} width={24} height={24} />
+            </TouchableOpacity>
+          ),
           headerRight: () => <CalendarPlus color="#ffd700" size={24} />,
         }}
       />
