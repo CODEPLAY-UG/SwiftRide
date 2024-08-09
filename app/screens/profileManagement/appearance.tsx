@@ -10,14 +10,14 @@ export default function Appearance() {
     setIsLightmodeOff((isLightmodeOff) => !isLightmodeOff);
   };
 
-  const [darkmode, setDarkmode] = useState(false);
-  const toggleDarkmode = () => {
-    setDarkmode((previousState) => !previousState);
+  const [isDarkmodeOff, setIsDarkmodeOff] = useState(false);
+  const handleDarkmode = () => {
+    setIsDarkmodeOff(isDarkmodeOff);
   };
 
-  const [usedevicesettings, setUsedevicesettings] = useState(false);
-  const toggleApple = () => {
-    setUsedevicesettings((previousState) => !previousState);
+  const [isUsedevicesettingsOff, setIsUsedevicesettingsOff] = useState(false);
+  const handleUsedevicesettings = () => {
+    setIsUsedevicesettingsOff(isUsedevicesettingsOff);
   };
 
   return (
@@ -35,10 +35,10 @@ export default function Appearance() {
       />
 
       <View className="-mt-9">
-        <View className="pt-12">
-          <View className="gap-[24px] mt-2 flex-row items-center px-5">
-            <View className="mx-3">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Light mode</Text>
+        <View className="">
+          <View className="gap-[24px] mt-12 justify-between flex-row items-center px-1">
+            <View className="">
+              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Light mode</Text>
             </View>
             <View className="">
               <Toggle onToggle={handleLightmode} isOn={isLightmode} />
@@ -46,23 +46,23 @@ export default function Appearance() {
           </View>
         </View>
 
-        <View className="gap-[24px] mt-2 flex-row items-center px-5">
-          <View className="mx-3 ">
+        <View className="gap-[24px] mt-3 justify-between flex-row items-center px-1">
+          <View className=" ">
             <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Dark mode</Text>
           </View>
 
           <View className="">
-            <CustomSwitch isEnabled={darkmode} toggleSwitch={setDarkmode} />
+            <Toggle onToggle={handleDarkmode} isOn={isDarkmodeOff} />
           </View>
         </View>
 
-        <View className="gap-[24px] mt-2 flex-row items-center px-5">
-          <View className="mx-3">
+        <View className="gap-[24px] mt-3 justify-between flex-row items-center px-1">
+          <View className="">
             <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">Use device settings</Text>
-            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">The app will adapt to your device's display {"\n"}theme.</Text>
+            <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">The app will adapt to your device's display{"\n"}theme.</Text>
           </View>
           <View className="">
-            <CustomSwitch isEnabled={usedevicesettings} toggleSwitch={setUsedevicesettings} />
+            <Toggle onToggle={handleUsedevicesettings} isOn={isUsedevicesettingsOff} />
           </View>
         </View>
       </View>
