@@ -41,7 +41,7 @@ export default function Profile() {
         </View>
 
         <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
-          <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5">
+          <View className="gap-[24px] mt-3 justify-between flex-row items-center px-4">
             <View className="">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">Name</Text>
               <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">Phone number {"\n"}Email</Text>
@@ -53,7 +53,7 @@ export default function Profile() {
         </TouchableOpacity>
 
         <View className="-mb-2">
-          <View className=" gap-[24px] mt-2 flex-row items-center px-5">
+          <View className=" gap-[24px] mt-2 flex-row items-center px-4">
             <View className="">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">App settings</Text>
             </View>
@@ -62,7 +62,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./settings")} className="">
           <View className="">
-            <View className=" gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className=" gap-[24px] mt-2 justify-between flex-row items-center px-4">
               <View className="flex-row -mx-3 items-center">
                 <SettingsIcon />
                 <View className="mx-3">
@@ -78,7 +78,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./login&Security")} className="">
           <View className="">
-            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-4">
               <View className="flex-row -mx-3 items-center">
                 <ShieldIcon />
                 <View className="mx-3">
@@ -94,7 +94,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("./helpCentre")} className="">
           <View className="">
-            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-4">
               <View className="flex-row -mx-3 items-center">
                 <HearthandIcon />
                 <View className="mx-3">
@@ -110,7 +110,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("")} className="">
           <View className="">
-            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-4">
               <View className="flex-row -mx-3 items-center">
                 <MessageIcon />
                 <View className="mx-3">
@@ -126,7 +126,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("")} className="">
           <View className="">
-            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-4">
               <View className="flex-row -mx-3 items-center">
                 <ShieldIcon />
                 <View className="mx-3">
@@ -142,7 +142,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("")} className="">
           <View className="">
-            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-4">
               <View className="flex-row -mx-3 items-center">
                 <LegalIcon />
                 <View className="mx-3">
@@ -158,7 +158,7 @@ export default function Profile() {
 
         <TouchableOpacity onPress={() => router.push("")} className="">
           <View className="">
-            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-4">
               <View className="flex-row -mx-3 items-center">
                 <AboutIcon />
                 <View className="mx-3">

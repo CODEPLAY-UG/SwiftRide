@@ -14,7 +14,7 @@ import Toggle from "@/components/core/Toggle";
 import InfoIcon from "@/assets/svgs/infoIcon";
 
 export default function Communication() {
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [selectedOption, setSelectedOption] = useState<number>(1);
 
   const handlePress = (option: number) => {
     setSelectedOption(option);

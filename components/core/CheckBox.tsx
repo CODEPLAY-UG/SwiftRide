@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import CheckMark from "@/assets/svgs/checkmark";
 
 function MyCheckbox() {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   return (
     <Pressable
       style={[styles.checkboxBase, checked && styles.checkboxChecked]}
