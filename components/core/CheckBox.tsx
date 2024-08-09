@@ -15,7 +15,7 @@ function MyCheckbox() {
           // onPress={function (): void {}}
           width={20}
           height={20}
-          stroke={"#1be7ff"}
+          stroke={"#ffffff"}
         />
       )}
     </Pressable>
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
     height: 24,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: "#cccccc",
+    borderRadius: 50,
+    borderWidth: 0,
+    borderColor: "#636363",
     backgroundColor: "transparent",
   },
   checkboxChecked: {
-    backgroundColor: "#efefd0",
+    backgroundColor: "#636363",
   },
   appContainer: {
     // flex: 1,
