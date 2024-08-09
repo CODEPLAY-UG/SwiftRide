@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Stack } from "expo-router";
 
 import { DotIcon } from "lucide-react-native";
-import RiderImage from "@/assets/svgs/riderImage";
 
 export default function Getting() {
   return (
@@ -23,7 +22,7 @@ export default function Getting() {
         <View className="">
           <View className="">
             <View className="justify-between py-1 items-center">
-              <RiderImage />
+              <Image className="h-[180px] w-[100%] rounded-[16px]" source={require(".../../../assets/images/rider.png")} />
             </View>
           </View>
 
