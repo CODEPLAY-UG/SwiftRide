@@ -8,10 +8,10 @@ import { StatusBar } from "expo-status-bar";
 export default function LoginIndex() {
   function handleLoginIndex(text: string): void {}
   const dispatch = useDispatch();
-  const [Number, setName] = useState("");
+  const [number, setNumber] = useState("");
 
-  const handleNameChange = (newName: string) => {
-    setName(newName);
+  const handleNumberChange = (newNumber: string) => {
+    setNumber(newNumber);
   };
 
   const handleNextScreen = () => {
@@ -41,7 +41,7 @@ export default function LoginIndex() {
       <TextInput
         className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
         placeholder="07......"
-        onChangeText={handleNameChange}
+        onChangeText={handleNumberChange}
         keyboardType="numeric"
         // defaultValue={text}
       />
