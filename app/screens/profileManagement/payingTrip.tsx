@@ -114,10 +114,9 @@ export default function Paying() {
             </View>
           </View>
 
-
           <View className="flex-row justify-between items-center mt-5">
             <View className="px-4">
-              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">2. Requesting a Ride and Making a Payment</Text>
+              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">4. Troubleshooting and Support</Text>
               <View className="mt-2">
                 <View className="flex-row pr-4">
                   <View className="">
@@ -142,30 +141,6 @@ export default function Paying() {
               </View>
             </View>
           </View>
-
-          <View className="flex-row justify-between items-center mt-5">
-            <View className="px-4">
-              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">3. Managing Your Mobile Money Account</Text>
-              <View className="mt-2">
-                <View className="flex-row pr-4">
-                  <View className="">
-                    <DotIcon color="#808080" size={16} />
-                  </View>
-                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]"> Update Payment Method: You can update or change your Mobile Money details anytime in the 'Payment' section.</Text>
-                </View>
-
-                <View className="flex-row pr-4">
-                  <View className="">
-                    <DotIcon color="#808080" size={16} />
-                  </View>
-                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]"> Check Balance: Ensure your Mobile Money account has sufficient funds to avoid payment issues.</Text>
-                </View>
-              </View>
-            </View>
-          </View>
-
-
-
         </View>
       </ScrollView>
     </View>
