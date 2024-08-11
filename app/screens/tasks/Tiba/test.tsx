@@ -1,19 +1,99 @@
-import { View, Text } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Pressable,
+  SafeAreaView,
+} from "react-native";
+import React, { useState } from "react";
 import SearchComponent from "@/components/core/Search";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
+import { DrawerActions } from "@react-navigation/native";
+import Marker from "@/components/core/Marker";
+import GoogleIcon from "@/assets/svgs/google";
+import AppleIcon from "@/assets/svgs/apple";
+import CheckBox from "@/components/core/CheckBox";
+import Toggle from "@/components/core/Toggle";
+import ChevronLeft from "@/assets/svgs/chevronLeft";
 
 export default function test() {
+  const [confirmed, setConfirmed] = useState(false);
+  const navigation = useNavigation();
+  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+  const [checked, setChecked] = React.useState("first");
+  const [isOn, setIsOn] = useState(false);
+
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+
+  const handlePress = (option: number) => {
+    setSelectedOption(option);
+  };
+
+  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
   return (
-    <View className="h-full bg-white">
+    <SafeAreaView className="h-full bg-white pt-10">
       <Stack.Screen
         options={{
           headerShown: true,
           headerTitle: "Here we go",
           headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: 17, // Adjust the font size
+            fontWeight: "bold", // Adjust the font weight
+          },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              activeOpacity={0.9}
+              className="ml-4"
+            >
+              <ChevronLeft stroke={"#616161"} width={24} height={24} />
+            </TouchableOpacity>
+          ),
         }}
       />
-      <SearchComponent />
-    </View>
+      <SearchComponent
+        placeholder="Going somewhere?"
+        setIsTyping={function (value: React.SetStateAction<boolean>): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+      <TouchableOpacity
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        // }
+        className="my-5  flex justify-center items-center"
+      >
+        <Text className="text-lg rounded-lg w-fit bg-[#32cd32] px-3 py-1 text-pink-600">
+          Open Drawers
+        </Text>
+      </TouchableOpacity>
+
+      <View className="flex-row pb-2 justify-center gap-x-4">
+        <GoogleIcon
+          className=""
+          onPress={function (): void {}}
+          width={50}
+          height={50}
+        />
+        <AppleIcon className="" width={50} height={50} />
+      </View>
+
+      <CheckBox />
+
+      <View className="justify-center items-center">
+        <Toggle
+          isOn={isOn}
+          onToggle={() => setIsOn(!isOn)}
+          // label="Toggle Switch"
+        />
+      </View>
+
+      <View className="my-5 p-5 bg-[#ffc8dd]">
+        <Marker />
+      </View>
+    </SafeAreaView>
   );
 }

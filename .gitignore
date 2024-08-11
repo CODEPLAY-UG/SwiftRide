@@ -18,8 +18,5 @@ web-build/
 
 expo-env.d.ts
 # @end expo-cli
-*.json
-Record.md
-Notes.md
-android/app/google-services.json
-
+.md
+android
