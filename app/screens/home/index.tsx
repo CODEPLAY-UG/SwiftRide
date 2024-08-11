@@ -37,7 +37,7 @@ import {
 } from "@react-navigation/native";
 
 Mapbox.setAccessToken(
-  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHpqbnNjdHIwdHA2MmpzaWM0dXc1d2gzIn0.Lnl4wrKsr0mBViWyq0jouA"
+  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHpwZmkxZmQwZ2h3MmtzMzUwaWhxdjRqIn0.CysBEvsOzMQNVQjb3x07FQ"
 );
 
 export default function MapboxComponent() {
@@ -179,8 +179,8 @@ const MapContent = ({
         <Mapbox.MapView
           // styleURL="mapbox://styles/mapbox/dark-v11"
           scaleBarEnabled={false}
-          // compassEnabled={true}
-          // compassViewPosition={3}
+          compassEnabled={true}
+          compassViewPosition={3}
           // logoEnabled
           attributionEnabled={false}
           // surfaceView={false}
