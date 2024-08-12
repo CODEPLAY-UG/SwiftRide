@@ -20,7 +20,7 @@ export default function Paying() {
           },
         }}
       />
-      <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 20 }} className="">
         <View className="">
           <View className="">
             <View className="justify-between py-1 items-center">
@@ -28,8 +28,8 @@ export default function Paying() {
             </View>
           </View>
 
-          <View className="flex-row justify-between items-center ">
-            <View className="mx-4">
+          <View className="flex-row justify-between items-center px-1 ">
+            <View className="mx-3">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">SwiftRide Payment Guide</Text>
               <View className="mt-2">
                 <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Welcome to SwiftRide! Here’s a step-by-step guide on how to collect payments using Mobile Money, ensuring a smooth and hassle-free experience for both drivers and riders.</Text>
@@ -37,7 +37,7 @@ export default function Paying() {
             </View>
           </View>
 
-          <View className="flex-row justify-between items-center mt-5">
+          <View className="flex-row justify-between items-center mt-8">
             <View className="px-4">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">1. Setting Up Mobile Money in the App</Text>
               <View className=" mt-2">
@@ -65,7 +65,7 @@ export default function Paying() {
             </View>
           </View>
 
-          <View className="flex-row justify-between items-center mt-5">
+          <View className="flex-row justify-between items-center mt-8">
             <View className="px-4">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">2. Requesting a Ride and Making a Payment</Text>
               <View className="mt-2">
@@ -93,7 +93,7 @@ export default function Paying() {
             </View>
           </View>
 
-          <View className="flex-row justify-between items-center mt-5">
+          <View className="flex-row justify-between items-center mt-8">
             <View className="px-4">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">3. Managing Your Mobile Money Account</Text>
               <View className="mt-2">
@@ -114,35 +114,43 @@ export default function Paying() {
             </View>
           </View>
 
-          <View className="flex-row justify-between items-center mt-5">
+          <View className="flex-row justify-between items-center mt-8">
             <View className="px-4">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">4. Troubleshooting and Support</Text>
 
-              <View>
-              <Text className="text-[#616161] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Common Issues</Text>
+              <View className="mt-4">
+                <Text className="text-[#616161] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Common Issues</Text>
               </View>
               <View className="mt-2">
                 <View className="flex-row pr-4 mx-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
-                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Payment Failed: Ensure your Mobile Money 
-                  account has enough funds and is active.</Text>
+                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Payment Failed: Ensure your Mobile Money account has enough funds and is active.</Text>
                 </View>
 
                 <View className="flex-row pr-4 mx-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
-                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]"> Verification Issues: Double-chec the entered 
-                  details and retry the verification process.</Text>
+                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]"> Verification Issues: Double-check the entered details and retry the verification process.</Text>
                 </View>
 
-                <View className="flex-row pr-4">
+                <View className="mt-4">
+                  <Text className="text-[#616161] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Getting Help:</Text>
+                </View>
+
+                <View className="flex-row pr-4 mx-4 mt-2">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
-                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Receipt: A digital receipt will be sent to your email and can be accessed in the 'Trip History' section of the app.</Text>
+                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]"> Customer Support: If you encounter any issues, contact our support team via the Help Center in the app. We’re available 24/7 to assist you.</Text>
+                </View>
+                <View className="flex-row pr-4 mx-4">
+                  <View className="">
+                    <DotIcon color="#808080" size={16} />
+                  </View>
+                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">FAQs: Check our FAQ section in the app for answers to common questions regarding Mobile Money payments.</Text>
                 </View>
               </View>
             </View>

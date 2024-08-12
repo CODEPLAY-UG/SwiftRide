@@ -12,18 +12,16 @@ import SearchComponent from "@/components/core/search1";
 import UserIcon from "@/assets/svgs/userIcon";
 
 export default function Accountinfo() {
+  const [name, setName] = useState("wanyike emma");
+
   function handleAccountinfo(text: string): void {}
 
   function handleNameChange(text: string): void {
-    ("");
-  }
-
-  function setName(arg0: string) {
-    ("");
+    setName(text);
   }
 
   const handleClearInput = () => {
-    setName("");
+    // setName("");
   };
 
   function setIsTyping(value: SetStateAction<boolean>): void {
@@ -49,8 +47,8 @@ export default function Accountinfo() {
           <View className="flex-auto">
             <Text className="text-[#616161]  text-[13px] font-normal leading-[18px] py-[5px] tracking-tighter[-0.08]">Name</Text>
             <View className="mt-3">
-              <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" placeholder="userName" onChangeText={handleNameChange} />
-              <TouchableOpacity onPress={handleClearInput} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
+              <TextInput className="w-[90%] text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value={name} placeholder="userName" onChangeText={handleNameChange} />
+              <TouchableOpacity onPress={() => setName("")} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
                 <CancleIcon />
               </TouchableOpacity>
             </View>
@@ -61,7 +59,7 @@ export default function Accountinfo() {
           <View className="flex-auto">
             <Text className="text-[#616161]  text-[13px] font-normal leading-[18px] py-[5px] tracking-tighter[-0.08]">Phone number</Text>
             <View className="mt-3">
-              <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" placeholder="userNumber" onChangeText={handleNameChange} />
+              <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value="0705405645" placeholder="userNumber" onChangeText={handleNameChange} />
               <TouchableOpacity onPress={handleClearInput} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
                 <CancleIcon />
               </TouchableOpacity>
@@ -73,7 +71,7 @@ export default function Accountinfo() {
           <View className="flex-auto">
             <Text className="text-[#616161]  text-[13px] font-normal leading-[18px] py-[5px] tracking-tighter[-0.08]">Email</Text>
             <View className="mt-3">
-              <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" placeholder="userEmail" onChangeText={handleNameChange} />
+              <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value="example@gmail.com" placeholder="userEmail" onChangeText={handleNameChange} />
               <TouchableOpacity onPress={handleClearInput} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
                 <CancleIcon />
               </TouchableOpacity>

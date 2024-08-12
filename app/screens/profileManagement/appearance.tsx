@@ -2,22 +2,28 @@ import { View, Text, TextInput, Pressable, Image } from "react-native";
 import React, { useState } from "react";
 import { Link, router, Stack, Tabs } from "expo-router";
 import Toggle from "@/components/core/Toggle";
-import CustomSwitch from "@/CustomSwitch";
 
 export default function Appearance() {
   const [isLightmode, setIsLightmodeOff] = useState(true);
+  const [isDarkmodeOff, setIsDarkmodeOff] = useState(false);
+  const [isUsedevicesettingsOff, setIsUsedevicesettingsOff] = useState(false);
+
   const handleLightmode = () => {
     setIsLightmodeOff((isLightmodeOff) => !isLightmodeOff);
+    setIsDarkmodeOff((isDarkmodeOff) => !isDarkmodeOff);
+    setIsUsedevicesettingsOff(false);
   };
 
-  const [isDarkmodeOff, setIsDarkmodeOff] = useState(false);
   const handleDarkmode = () => {
-    setIsDarkmodeOff(isDarkmodeOff);
+    setIsLightmodeOff((isLightmodeOff) => !isLightmodeOff);
+    setIsDarkmodeOff((isDarkmodeOff) => !isDarkmodeOff);
+    setIsUsedevicesettingsOff(false);
   };
 
-  const [isUsedevicesettingsOff, setIsUsedevicesettingsOff] = useState(false);
   const handleUsedevicesettings = () => {
-    setIsUsedevicesettingsOff(isUsedevicesettingsOff);
+    // setIsLightmodeOff(false);
+    // setIsDarkmodeOff(false);
+    setIsUsedevicesettingsOff((isUsedevicesettingsOff) => !isUsedevicesettingsOff);
   };
 
   return (
