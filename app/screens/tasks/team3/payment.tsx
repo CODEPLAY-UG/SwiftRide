@@ -1,9 +1,10 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { router, Stack } from "expo-router";
 import { Banknote, ChevronRight, Info, Key, X } from "lucide-react-native";
 
 export default function Payment() {
+  const [isVisible, setIsVisible] = useState(true);
   return (
     <View className="bg-white h-full">
       <Stack.Screen
@@ -13,19 +14,21 @@ export default function Payment() {
           headerShown: true,
         }}
       />
-      <View className="flex-row justify-center space-x-4 py-3">
-        <View className="justify-center">
-          <Info color="#107C10" />
+      {isVisible && (
+        <View className="flex-row justify-center space-x-4 py-3">
+          <View className="justify-center">
+            <Info color="#107C10" />
+          </View>
+          <Text className="text-[15px] leading-5 tracking-[0.23px] w-[248px] ">
+            Add and manage your payment methods using our secure payment system.
+          </Text>
+          <View className="justify-center">
+            <TouchableOpacity onPress={() => setIsVisible(false)}>
+              <X color="#616161" />
+            </TouchableOpacity>
+          </View>
         </View>
-        <Text className="text-[15px] leading-5 tracking-[0.23px] w-[248px] ">
-          Add and manage your payment methods using our secure payment system.
-        </Text>
-        <View className="justify-center">
-          <TouchableOpacity>
-            <X color="#616161" />
-          </TouchableOpacity>
-        </View>
-      </View>
+      )}
       <View className="h-12  justify-center px-4">
         <Text className="text-[17px] font-semibold  tracking-[0.4px] text-[#242424]">
           Wallet balance
