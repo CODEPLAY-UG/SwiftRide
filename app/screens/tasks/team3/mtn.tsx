@@ -95,10 +95,12 @@ export default function MtnMobileMoney() {
           <View className="justify-center ">
             <Plus color="#808080" size={24} />
           </View>
-          <View className="flex-1 justify-center">
+          <View
+            className=" flex-row flex-1 justify-center border-b-[1px]"
+            style={[{ borderBottomColor: borderColor }]}
+          >
             <TextInput
-              className="text-[17px] py-3 leading-[22px] tracking-[-0.43px] border-b-[1px] "
-              style={[{ borderBottomColor: borderColor }]}
+              className=" flex-1 text-[17px] py-3 leading-[22px] tracking-[-0.43px]  "
               placeholder="Add trip coins"
               placeholderTextColor="#616161"
               selectionColor="#808080"
@@ -106,10 +108,12 @@ export default function MtnMobileMoney() {
               value={input}
               onChangeText={handleInputChange}
             />
-          </View>
-          <View className=" justify-center">
+
             {input !== "" && (
-              <TouchableOpacity onPress={clearInput}>
+              <TouchableOpacity
+                className=" justify-center"
+                onPress={clearInput}
+              >
                 <View className="bg-[#616161] p-[3px] rounded-full">
                   <X color="white" size={16} />
                 </View>

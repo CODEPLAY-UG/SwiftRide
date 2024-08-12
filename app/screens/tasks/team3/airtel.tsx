@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Info, Plus, Trash2 } from "lucide-react-native";
+import { Info, Plus, Trash2, X } from "lucide-react-native";
 import { useState } from "react";
 
 export default function AirtelMobileMoney() {
@@ -44,6 +44,10 @@ export default function AirtelMobileMoney() {
     }).start(() => {
       setDeleted(true); // Change state after animation is complete
     });
+  };
+  const clearInput = () => {
+    setInput("");
+    setErrorMessage("");
   };
 
   const handleInputChange = (text: string) => {
@@ -92,10 +96,12 @@ export default function AirtelMobileMoney() {
           <View className="justify-center ">
             <Plus color="#808080" size={24} />
           </View>
-          <View className="flex-1 justify-center">
+          <View
+            className="flex-row flex-1 justify-center border-b-[1px]"
+            style={[{ borderBottomColor: borderColor }]}
+          >
             <TextInput
-              className="text-[17px] py-3 leading-[22px] tracking-[-0.43px] border-b-[1px]"
-              style={[{ borderBottomColor: borderColor }]}
+              className="flex-1 text-[17px] py-3 leading-[22px] tracking-[-0.43px]"
               placeholder="Add trip coins"
               placeholderTextColor="#616161"
               selectionColor="#808080"
@@ -103,6 +109,16 @@ export default function AirtelMobileMoney() {
               value={input}
               onChangeText={handleInputChange}
             />
+            {input !== "" && (
+              <TouchableOpacity
+                className=" justify-center"
+                onPress={clearInput}
+              >
+                <View className="bg-[#616161] p-[3px] rounded-full">
+                  <X color="white" size={16} />
+                </View>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
         <View className="px-16">
