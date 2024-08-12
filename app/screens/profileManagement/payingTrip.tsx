@@ -117,19 +117,25 @@ export default function Paying() {
           <View className="flex-row justify-between items-center mt-5">
             <View className="px-4">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">4. Troubleshooting and Support</Text>
+
+              <View>
+              <Text className="text-[#616161] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Common Issues</Text>
+              </View>
               <View className="mt-2">
-                <View className="flex-row pr-4">
+                <View className="flex-row pr-4 mx-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
-                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Request a Ride: Enter your destination, select your ride type, and confirm your pickup location.</Text>
+                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Payment Failed: Ensure your Mobile Money 
+                  account has enough funds and is active.</Text>
                 </View>
 
-                <View className="flex-row pr-4">
+                <View className="flex-row pr-4 mx-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
-                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Payment Confirmation: Once your ride is complete, the app will automatically charge the fare to your linked Mobile Money account.</Text>
+                  <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]"> Verification Issues: Double-chec the entered 
+                  details and retry the verification process.</Text>
                 </View>
 
                 <View className="flex-row pr-4">
