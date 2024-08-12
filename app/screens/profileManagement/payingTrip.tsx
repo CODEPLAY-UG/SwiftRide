@@ -8,7 +8,8 @@ export default function Paying() {
   function handlePaying(text: string): void {}
 
   return (
-    <View className="bg-white h-full w-full px-4">
+    <View className="bg-white h-full w-full px-4
+    ">
       <Stack.Screen
         options={{
           headerShown: true,
