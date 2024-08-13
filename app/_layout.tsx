@@ -17,6 +17,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 
 import { NativeWindStyleSheet } from "nativewind";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { AuthProvider } from "../utils/AuthContext";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -43,6 +44,7 @@ export default function RootLayout() {
 
   return (
     <Provider store={store}>
+      <AuthProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <GestureHandlerRootView style={{ flex: 1 }}>
           <Stack
@@ -59,6 +61,7 @@ export default function RootLayout() {
           </Stack>
         </GestureHandlerRootView>
       </ThemeProvider>
+    </AuthProvider>
     </Provider>
   );
 }

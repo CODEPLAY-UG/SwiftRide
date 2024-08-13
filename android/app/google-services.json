@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "410955658021",
+    "project_id": "swift-ride-6e3cc",
+    "storage_bucket": "swift-ride-6e3cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410955658021:android:d20b47d3795d3cf3ae60cc",
+        "android_client_info": {
+          "package_name": "com.codeplayug.frontend_playground"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410955658021-r671sg6mpva4v4fepd6d8k6qv20ptvcp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codeplayug.frontend_playground",
+            "certificate_hash": "c827d50619db5592b923c5dded916a9f7c6eb923"
+          }
+        },
+        {
+          "client_id": "410955658021-gnspqi8tjb2c0m2p448vjl0m03ei4t0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLRdnk4O42LVNpKjIDlRLTqMBxV88w2bQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410955658021-gk427aaf3sus552i8m6k09ejq7vueqg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

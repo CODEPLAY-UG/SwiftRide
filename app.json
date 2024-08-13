@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SwiftRide",
-    "slug": "SwiftRide",
+    "slug": "swiftride",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile":"./android/app/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,10 +37,11 @@
         "origin": false
       },
       "eas": {
-        "projectId": "89be462b-4772-4154-8777-33892cd8c3e2"
+        "projectId": "f7e0752a-89e9-4f1c-a5d7-b9ba15fc00fe"
       }
     },
     "plugins": [
+      "@react-native-google-signin/google-signin",
       "expo-router",
       [
         "@rnmapbox/maps",

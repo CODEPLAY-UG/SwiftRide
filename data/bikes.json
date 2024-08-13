@@ -1,0 +1,38 @@
+[
+  {
+    "bike_id": 1,
+    "latitude": 0.391764,
+    "longitude": 32.866883,
+    "place_name": "Lugazi University"
+  },
+  {
+    "bike_id": 2,
+    "latitude": 0.394127,
+    "longitude": 32.857874,
+    "place_name": "Lugazi Sugar Factory"
+  },
+  {
+    "bike_id": 3,
+    "latitude": 0.3973,
+    "longitude": 32.8614,
+    "place_name": "Lugazi Central Market"
+  },
+  {
+    "bike_id": 4,
+    "latitude": 0.392841,
+    "longitude": 32.862175,
+    "place_name": "Lugazi Hospital"
+  },
+  {
+    "bike_id": 5,
+    "latitude": 0.396519,
+    "longitude": 32.863611,
+    "place_name": "St. Joseph's Cathedral"
+  },
+  {
+    "bike_id": 6,
+    "latitude": 0.395001,
+    "longitude": 32.859673,
+    "place_name": "Lugazi Community Centre"
+  }
+]
