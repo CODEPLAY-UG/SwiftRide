@@ -14,18 +14,20 @@ import UserIcon from "@/assets/svgs/userIcon";
 export default function Accountinfo() {
   const [name, setName] = useState("wanyike emma");
 
-  function handleAccountinfo(text: string): void {}
+  const [number, setNumber] = useState("+256774560370");
+
+  const [email, setEmail] = useState("example@gmail.com");
 
   function handleNameChange(text: string): void {
     setName(text);
   }
 
-  const handleClearInput = () => {
-    // setName("");
-  };
+  function handleNumberChange(numerical: string): void {
+    setNumber(numerical);
+  }
 
-  function setIsTyping(value: SetStateAction<boolean>): void {
-    ("");
+  function handleEmailChange(text: string): void {
+    setEmail(text);
   }
 
   return (
@@ -59,8 +61,8 @@ export default function Accountinfo() {
           <View className="flex-auto">
             <Text className="text-[#616161]  text-[13px] font-normal leading-[18px] py-[5px] tracking-tighter[-0.08]">Phone number</Text>
             <View className="mt-3">
-              <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value="0705405645" placeholder="userNumber" onChangeText={handleNameChange} />
-              <TouchableOpacity onPress={handleClearInput} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
+              <TextInput className="w-[90%] text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value={number} placeholder="userNumber" onChangeText={handleNumberChange} />
+              <TouchableOpacity onPress={() => setNumber("")} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
                 <CancleIcon />
               </TouchableOpacity>
             </View>
@@ -71,8 +73,8 @@ export default function Accountinfo() {
           <View className="flex-auto">
             <Text className="text-[#616161]  text-[13px] font-normal leading-[18px] py-[5px] tracking-tighter[-0.08]">Email</Text>
             <View className="mt-3">
-              <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value="example@gmail.com" placeholder="userEmail" onChangeText={handleNameChange} />
-              <TouchableOpacity onPress={handleClearInput} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
+              <TextInput className="w-[90%] text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value={email} placeholder="userEmail" onChangeText={handleEmailChange} />
+              <TouchableOpacity onPress={() => setEmail("")} className="-mt-3 absolute right-2 top-1/2 transform -translate-y-1/2">
                 <CancleIcon />
               </TouchableOpacity>
             </View>

@@ -8,8 +8,10 @@ export default function Paying() {
   function handlePaying(text: string): void {}
 
   return (
-    <View className="bg-white h-full w-full px-4
-    ">
+    <View
+      className="bg-white h-full w-full px-1
+    "
+    >
       <Stack.Screen
         options={{
           headerShown: true,
@@ -23,7 +25,7 @@ export default function Paying() {
       />
       <ScrollView contentContainerStyle={{ paddingBottom: 20 }} className="">
         <View className="">
-          <View className="">
+          <View className="px-3">
             <View className="justify-between py-1 items-center">
               <Image className="h-[180px] w-[100%] rounded-[16px]" source={require(".../../../assets/images/coin.png")} />
             </View>
@@ -32,7 +34,7 @@ export default function Paying() {
           <View className="flex-row justify-between items-center px-1 ">
             <View className="mx-3">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">SwiftRide Payment Guide</Text>
-              <View className="mt-2">
+              <View className="mt-2 ">
                 <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Welcome to SwiftRide! Here’s a step-by-step guide on how to collect payments using Mobile Money, ensuring a smooth and hassle-free experience for both drivers and riders.</Text>
               </View>
             </View>
@@ -49,14 +51,14 @@ export default function Paying() {
                   <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Open the SwiftRide App: Navigate to the 'Payment' section in your profile.</Text>
                 </View>
 
-                <View className="flex-row">
+                <View className="flex-row pr-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
                   <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Add Payment Method: Select 'Mobile Money' and enter your Mobile Money details (phone number and provider)</Text>
                 </View>
 
-                <View className="flex-row">
+                <View className="flex-row pr-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>

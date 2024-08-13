@@ -6,7 +6,7 @@ import { DotIcon } from "lucide-react-native";
 
 export default function Getting() {
   return (
-    <View className="bg-white h-full w-full px-4">
+    <View className="bg-white h-full w-full px-1">
       <Stack.Screen
         options={{
           headerShown: true,
@@ -20,7 +20,7 @@ export default function Getting() {
       />
       <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         <View className="">
-          <View className="">
+          <View className="px-3">
             <View className="justify-between py-1 items-center">
               <Image className="h-[180px] w-[100%] rounded-[16px]" source={require(".../../../assets/images/rider.png")} />
             </View>
@@ -46,7 +46,7 @@ export default function Getting() {
                   <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Join the Community: SwiftRide is more than just an app; it’s a community of drivers and riders who value safety, reliability, and convenience.</Text>
                 </View>
 
-                <View className="flex-row">
+                <View className="flex-row pr-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
@@ -66,7 +66,7 @@ export default function Getting() {
                   </View>
                   <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Smart Matching: Our advanced algorithm connects you with the nearest available driver to ensure quick pickups and minimal wait times.</Text>
                 </View>
-                <View className="flex-row">
+                <View className="flex-row pr-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
@@ -97,7 +97,7 @@ export default function Getting() {
                     options to suit your needs (Swift, SwiftXL,{"\n"}SwiftLux).
                   </Text>
                 </View>
-                <View className="flex-row">
+                <View className="flex-row pr-4">
                   <View className="">
                     <DotIcon color="#808080" size={16} />
                   </View>
