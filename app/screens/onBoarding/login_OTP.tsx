@@ -12,16 +12,27 @@ import { setUserData } from "../../features/userData/userDataSlice";
 import { Link, router, Stack } from "expo-router";
 import { RootState } from "../../store";
 import { StatusBar } from "expo-status-bar";
+import { useAuth } from "../../../utils/AuthContext";
+
 
 export default function login() {
   function handleLogin(text: string): void {}
   const dispatch = useDispatch();
   const name = useSelector((state: RootState) => state.userData.name);
   const [phoneNumber, setPhoneNumber] = useState("");
+  const { confirmCode } = useAuth();
 
   const handlePhoneNumberChange = (newPhoneNumber: string) => {
     setPhoneNumber(newPhoneNumber);
   };
+
+  const handleOtpLogin = async () => {
+    try {
+      await confirmCode();
+      router.push("../home");
+    } catch (error) {
+      console.log("Invalid code", error.message);
+      alert("Invalid Code");}}
 
   const handleSaveUserData = () => {
     // Dispatch both name and phone number to the store
@@ -64,7 +75,7 @@ export default function login() {
           className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
           value={phoneNumber}
           onChangeText={handlePhoneNumberChange}
-          keyboardType="numeric"
+          keyboardType="default"
         />
         <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
           Code sent via SMS to (number)
@@ -72,7 +83,7 @@ export default function login() {
 
         <View className="">
           <Pressable
-            onPress={() => router.push("../home")}
+            onPress={handleOtpLogin}
             className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]"
           >
             <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">

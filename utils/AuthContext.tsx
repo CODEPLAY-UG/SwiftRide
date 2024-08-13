@@ -3,8 +3,7 @@ import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 GoogleSignin.configure({
-  webClientId:
-    "410955658021-gnspqi8tjb2c0m2p448vjl0m03ei4t0g.apps.googleusercontent.com",
+  webClientId: "410955658021-gnspqi8tjb2c0m2p448vjl0m03ei4t0g.apps.googleusercontent.com",
 });
 
 export const AuthContext = createContext();
@@ -12,6 +11,8 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState(null);
+  const [confirm, setConfirm] = useState(null);
+  const [code, setCode] = useState('');
 
   function onAuthStateChanged(user) {
     setUser(user);
@@ -23,30 +24,80 @@ export const AuthProvider = ({ children }) => {
     return () => subscriber(); // Unsubscribe on unmount
   }, [initializing]);
 
-  const signInWithGoogle = () => {
-      GoogleSignin.hasPlayServices()
-        .then(() => {
-          return GoogleSignin.signIn();
-        })
-        .then(userInfo => {
-          const { idToken } = userInfo;
-          if (!idToken) {
-            throw new Error("Google Sign-In failed: No ID token received.");
-          }
-          console.log("Google User Info:", idToken);
+  const signInWithPhoneNumber = async (phoneNumber) => {
+    try {
+    const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+    setConfirm(confirmation);
+    } catch (error) {
+      console.log("Message Error", error.message)
+    }
+  }
 
-          const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-          return auth().signInWithCredential(googleCredential);
-        })
+  const confirmCode = async () => {
+    try {
+      await confirm.confirm(code);
+    } catch (error) {
+      console.log('Invalid code.');
+    }
+  }
 
-      .catch (error =>{
-        if (error.code === 'auth/network-request-failed') {
-          console.error("Network error occured during sigin", error.message)
-        }
-        else {
-          console.error("Google sign-in error:", error.message);
-        }
-      });
+
+  const signUpWithGoogle = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      const { idToken } = userInfo;
+
+      if (!idToken) {
+        throw new Error("Google Sign-In failed: No ID token received.");
+      }
+
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      const userCredential = await auth().signInWithCredential(googleCredential);
+
+      if (userCredential.additionalUserInfo.isNewUser) {
+        console.log("New user created in Firebase Auth.");
+      } else {
+        console.log("User already exists in Firebase Auth.");
+      }
+    } catch (error) {
+      handleSignInError(error);
+    }
+  };
+
+  const handleSignInError = (error) => {
+    if (error.code === 'auth/network-request-failed') {
+      console.error("Network error occurred during sign-in:", error.message);
+    } else if (error.code === 'auth/popup-closed-by-user') {
+      console.error("Sign-in popup was closed by the user:", error.message);
+    } else if (error.code === 'auth/cancelled-popup-request') {
+      console.error("Sign-in popup was cancelled:", error.message);
+    } else {
+      console.error("Google sign-in error:", error.message);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      const { idToken } = userInfo;
+
+      if (!idToken) {
+        throw new Error("Google Sign-In failed: No ID token received.");
+      }
+
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      const userCredential = await auth().signInWithCredential(googleCredential);
+
+      if (!userCredential.user) {
+        throw new Error("User does not exist.");
+      }
+
+      console.log("User signed in successfully.");
+    } catch (error) {
+      handleSignInError(error);
+    }
   };
 
   const logout = async () => {
@@ -62,7 +113,10 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         user,
-        signInWithGoogle,
+        signUpWithGoogle,
+          signInWithGoogle,
+          signInWithPhoneNumber,
+          confirmCode,
         logout,
       }}
     >
@@ -74,3 +128,4 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
+

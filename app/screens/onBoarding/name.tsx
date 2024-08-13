@@ -4,10 +4,13 @@ import { Link, router, Stack } from "expo-router";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../../features/userData/userDataSlice";
 import { StatusBar } from "expo-status-bar";
+import { useAuth } from "../../../utils/AuthContext";
+
 
 export default function SignUpIndex() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const { signUpWithGoogle } = useAuth();
 
   const handleNameChange = (newName: string) => {
     setName(newName);
@@ -24,6 +27,15 @@ export default function SignUpIndex() {
     // Navigate to the next screen (e.g., using navigation library)
     router.push("./phoneNumber");
   };
+
+
+const handleGoogleSignUp = async () => {
+    try {
+      await signUpWithGoogle();
+      router.push("./phoneNumber");
+    } catch (error) {
+      console.error("Google Sign-Up failed:", error.message)};}
+
   return (
     <View className="bg-white h-full w-full px-5">
       <Stack.Screen
@@ -55,7 +67,9 @@ export default function SignUpIndex() {
         <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
           Or
         </Text>
-        <Pressable className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]">
+        <Pressable
+          onPress={handleGoogleSignUp}
+          className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]">
           <Image
             className="h-5 w-5"
             source={require("../../../assets/images/googleLogo.png")}

@@ -10,13 +10,27 @@ import { useAuth } from "../../../utils/AuthContext";
 export default function LoginIndex() {
   function handleLoginIndex(text: string): void {}
   const dispatch = useDispatch();
-  const [Number, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, signInWithPhoneNumber } = useAuth();
 
-  const handleNameChange = (newName: string) => {
-    setName(newName);
+  const handlephoneChange = (phone: string) => {
+    setPhoneNumber(phone);
   };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithGoogle(Name);
+      router.push("./login_OTP");
+    } catch (error) {
+      console.error("Google Log-in failed:", error.message)};}
+
+  const handlePhoneNumber = async () => {
+    try {
+      await signInWithPhoneNumber(phoneNumber);
+      router.push("./login_OTP");
+    } catch (error) {
+      console.error("Message Error", error.message)};}
 
   const handleNextScreen = () => {
     // Dispatch the name to the store
@@ -45,13 +59,13 @@ export default function LoginIndex() {
       <TextInput
         className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
         placeholder="07......"
-        onChangeText={handleNameChange}
-        keyboardType="numeric"
+        onChangeText={handlephoneChange}
+        keyboardType="default"
         // defaultValue={text}
       />
       <View className="items-center">
         <Pressable
-          onPress={() => router.push("./login_OTP")}
+          onPress={handlePhoneNumber}
           className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]"
         >
           <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
@@ -62,7 +76,7 @@ export default function LoginIndex() {
           Or
         </Text>
         <Pressable
-          onPress={signInWithGoogle}
+          onPress={handleGoogleLogin}
           className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]">
           <Image
             className="h-5 w-5"
