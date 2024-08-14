@@ -2,6 +2,7 @@
   "expo": {
     "name": "SwiftRide",
     "slug": "frontend_playground",
+
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -17,6 +18,7 @@
       "bundleIdentifier": "SwiftRide"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,10 +38,14 @@
         "origin": false
       },
       "eas": {
-        "projectId": "89be462b-4772-4154-8777-33892cd8c3e2"
+        "projectId": "f7e0752a-89e9-4f1c-a5d7-b9ba15fc00fe"
       }
     },
     "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/crashlytics",
+      "@react-native-google-signin/google-signin",
       "expo-router",
       [
         "@rnmapbox/maps",

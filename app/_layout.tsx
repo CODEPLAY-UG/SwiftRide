@@ -14,7 +14,8 @@ import { Provider } from "react-redux";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { NativeWindStyleSheet } from "nativewind";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { View } from "react-native";
+
+import { AuthProvider } from "../utils/AuthContext";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -63,21 +64,28 @@ export default function RootLayout() {
 
   return (
     <Provider store={store}>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              animation: "slide_from_right",
-              animationDuration: 1000,
-            }}
+      <AuthProvider>
+        <ThemeProvider
+          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+        >
+          <GestureHandlerRootView
+            style={{ flex: 1 }}
+            onLayout={onLayoutRootView}
           >
-            <Stack.Screen name="index" options={{}} />
-            <Stack.Screen name="screens/onBoarding" options={{}} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-        </GestureHandlerRootView>
-      </ThemeProvider>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                animation: "slide_from_right",
+                animationDuration: 1000,
+              }}
+            >
+              <Stack.Screen name="index" options={{}} />
+              <Stack.Screen name="screens/onBoarding" options={{}} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </GestureHandlerRootView>
+        </ThemeProvider>
+      </AuthProvider>
     </Provider>
   );
 }
