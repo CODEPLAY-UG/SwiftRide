@@ -20,8 +20,8 @@ export default function LoginIndex() {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithGoogle(Name);
-      router.push("./login_OTP");
+      await signInWithGoogle();
+      router.push("../home");
     } catch (error) {
       console.error("Google Log-in failed:", error.message)};}
 

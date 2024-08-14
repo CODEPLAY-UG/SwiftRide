@@ -22,6 +22,5 @@ expo-env.d.ts
 .md
 android
 
-package-lock.json
-tsconfig.json
+
 

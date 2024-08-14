@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SwiftRide",
-    "slug": "frontend_playground",
+    "slug": "swiftride",
 
     "version": "1.0.0",
     "orientation": "portrait",
@@ -46,6 +46,7 @@
       "@react-native-firebase/auth",
       "@react-native-firebase/crashlytics",
       "@react-native-google-signin/google-signin",
+      "expo-google-sign-in",
       "expo-router",
       [
         "@rnmapbox/maps",
