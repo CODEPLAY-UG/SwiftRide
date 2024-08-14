@@ -177,7 +177,7 @@ const MapContent = ({
       />
       <View className="h-full w-full">
         <Mapbox.MapView
-          styleURL="mapbox://styles/mapbox/dark-v11"
+          // styleURL="mapbox://styles/mapbox/dark-v11"
           scaleBarEnabled={false}
           compassEnabled={true}
           compassViewPosition={3}
