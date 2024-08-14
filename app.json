@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SwiftRide",
-    "slug": "swiftride",
+    "slug": "frontend_playground",
 
     "version": "1.0.0",
     "orientation": "portrait",
@@ -38,7 +38,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "f7e0752a-89e9-4f1c-a5d7-b9ba15fc00fe"
+        "projectId": "89be462b-4772-4154-8777-33892cd8c3e2"
       }
     },
     "plugins": [
@@ -46,7 +46,6 @@
       "@react-native-firebase/auth",
       "@react-native-firebase/crashlytics",
       "@react-native-google-signin/google-signin",
-      "expo-google-sign-in",
       "expo-router",
       [
         "@rnmapbox/maps",
