@@ -1,38 +1,32 @@
 [
   {
-    "bike_id": 1,
-    "latitude": 0.391764,
-    "longitude": 32.866883,
-    "place_name": "Lugazi University"
+    "place_id": 1,
+    "latitude": 0.392778,
+    "longitude": 32.860556,
+    "place_name": "Kisoga Road Junction"
   },
   {
-    "bike_id": 2,
-    "latitude": 0.394127,
-    "longitude": 32.857874,
-    "place_name": "Lugazi Sugar Factory"
+    "place_id": 2,
+    "latitude": 0.393889,
+    "longitude": 32.861389,
+    "place_name": "Kisoga Town Hall"
   },
   {
-    "bike_id": 3,
-    "latitude": 0.3973,
-    "longitude": 32.8614,
-    "place_name": "Lugazi Central Market"
+    "place_id": 3,
+    "latitude": 0.392222,
+    "longitude": 32.860833,
+    "place_name": "Kisoga Market"
   },
   {
-    "bike_id": 4,
-    "latitude": 0.392841,
-    "longitude": 32.862175,
-    "place_name": "Lugazi Hospital"
+    "place_id": 4,
+    "latitude": 0.393333,
+    "longitude": 32.861111,
+    "place_name": "Kisoga Police Post"
   },
   {
-    "bike_id": 5,
-    "latitude": 0.396519,
-    "longitude": 32.863611,
-    "place_name": "St. Joseph's Cathedral"
-  },
-  {
-    "bike_id": 6,
-    "latitude": 0.395001,
-    "longitude": 32.859673,
-    "place_name": "Lugazi Community Centre"
+    "place_id": 5,
+    "latitude": 0.3925,
+    "longitude": 32.860278,
+    "place_name": "Kisoga Health Clinic"
   }
 ]

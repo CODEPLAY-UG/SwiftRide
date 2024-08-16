@@ -3,6 +3,7 @@ import Mapbox, {
   Camera,
   CircleLayer,
   Images,
+  LineLayer,
   LocationPuck,
   PointAnnotation,
   ShapeSource,
@@ -35,10 +36,11 @@ import {
   NavigationProp,
   useNavigation,
 } from "@react-navigation/native";
+import routeResponse from "@data/route.json";
+import { getDirections } from "@/services/directions";
+import { OnPressEvent } from "@rnmapbox/maps/lib/typescript/src/types/OnPressEvent";
 
-Mapbox.setAccessToken(
-  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHp0YzQyNGwwdmZ1MmtzOWxpeThlc29iIn0.kAEI1rycCIBvS2kDEWcLhA"
-);
+Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_KEY || "");
 
 export default function MapboxComponent() {
   const [location, setLocation] = useState<Location.LocationObject | null>(
@@ -49,6 +51,19 @@ export default function MapboxComponent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const rideSheetRef = useRef<BottomSheet>(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
 
   const snapPoints = ["40%"];
 
@@ -64,19 +79,6 @@ export default function MapboxComponent() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
 
   if (!location) {
     return (
@@ -160,11 +162,35 @@ const MapContent = ({
       </View>
     );
   };
+  const [currentLocation, setCurrentLocation] = useState({
+    latitude: 0.433333,
+    longitude: 32.733333,
+  });
 
   const points = bikes.map((bike) => point([bike.longitude, bike.latitude]));
+  const [direction, setDirection] = useState();
+  const directionCoordinate = direction?.routes?.[0]?.geometry.coordinates;
+
+  const onPointPress = async (event: OnPressEvent) => {
+    // handleRideDetailsPress(0);
+    // console.log(event);
+    const newDirection = await getDirections(
+      [location?.coords.longitude, location?.coords.latitude],
+      [event.coordinates.longitude, event.coordinates.latitude]
+    );
+    setDirection(newDirection);
+  };
+
+  const handlePress = () => {
+    console.log(
+      `Current location: ${currentLocation.latitude}, ${currentLocation.longitude}`
+    );
+  };
 
   const pin = require("@assets/images/pin.png");
   const navigation = useNavigation();
+
+  const mapRef = useRef(null);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -177,7 +203,8 @@ const MapContent = ({
       />
       <View className="h-full w-full">
         <Mapbox.MapView
-          // styleURL="mapbox://styles/mapbox/dark-v11"
+          styleURL="mapbox://styles/mapbox/dark-v11"
+          ref={mapRef}
           scaleBarEnabled={false}
           compassEnabled={true}
           compassViewPosition={3}
@@ -189,13 +216,20 @@ const MapContent = ({
           {location && (
             <>
               <Camera
-                centerCoordinate={[
-                  location.coords.longitude,
-                  location.coords.latitude,
-                ]}
+                // centerCoordinate={[
+                //   location.coords.longitude,
+                //   location.coords.latitude,
+                // ]}
+                centerCoordinate={[32.583333, 0.316667]} // Centenary Park, Uganda
+                // centerCoordinate={
+                //   location
+                //     ? [location.coords.longitude, location.coords.latitude]
+                //     : [32.583333, 0.316667]
+                // }
                 zoomLevel={16}
                 followZoomLevel={15}
-                followUserLocation
+                // followUserLocation
+                followUserLocation={location !== null ? true : false} // only follow user location if it's available
                 animationDuration={5000}
               />
               <UserLocation
@@ -210,7 +244,7 @@ const MapContent = ({
                 puckBearing="heading"
               />
               <ShapeSource
-                onPress={() => handleRideDetailsPress(0)}
+                onPress={onPointPress}
                 id="bikes"
                 cluster
                 shape={featureCollection(points)}
@@ -222,11 +256,11 @@ const MapContent = ({
                     iconImage: "pin",
                     iconAllowOverlap: true,
                     iconSize: 0.4,
-                    // iconKeepUpright: true,
+                    iconKeepUpright: true,
                     iconAnchor: "bottom",
                   }}
                 />
-                {/* <SymbolLayer
+                <SymbolLayer
                   id="pointCount"
                   style={{
                     textField: ["get", "point_count"],
@@ -234,7 +268,7 @@ const MapContent = ({
                     textColor: "#ffffff",
                     textPitchAlignment: "map",
                   }}
-                /> */}
+                />
                 <CircleLayer
                   id="clusters"
                   belowLayerID="pointCount"
@@ -250,6 +284,31 @@ const MapContent = ({
                 />
                 <Images images={{ pin }} />
               </ShapeSource>
+              {directionCoordinate && (
+                <ShapeSource
+                  id="routeSource"
+                  lineMetrics
+                  shape={{
+                    properties: {},
+                    type: "Feature",
+                    geometry: {
+                      type: "LineString",
+                      coordinates: directionCoordinate,
+                    },
+                  }}
+                >
+                  <LineLayer
+                    id="exampleLineLayer"
+                    style={{
+                      lineColor: "#ffd700",
+                      lineCap: "round",
+                      lineJoin: "round",
+                      lineWidth: 7,
+                      // lineDasharray: [0, 4, 3],
+                    }}
+                  />
+                </ShapeSource>
+              )}
             </>
           )}
         </Mapbox.MapView>

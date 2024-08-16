@@ -11,7 +11,6 @@ import {
 import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  CalendarPlus,
   Hop,
   MapPin,
   MapPinned,
@@ -27,16 +26,7 @@ import { ProgressBar, MD3Colors } from "react-native-paper";
 import addresses from "@data/address.json";
 import BikeType from "@/components/core/BikeType";
 import ChevronLeft from "@/assets/svgs/chevronLeft";
-
-const BottomSheetHeader = ({ title }: { title: string }) => {
-  return (
-    <View className="items-center justify-center border-b-[1px] p-1 border-b-[#f0f0f0]">
-      <Text className="text-[17px] text-[#242424] py-2 font-[600] leading-[22px] tracking-[-0.43px]">
-        {title}
-      </Text>
-    </View>
-  );
-};
+import CalendarPlus from "@/assets/svgs/calendarPlus";
 
 export default function Index() {
   const [isAddress, setIsAddress] = useState(false);
@@ -72,7 +62,15 @@ export default function Index() {
               <ChevronLeft stroke={"#616161"} width={24} height={24} />
             </TouchableOpacity>
           ),
-          headerRight: () => <CalendarPlus color="#808080" size={24} />,
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              activeOpacity={0.9}
+              className="mr-5"
+            >
+              <CalendarPlus color="#808080" width={24} height={24} />
+            </TouchableOpacity>
+          ),
         }}
       />
       <View className="flex-row space-x-2 px-4 mb-3">
@@ -127,7 +125,8 @@ export default function Index() {
                   onPress={() => {
                     setIsAddress(true);
                   }}
-                  key={index}>
+                  key={index}
+                >
                   <View className="flex-row justify-between items-center mt-3">
                     <View className="mx-6 flex-row items-center">
                       <MapPin color="#808080" size={24} />
@@ -166,7 +165,8 @@ export default function Index() {
                       setIsAddress(true);
                     }}
                     // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
-                    className="mt-[56px] bg-[#636363] h-[45px] items-center justify-center rounded-[99px]">
+                    className="mt-[56px] bg-[#636363] h-[45px] items-center justify-center rounded-[99px]"
+                  >
                     <Text className="text-white font-[400] text-[17px]">
                       Confirm destination
                     </Text>
@@ -221,7 +221,8 @@ export default function Index() {
           animationType="slide"
           transparent={true}
           visible={true}
-          onRequestClose={() => setIsAddress(false)}>
+          onRequestClose={() => setIsAddress(false)}
+        >
           <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
             <View style={styles.overlay}>
               <View style={styles.menuContainer}>
