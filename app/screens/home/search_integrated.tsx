@@ -27,6 +27,7 @@ import addresses from "@data/address.json";
 import BikeType from "@/components/core/BikeType";
 import ChevronLeft from "@/assets/svgs/chevronLeft";
 import CalendarPlus from "@/assets/svgs/calendarPlus";
+// import Mapbox, { SearchBox } from "@rnmapbox/maps";
 
 export default function Index() {
   const [isAddress, setIsAddress] = useState(false);
@@ -209,6 +210,15 @@ export default function Index() {
               >
                 <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
                   Place order
+                </Text>
+              </Pressable>
+              <Pressable
+                onPress={() => router.push("./mapTest")}
+                className="mt-[22px] bg-[#636363] w-[330px] h-[45px] items-center justify-center rounded-[99px]"
+                // className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
+              >
+                <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
+                  Map search
                 </Text>
               </Pressable>
             </View>

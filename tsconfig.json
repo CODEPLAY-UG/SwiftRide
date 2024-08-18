@@ -6,6 +6,7 @@
       "@/*": ["./*"],
       "@assets/*": ["./assets/*"],
       "@env/*": ["./env/*"],
+      "@services/*": ["./services/*"],
       "@components/*": ["./components/*"],
       "@data/*": ["./data/*"],
       "@screens/*": ["./app/screens*"]
