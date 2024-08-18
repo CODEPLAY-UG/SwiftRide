@@ -50,14 +50,14 @@ const MapSearchBox = () => {
         value={text}
         onChangeText={handleTextChange}
         placeholder="Search for a location"
-        className="px-2 my-2 py-1 h-fit bg-[#f8f9fa] mx-2 border border-[#0d1b2a] rounded-md"
+        className="px-2 py-1 h-fit bg-[#f8f9fa] mx-2 border border-[#0d1b2a] rounded-md"
       />
       {isTyping && (
         <FlatList
           data={locationSuggestions}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => handleSuggestionPress(item)}>
-              <View className="space-y-2 mx-2">
+              <View className="py-1 mx-2">
                 <Text style={{ color: "#616161" }}>{item.name}</Text>
                 <Text style={{ color: "#616161" }}>{item.place_formatted}</Text>
               </View>
