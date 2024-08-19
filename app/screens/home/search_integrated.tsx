@@ -21,7 +21,7 @@ import {
   X,
 } from "lucide-react-native";
 import { Link, router, Stack } from "expo-router";
-import SearchComponent from "@/components/core/Search1";
+import SearchComponent from "@/components/core/search1";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { ProgressBar, MD3Colors } from "react-native-paper";
 import addresses from "@data/address.json";

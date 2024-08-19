@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import axios from 'axios';
 
 GoogleSignin.configure({
   webClientId: "410955658021-gnspqi8tjb2c0m2p448vjl0m03ei4t0g.apps.googleusercontent.com",
@@ -14,10 +15,10 @@ export const AuthProvider = ({ children }) => {
   const [confirm, setConfirm] = useState(null);
   const [code, setCode] = useState('');
 
-  function onAuthStateChanged(user) {
+  const onAuthStateChanged = (user) => {
     setUser(user);
     if (initializing) setInitializing(false);
-  }
+  };
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
@@ -26,21 +27,20 @@ export const AuthProvider = ({ children }) => {
 
   const signInWithPhoneNumber = async (phoneNumber) => {
     try {
-    const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
-    setConfirm(confirmation);
+      const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+      setConfirm(confirmation);
     } catch (error) {
-      console.log("Message Error", error.message)
+      console.error("Phone Sign-In Error:", error.message);
     }
-  }
+  };
 
   const confirmCode = async () => {
     try {
       await confirm.confirm(code);
     } catch (error) {
-      console.log('Invalid code.');
+      console.error("Invalid code:", error.message);
     }
-  }
-
+  };
 
   const signUpWithGoogle = async () => {
     try {
@@ -55,8 +55,27 @@ export const AuthProvider = ({ children }) => {
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       const userCredential = await auth().signInWithCredential(googleCredential);
 
+      const firebaseToken = await userCredential.user.getIdToken();
+      const firebaseUID = userCredential.user.uid;
+
       if (userCredential.additionalUserInfo.isNewUser) {
         console.log("New user created in Firebase Auth.");
+
+        try {
+          const response = await axios.post('http://192.168.0.1:8000/auth/create_user/', {
+            uid: firebaseUID,
+            username: userCredential.user.displayName,
+            email: userCredential.user.email,
+          }, {
+            headers: {
+              Authorization: `Bearer ${firebaseToken}`,
+            },
+          });
+
+          console.log("Server response:", response.data);
+        } catch (serverError) {
+          console.error("Error sending data to server:", serverError.message);
+        }
       } else {
         console.log("User already exists in Firebase Auth.");
       }
@@ -114,9 +133,9 @@ export const AuthProvider = ({ children }) => {
       value={{
         user,
         signUpWithGoogle,
-          signInWithGoogle,
-          signInWithPhoneNumber,
-          confirmCode,
+        signInWithGoogle,
+        signInWithPhoneNumber,
+        confirmCode,
         logout,
       }}
     >
