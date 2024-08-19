@@ -1,8 +1,10 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { ChevronRight } from "lucide-react-native";
 import BikeIcon from "@/assets/svg/BikeIcon";
+import PendingIcon from "@/assets/svg/PendingIcon";
+import CancelledIcon from "@/assets/svg/CancelledIcon";
 
 export default function Ride() {
   const [selectedView, setSelectedView] = useState<"trips" | "timeline">(
@@ -69,8 +71,47 @@ export default function Ride() {
       <View>
         {selectedView === "trips" ? (
           <View className="px-4">
-            <TouchableOpacity className="flex-row space-x-4 px-4">
+            <TouchableOpacity
+              className="flex-row space-x-4 px-4 py-3"
+              onPress={() => router.push("/screens/tasks/team3/ridedetails")}
+            >
               <BikeIcon />
+              <View className="flex-1">
+                <Text className="text-[#242424] text-[17px] leading-[22px] tracking-[0.43px]">
+                  Destination
+                </Text>
+                <Text className="text-[#616161] text-[15px] leading-5 tracking-[0.23px]">
+                  date,time
+                </Text>
+                <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[0.08px]">
+                  (fare)
+                </Text>
+              </View>
+              <View className="justify-center">
+                <ChevronRight size={20} color="#808080" />
+              </View>
+            </TouchableOpacity>
+            {/*display for pending  */}
+            <TouchableOpacity className="flex-row space-x-4 px-4 py-3">
+              <PendingIcon />
+              <View className="flex-1">
+                <Text className="text-[#242424] text-[17px] leading-[22px] tracking-[0.43px]">
+                  Destination
+                </Text>
+                <Text className="text-[#616161] text-[15px] leading-5 tracking-[0.23px]">
+                  date,time
+                </Text>
+                <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[0.08px]">
+                  (fare)
+                </Text>
+              </View>
+              <View className="justify-center">
+                <ChevronRight size={20} color="#808080" />
+              </View>
+            </TouchableOpacity>
+            {/*display for cancelled */}
+            <TouchableOpacity className="flex-row space-x-4 px-4 py-3">
+              <CancelledIcon />
               <View className="flex-1">
                 <Text className="text-[#242424] text-[17px] leading-[22px] tracking-[0.43px]">
                   Destination
