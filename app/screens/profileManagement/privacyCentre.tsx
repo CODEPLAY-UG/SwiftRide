@@ -1,6 +1,6 @@
-import { View, Text,  TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import {router, Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 
 import ArrowIcon from "@/assets/svgs/arrowIcon";
 import ShapesIcon from "@/assets/svgs/shapesIcon";
@@ -30,7 +30,7 @@ export default function Privacy() {
       <View className="-mt-9">
         <TouchableOpacity onPress={() => router.push("./dataTracking")} className="">
           <View className="py-3">
-            <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-4 justify-between flex-row items-center px-5">
               <View className="flex-row -mx-3 items-center">
                 <ShapesIcon />
                 <View className="mx-3">
@@ -45,7 +45,7 @@ export default function Privacy() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push("./deviceLocation")} className="">
-          <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+          <View className="gap-[24px] mt-1 justify-between flex-row items-center px-5">
             <View className="flex-row items-center">
               <MapPinIcon />
               <View className="mx-4">
@@ -60,12 +60,12 @@ export default function Privacy() {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push("./liveLocation")} className="">
-          <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5 ">
+          <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5">
             <View className="flex-row items-center">
               <RadioIcon />
-              <View className="mx-4">
+              <View className="mx-3">
                 <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Live location</Text>
-                <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">How we share your location in real-time{"\n"}withothers</Text>
+                <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">How we share your location in real-time{"\n"}with others</Text>
               </View>
             </View>
             <View className="">

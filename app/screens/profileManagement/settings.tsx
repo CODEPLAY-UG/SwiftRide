@@ -18,7 +18,7 @@ export default function settings() {
       <Stack.Screen
         options={{
           headerShown: true,
-          title: "settings",
+          title: "Settings",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontSize: 17, // Adjust the font size
@@ -28,7 +28,7 @@ export default function settings() {
       />
       <View className="-mt-9">
         <View className="py-3">
-          <View className=" gap-[24px] mt-2 justify-between flex-row items-center px-5">
+          <View className=" gap-[24px] mt-4 justify-between flex-row items-center px-5">
             <View className="flex-row -mx-3 items-center">
               <BellIcon />
               <View className="mx-3">
@@ -43,7 +43,7 @@ export default function settings() {
         </View>
 
         <TouchableOpacity onPress={() => router.push("./privacyCentre")} className="">
-          <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+          <View className="gap-[24px] mt-1 justify-between flex-row items-center px-5">
             <View className="flex-row -mx-3 items-center">
               <RockIcon />
               <View className="mx-3">
@@ -59,7 +59,7 @@ export default function settings() {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push("./appearance")} className="">
-          <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5 ">
+          <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5 ">
             <View className="flex-row -mx-3 items-center">
               <SunIcon />
               <View className="mx-3">
@@ -75,7 +75,7 @@ export default function settings() {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push("./communication")} className="">
-          <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5 ">
+          <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5 ">
             <View className="flex-row -mx-3 items-center">
               <CallIcon />
               <View className="mx-3">

@@ -130,7 +130,7 @@ export default function Profile() {
               <View className="flex-row -mx-3 items-center">
                 <ShieldIcon />
                 <View className="mx-3">
-                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]"> Safety & supportk</Text>
+                  <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]"> Safety & support</Text>
                 </View>
               </View>
               <View className="">
