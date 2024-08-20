@@ -78,7 +78,7 @@ export default function settings() {
           <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5 ">
             <View className="flex-row -mx-3 items-center">
               <CallIcon />
-              <View className="mx-3">
+              <View className="mx-2">
                 <Text className="text-[#242424] h-[22px] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Communication</Text>
                 <Text className=" text-[#616161] h-[18px] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">Choose your preferred contact methods</Text>
               </View>
