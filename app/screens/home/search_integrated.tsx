@@ -23,27 +23,24 @@ import { Link, router, Stack } from "expo-router";
 import SearchComponent from "@/components/core/Search1";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { ProgressBar, MD3Colors } from "react-native-paper";
-import addresses from "@data/address.json";
 import BikeType from "@/components/core/BikeType";
 import ChevronLeft from "@/assets/svgs/chevronLeft";
 import CalendarPlus from "@/assets/svgs/calendarPlus";
-// import Mapbox, { SearchBox } from "@rnmapbox/maps";
+
+interface LocationSuggestion {
+  name: string;
+  place_formatted: string;
+  distance: number;
+  // Add other properties as needed
+}
 
 export default function Index() {
   const [isAddress, setIsAddress] = useState(false);
-  const [text, setText] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredAddresses = addresses.filter(
-    (item) =>
-      item.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.subtext.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.road.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.city.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const [searchQuery, setSearchQuery] = useState("");
+  const [locationSuggestions, setLocationSuggestions] = useState<
+    LocationSuggestion[]
+  >([]);
 
   const rideSheetRef = useRef<BottomSheet>(null);
 
@@ -58,8 +55,7 @@ export default function Index() {
             <TouchableOpacity
               onPress={() => router.back()}
               activeOpacity={0.9}
-              className="ml-4"
-            >
+              className="ml-4">
               <ChevronLeft stroke={"#616161"} width={24} height={24} />
             </TouchableOpacity>
           ),
@@ -67,8 +63,7 @@ export default function Index() {
             <TouchableOpacity
               onPress={() => router.back()}
               activeOpacity={0.9}
-              className="mr-5"
-            >
+              className="mr-5">
               <CalendarPlus color="#808080" width={24} height={24} />
             </TouchableOpacity>
           ),
@@ -84,7 +79,8 @@ export default function Index() {
       <View>
         <SearchComponent
           setIsTyping={setIsTyping}
-          setSearchQuery={setSearchQuery}
+          setLocationSuggestions={setLocationSuggestions}
+          // setSearchQuery={setSearchQuery}
           placeholder="Destination"
         />
       </View>
@@ -92,7 +88,7 @@ export default function Index() {
         <View className="mt-2">
           <ProgressBar indeterminate color="#636363" className="h-[1px]" />
 
-          {filteredAddresses.length == 0 ? (
+          {locationSuggestions.length == 0 ? (
             <>
               <View className="mx-6 flex-row justify-between items-center mt-3">
                 <View className="flex-row items-center">
@@ -121,22 +117,21 @@ export default function Index() {
             </>
           ) : (
             <View>
-              {filteredAddresses.slice(0, 2).map((item, index) => (
+              {locationSuggestions.slice(0, 3).map((item, index) => (
                 <Pressable
                   onPress={() => {
                     setIsAddress(true);
                   }}
-                  key={index}
-                >
+                  key={index}>
                   <View className="flex-row justify-between items-center mt-3">
                     <View className="mx-6 flex-row items-center">
                       <MapPin color="#808080" size={24} />
                       <View className="mx-4">
                         <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-                          {item.address}
+                          {item.name}
                         </Text>
                         <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
-                          {item.road}, {item.city}
+                          {item.place_formatted}
                         </Text>
                       </View>
                     </View>
@@ -159,15 +154,14 @@ export default function Index() {
                 </Pressable>
               </View>
 
-              {filteredAddresses.length != 0 ? (
+              {locationSuggestions.length != 0 ? (
                 <View className="px-4">
                   <Pressable
                     onPress={() => {
                       setIsAddress(true);
                     }}
                     // className="bg-[#636363] flex-row justify-center p-5 mx-3 rounded-[99px] mt-10">
-                    className="mt-[56px] bg-[#636363] h-[45px] items-center justify-center rounded-[99px]"
-                  >
+                    className="mt-[56px] bg-[#636363] h-[45px] items-center justify-center rounded-[99px]">
                     <Text className="text-white font-[400] text-[17px]">
                       Confirm destination
                     </Text>
@@ -212,15 +206,6 @@ export default function Index() {
                   Place order
                 </Text>
               </Pressable>
-              <Pressable
-                onPress={() => router.push("./mapTest")}
-                className="mt-[22px] bg-[#636363] w-[330px] h-[45px] items-center justify-center rounded-[99px]"
-                // className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
-              >
-                <Text className="text-center text-white text-[17px] font-semibol leading-[22px] tracking-[-0.43]">
-                  Map search
-                </Text>
-              </Pressable>
             </View>
           </View>
         </View>
@@ -231,8 +216,7 @@ export default function Index() {
           animationType="slide"
           transparent={true}
           visible={true}
-          onRequestClose={() => setIsAddress(false)}
-        >
+          onRequestClose={() => setIsAddress(false)}>
           <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
             <View style={styles.overlay}>
               <View style={styles.menuContainer}>

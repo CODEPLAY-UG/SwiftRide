@@ -4,27 +4,34 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Mic, Search, X } from "lucide-react-native";
 import { Stack } from "expo-router";
 
+import getMapSearches from "@services/mapSearches";
+
 export default function SearchComponent({
   placeholder = "Search",
   setIsTyping,
-  setSearchQuery,
+  setLocationSuggestions,
 }: {
   placeholder?: string;
   setIsTyping: Dispatch<SetStateAction<boolean>>;
-  setSearchQuery: Dispatch<SetStateAction<string>>;
+  setLocationSuggestions: Dispatch<SetStateAction<string[]>>;
 }) {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleTextChange = (input: SetStateAction<string>) => {
+  const handleTextChange = async (input: string) => {
     setText(input);
-    setSearchQuery(input);
     setIsTyping(input.length > 0);
+    if (input.length > 0) {
+      const locationSuggestions = await getMapSearches(input);
+      setLocationSuggestions(locationSuggestions);
+    } else {
+      setLocationSuggestions([]);
+    }
   };
 
   const handleTextClear = () => {
     setText("");
-    setSearchQuery("");
+    setLocationSuggestions([]);
     setIsTyping(0 > 0);
   };
   return (

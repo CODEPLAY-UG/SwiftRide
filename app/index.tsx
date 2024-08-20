@@ -29,7 +29,7 @@ export default function RootIndex() {
         <Text className="text-[#3a1a6c] text-lg uppercase">Go to mapbox</Text>
       </TouchableOpacity> */}
 
-      <Redirect href="/screens/onBoarding" />
+      <Redirect href="/screens/home" />
     </SafeAreaView>
   );
 }
