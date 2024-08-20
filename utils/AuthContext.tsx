@@ -46,14 +46,14 @@ export const AuthProvider = ({ children }) => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      const { idToken } = userInfo;
+      const { idToken } = userInfo; // id token from 0auth
 
       if (!idToken) {
         throw new Error("Google Sign-In failed: No ID token received.");
       }
 
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      const userCredential = await auth().signInWithCredential(googleCredential);
+      const userCredential = await auth().signInWithCredential(googleCredential); // creates firebase credentials
 
       const firebaseToken = await userCredential.user.getIdToken();
       const firebaseUID = userCredential.user.uid;
@@ -62,13 +62,14 @@ export const AuthProvider = ({ children }) => {
         console.log("New user created in Firebase Auth.");
 
         try {
-          const response = await axios.post('http://192.168.0.1:8000/auth/create_user/', {
-            uid: firebaseUID,
-            username: userCredential.user.displayName,
-            email: userCredential.user.email,
+          const response = await axios.post('http://192.168.1.5:8000/auth/create_user/', {
+            "uid": firebaseUID,
+            "username": userCredential.user.displayName,
+            "email": userCredential.user.email,
           }, {
             headers: {
-              Authorization: `Bearer ${firebaseToken}`,
+              "Authorization": `Bearer ${firebaseToken}`,
+              "Content-Type": "application/json"
             },
           });
 
@@ -96,29 +97,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signInWithGoogle = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      const { idToken } = userInfo;
-
-      if (!idToken) {
-        throw new Error("Google Sign-In failed: No ID token received.");
-      }
-
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      const userCredential = await auth().signInWithCredential(googleCredential);
-
-      if (!userCredential.user) {
-        throw new Error("User does not exist.");
-      }
-
-      console.log("User signed in successfully.");
-    } catch (error) {
-      handleSignInError(error);
-    }
-  };
-
   const logout = async () => {
     try {
       await auth().signOut();
@@ -133,7 +111,6 @@ export const AuthProvider = ({ children }) => {
       value={{
         user,
         signUpWithGoogle,
-        signInWithGoogle,
         signInWithPhoneNumber,
         confirmCode,
         logout,
@@ -147,4 +124,3 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
-

@@ -3,8 +3,18 @@ import React from "react";
 import { Stack, Link } from "expo-router";
 import { Info } from "lucide-react-native";
 import { StatusBar } from "expo-status-bar";
+import { useAuth } from "../../../utils/AuthContext";
 
 export default function Otp() {
+  const { confirmCode } = useAuth();
+
+  const handleOtpLogin = async () => {
+    try {
+      await confirmCode();
+      router.push("../home");
+    } catch (error) {
+      console.log("Invalid code", error.message);
+      alert("Invalid Code");}}
   return (
     <View className="bg-white h-full w-full px-5">
       <Stack.Screen
@@ -42,7 +52,9 @@ export default function Otp() {
         </View>
         <View className="flex items-center justify-center w-full">
           <Link href="./location" className="mt-[16px] " asChild>
-            <Pressable className=" bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]">
+            <Pressable
+            onPress={handleOtpLogin}
+            className=" bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]">
               <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
                 Agree and continue
               </Text>

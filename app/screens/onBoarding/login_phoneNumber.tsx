@@ -1,152 +1,102 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
-import auth from "@react-native-firebase/auth";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
-GoogleSignin.configure({
-  webClientId: "410955658021-gnspqi8tjb2c0m2p448vjl0m03ei4t0g.apps.googleusercontent.com",
-});
+import { View, Text, TextInput, Pressable, Image } from "react-native";
+import React, { useState } from "react";
+import { Link, router, Stack } from "expo-router";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../features/userData/userDataSlice";
+import { StatusBar } from "expo-status-bar";
+import { useAuth } from "../../../utils/AuthContext";
 
-export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState(null);
-  const [confirm, setConfirm] = useState(null);
-  const [code, setCode] = useState('');
+export default function LoginIndex() {
+  function handleLoginIndex(text: string): void {}
+  const dispatch = useDispatch();
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  }
+  const { signInWithGoogle, signInWithPhoneNumber } = useAuth();
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return () => subscriber(); // Unsubscribe on unmount
-  }, [initializing]);
+  const handlephoneChange = (phone: string) => {
+    setPhoneNumber(phone);
+  };
 
-  const signInWithPhoneNumber = async (phoneNumber) => {
+  const handleGoogleLogin = async () => {
     try {
-      const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
-      setConfirm(confirmation);
+      await signInWithGoogle();
+      router.push("../home");
     } catch (error) {
-      console.log("Message Error", error.message);
-    }
-  };
+      console.error("Google Log-in failed:", error.message)};}
 
-  const confirmCode = async () => {
+  const handlePhoneNumber = async () => {
     try {
-      await confirm.confirm(code);
+      await signInWithPhoneNumber(phoneNumber);
+      router.push("./login_OTP");
     } catch (error) {
-      console.log('Invalid code.');
-    }
+      console.error("Message Error", error.message)};}
+
+  const handleNextScreen = () => {
+    // Dispatch the name to the store
+    // dispatch(
+    //   setUserData({
+    //     phoneNumber: "",
+    //     name: "",
+    //   })
+    // );
+    // Navigate to the next screen (e.g., using navigation library)
+    router.push("./login_OTP");
   };
-
-  const signUpWithGoogle = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      const { idToken } = userInfo;
-
-      if (!idToken) {
-        throw new Error("Google Sign-In failed: No ID token received.");
-      }
-
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      const userCredential = await auth().signInWithCredential(googleCredential);
-
-      if (userCredential.additionalUserInfo.isNewUser) {
-        alert('User has been created successfully');
-
-        const { id, name, email } = userInfo.user;
-        const uid = userCredential.user.uid;
-
-        console.log("New user created in Firebase Auth.");
-        try {
-          const response = await fetch("http://127.0.0.1:8000/auth/create_user/", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              "username": `${name}`,
-              "email": `${email}`,
-              "uid": `${uid}`
-            }),
-          });
-          const res = await response.json();
-          console.log('Backend response:', res);
-        } catch (error) {
-          console.log('Backend response error:', error);
-        }
-      } else {
-        console.log("User already exists in Firebase Auth.");
-      }
-    } catch (error) {
-      handleSignInError(error);
-    }
-  };
-
-  const handleSignInError = (error) => {
-    if (error.code === 'auth/network-request-failed') {
-      console.error("Network error occurred during sign-in:", error.message);
-    } else if (error.code === 'auth/popup-closed-by-user') {
-      console.error("Sign-in popup was closed by the user:", error.message);
-    } else if (error.code === 'auth/cancelled-popup-request') {
-      console.error("Sign-in popup was cancelled:", error.message);
-    } else {
-      console.error("Google sign-in error:", error.message);
-    }
-  };
-
-  const signInWithGoogle = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      const { idToken } = userInfo;
-
-      if (!idToken) {
-        throw new Error("Google Sign-In failed: No ID token received.");
-      }
-
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      const userCredential = await auth().signInWithCredential(googleCredential);
-
-      if (!userCredential.user) {
-        throw new Error("User does not exist.");
-      }
-
-      console.log("User signed in successfully.");
-    } catch (error) {
-      handleSignInError(error);
-    }
-  };
-
-  const logout = async () => {
-    try {
-      await auth().signOut();
-      await GoogleSignin.signOut(); // Also sign out of Google
-    } catch (error) {
-      console.error("Sign out error:", error);
-    }
-  };
-
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        signUpWithGoogle,
-        signInWithGoogle,
-        signInWithPhoneNumber,
-        confirmCode,
-        logout,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+    <View className="bg-white h-full w-full px-5">
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          title: "Log in",
+          headerTitleAlign: "center",
+        }}
+      />
+      <StatusBar style="dark" />
+      <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
+        Enter your mobile number
+      </Text>
+      <TextInput
+        className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
+        placeholder="07......"
+        onChangeText={handlephoneChange}
+        keyboardType="default"
+        // defaultValue={text}
+      />
+      <View className="items-center">
+        <Pressable
+          onPress={handlePhoneNumber}
+          className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]"
+        >
+          <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+            Continue
+          </Text>
+        </Pressable>
+        <Text className="text-[#242424] py-5 text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+          Or
+        </Text>
+        <Pressable
+          onPress={handleGoogleLogin}
+          className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]">
+          <Image
+            className="h-5 w-5"
+            source={require("../../../assets/images/googleLogo.png")}
+          />
+          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+            Continue with Google
+          </Text>
+        </Pressable>
+        <Pressable className="space-x-3 border border-[#636363] flex-row w-full h-[52px] mt-4  items-center justify-center rounded-[99px]">
+          <Image
+            className="h-5 w-5"
+            source={require("../../../assets/images/appleLogo.png")}
+          />
+          <Text className="text-[#636363] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
+            Continue with Apple
+          </Text>
+        </Pressable>
+      </View>
+    </View>
   );
-};
-
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-
+}

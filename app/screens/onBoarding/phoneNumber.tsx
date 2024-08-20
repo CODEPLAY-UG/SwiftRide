@@ -5,15 +5,24 @@ import { setUserData } from "../../features/userData/userDataSlice";
 import { router, Stack } from "expo-router";
 import { RootState } from "../../store";
 import { StatusBar } from "expo-status-bar";
+import { useAuth } from "../../../utils/AuthContext";
 
 export default function PhoneNumber() {
   const dispatch = useDispatch();
   const name = useSelector((state: RootState) => state.userData.name);
   const [phoneNumber, setPhoneNumber] = useState("");
+  const { signInWithPhoneNumber } = useAuth();
 
   const handlePhoneNumberChange = (newPhoneNumber: string) => {
     setPhoneNumber(newPhoneNumber);
   };
+
+  const handlePhoneNumber = async () => {
+    try {
+      await signInWithPhoneNumber(phoneNumber);
+      router.push("./Otp");
+    } catch (error) {
+      console.error("Message Error", error.message)};}
 
   const handleSaveUserData = () => {
     // Dispatch both name and phone number to the store
@@ -46,10 +55,10 @@ export default function PhoneNumber() {
         placeholder="07...."
         value={phoneNumber}
         onChangeText={handlePhoneNumberChange}
-        keyboardType="numeric"
+        keyboardType="default"
       />
       <Pressable
-        onPress={handleSaveUserData}
+        onPress={handlePhoneNumber}
         className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
       >
         <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
