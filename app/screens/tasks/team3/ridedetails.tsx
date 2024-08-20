@@ -1,11 +1,22 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, TouchableOpacity, Pressable, Modal } from "react-native";
+import React, { useState } from "react";
 import { Stack } from "expo-router";
 import BikeIcon from "@/assets/svg/BikeIcon";
 import ChevronRight from "@/assets/svg/ChevronRight";
 import RatingIcon from "@/assets/svg/RatingIcon";
+import DownloadIcon from "@/assets/svg/DownloadIcon";
+import ShareIcon from "@/assets/svg/ShareIcon";
 
 export default function RideDetails() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const openModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+  };
   return (
     <View className="bg-white h-full">
       <Stack.Screen
@@ -79,7 +90,7 @@ export default function RideDetails() {
             <ChevronRight />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity className="flex-row py-3">
+        <TouchableOpacity className="flex-row py-3" onPress={openModal}>
           <Text className="flex-1 text-[17px] leading-[22px]tracking-[0.43px]">
             Receipt
           </Text>
@@ -88,6 +99,43 @@ export default function RideDetails() {
           </View>
         </TouchableOpacity>
       </View>
+      {/* modal */}
+      <Modal
+        visible={isModalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={closeModal}
+      >
+        <TouchableOpacity className="flex-1" onPress={closeModal}>
+          <View className="h-[316px] mt-auto bg-[#FFFFFF] rounded-3xl shadow-2xl">
+            <TouchableOpacity activeOpacity={1}>
+              <View className="justify-center items-center h-[52px]">
+                <Text className="font-semibold text-[20px] leading-[25px] tracking-[-0.45px]">
+                  Receipt
+                </Text>
+              </View>
+
+              <View className="px-4 pt-6">
+                <Pressable className="bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px] flex-row">
+                  <DownloadIcon />
+                  <Text className="text-[#FFFFFF] text-[17px] font-semibold leading-[22px] tracking-[-0.43px] pl-2">
+                    Download
+                  </Text>
+                </Pressable>
+              </View>
+              <View className="px-4 pt-3">
+                <Pressable className="bg-[#F0F0F0] w-full h-[52px] items-center justify-center rounded-[99px] flex-row">
+                  <ShareIcon />
+                  <Text className="text-[#636363] text-[17px] font-semibold leading-[22px] tracking-[-0.43px] pl-2">
+                    Share
+                  </Text>
+                </Pressable>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
+      {/* modal */}
     </View>
   );
 }
