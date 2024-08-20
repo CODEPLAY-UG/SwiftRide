@@ -30,7 +30,7 @@ export default function Privacy() {
       <View className="-mt-9">
         <TouchableOpacity onPress={() => router.push("./dataTracking")} className="">
           <View className="py-3">
-            <View className="gap-[24px] mt-4 justify-between flex-row items-center px-5">
+            <View className="gap-[24px] mt-3 justify-between flex-row items-center px-5">
               <View className="flex-row -mx-3 items-center">
                 <ShapesIcon />
                 <View className="mx-3">
