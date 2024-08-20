@@ -25,9 +25,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeft, Bike, Menu } from "lucide-react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import MenuContent from "@components/core/MenuContent";
-import { featureCollection } from "@turf/helpers";
+import { featureCollection, points } from "@turf/helpers";
 import { point } from "@turf/helpers";
-import bikes from "@data/bikes.json";
+// import bikes from "@data/bikes.json";
 import { UserLocation } from "@rnmapbox/maps";
 import TripSummary from "@/components/core/TripSummary";
 import PaymentMode from "@/components/core/PaymentMode";
@@ -153,9 +153,9 @@ const MapContent = ({
     );
   };
 
-  const points = bikes.map((bike: { longitude: number; latitude: number }) =>
-    point([bike.longitude, bike.latitude])
-  );
+  // const points = bikes.map((bike: { longitude: number; latitude: number }) =>
+  //   point([bike.longitude, bike.latitude])
+  // );
 
   const pin = require("@assets/images/pin.png");
   const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
