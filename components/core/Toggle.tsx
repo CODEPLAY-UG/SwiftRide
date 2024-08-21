@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Animated,
   Easing,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface Props {
   onColor?: string;
@@ -14,7 +15,6 @@ interface Props {
   label?: string;
   onToggle: () => void;
   style?: object;
-  isOn: boolean;
   labelStyle?: object;
 }
 
@@ -24,10 +24,24 @@ const Toggle: React.FC<Props> = ({
   label = "",
   onToggle,
   style = {},
-  isOn = false,
   labelStyle = {},
 }) => {
+  const [isOn, setIsOn] = useState(false);
   const animatedValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const loadToggleState = async () => {
+      try {
+        const storedState = await AsyncStorage.getItem("toggleState");
+        if (storedState !== null) {
+          setIsOn(JSON.parse(storedState));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    loadToggleState();
+  }, []);
 
   useEffect(() => {
     animatedValue.setValue(isOn ? 0 : 1);
@@ -40,6 +54,17 @@ const Toggle: React.FC<Props> = ({
     }).start();
   }, [isOn]);
 
+  useEffect(() => {
+    const saveToggleState = async () => {
+      try {
+        await AsyncStorage.setItem("toggleState", JSON.stringify(isOn));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    saveToggleState();
+  }, [isOn]);
+
   const moveToggle = animatedValue.interpolate({
     inputRange: [0, 1],
     outputRange: [2, 23],
@@ -47,11 +72,16 @@ const Toggle: React.FC<Props> = ({
 
   const color = isOn ? onColor : offColor;
 
+  const handleToggle = () => {
+    setIsOn(!isOn);
+    onToggle();
+  };
+
   return (
     <View style={styles.container}>
       {!!label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
 
-      <TouchableOpacity activeOpacity={1} onPress={onToggle}>
+      <TouchableOpacity activeOpacity={1} onPress={handleToggle}>
         <View
           style={[styles.toggleContainer, style, { backgroundColor: color }]}
         >
