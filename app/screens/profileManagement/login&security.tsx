@@ -4,76 +4,70 @@ import { Link, router, Stack, Tabs } from "expo-router";
 import { Button } from "react-native-paper";
 import { Switch } from "react-native-paper";
 import CustomSwitch from "@/CustomSwitch";
+import GoogleIcon from "@/assets/svgs/google";
+import Toggle from "@/components/core/Toggle";
+import AppleIcon from "@/assets/svgs/apple";
 
 export default function Acounts() {
-  const [google, setGoogle] = useState(false);
-  const toggleGoogle = () => {
-    setGoogle((previousState) => !previousState);
+  const [isGoogleOn, setIsGoogleOff] = useState(true);
+  const handleGoogle = () => {
+    setIsGoogleOff((isGoogleOff) => !isGoogleOff);
   };
 
-  const [apple, setApple] = useState(false);
-  const toggleApple = () => {
-    setApple((previousState) => !previousState);
+  const [isAppleOff, setIsAppleOff] = useState(false);
+
+  const handleAppleIcon = () => {
+    setIsAppleOff(isAppleOff);
   };
 
   return (
-    <View className="bg-white h-full w-full px-8">
+    <View className="bg-white h-full w-full">
       <Stack.Screen
         options={{
           headerShown: true,
           title: "Login & security",
           headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: 17, // Adjust the font size
+            fontWeight: "semibold", // Adjust the font weight
+          },
         }}
       />
 
-      <View className="space-y-5 mt-[20px]">
-        <View className="space-y-4">
-          <View className="flex-row justify-between items-center">
-            <View className="">
-              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">
-                Connected accounts
-              </Text>
-            </View>
+      <View className="-mt-9">
+        <View className="py-2">
+          <View className="gap-[24px] mt-3 flex-row items-center py-1 px-5">
+            <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Connected accounts</Text>
           </View>
         </View>
 
-        <View className="flex-row justify-between items-center">
-          <View className="flex-row items-center">
-            <Image
-              className="h-10 w-10"
-              source={require(".../../../assets/images/googleLogo.png")}
-            />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">
-                Google
-              </Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">
-                example@gmail.com
-              </Text>
+        <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+          <View className="flex-row">
+            <View className="mt-3">
+              <GoogleIcon />
+            </View>
+            <View className="mx-3">
+              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Google</Text>
+              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">example@gmail.com</Text>
             </View>
           </View>
-
           <View>
-            <CustomSwitch isEnabled={google} toggleSwitch={setGoogle} />
+            <Toggle onToggle={handleGoogle} isOn={isGoogleOn} />
           </View>
         </View>
-        <View className="flex-row justify-between items-center">
-          <View className="flex-row items-center">
-            <Image
-              className="h-10 w-10"
-              source={require(".../../../assets/images/appleLogo.png")}
-            />
-            <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">
-                Apple
-              </Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">
-                example@gmail.com
-              </Text>
+
+        <View className="gap-[24px] mt-2 justify-between flex-row items-center px-5">
+          <View className="flex-row">
+            <View className="mt-3">
+              <AppleIcon />
+            </View>
+            <View className="mx-3">
+              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Apple</Text>
+              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">example@gmail.com</Text>
             </View>
           </View>
           <View>
-            <CustomSwitch isEnabled={apple} toggleSwitch={setApple} />
+            <Toggle onToggle={handleAppleIcon} isOn={isAppleOff} />
           </View>
         </View>
       </View>

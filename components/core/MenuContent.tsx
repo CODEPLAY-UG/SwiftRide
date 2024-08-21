@@ -49,24 +49,32 @@ export default function MenuContent() {
             Payments
           </Text>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => router.push("/screens/profileManagement/settings")} className="">
         <View className="flex-row space-x-5 items-center">
           <Cog color="#242424" size={20} />
           <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">
             Settings
           </Text>
-        </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/screens/profileManagement/login&Security")} className="">
         <View className="flex-row space-x-5 items-center">
           <ShieldPlus color="#242424" size={20} />
           <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">
             Log in and security
           </Text>
-        </View>
+          </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => router.push("/screens/profileManagement/helpCentre")} className="">
         <View className="flex-row space-x-5 items-center">
           <HeartHandshake color="#242424" size={20} />
           <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">
             Help
           </Text>
-        </View>
+          </View>
+          </TouchableOpacity>
         <View className="flex-row space-x-5 items-center">
           <MessageSquareDot color="#242424" size={20} />
           <Text className="text-[17px] leading-[22px] tracking-[-0.43px]">

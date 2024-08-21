@@ -1,12 +1,11 @@
 // Marker.tsx
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons"; // Using MaterialIcons as an example
 import { Bike } from "lucide-react-native";
 
 const Marker = () => {
   return (
-    <View className="bg-[orange] h-full py-5" style={styles.markerContainer}>
+    <View className="py-2" style={styles.markerContainer}>
       <View style={styles.ellipticalMarker}>
         <View style={styles.ellipseInner}>
           <Bike color="white" size={20} />

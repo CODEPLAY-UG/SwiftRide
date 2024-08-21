@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  TouchableOpacity,
-  GestureResponderEvent,
-} from "react-native";
+import { View, Text, TextInput, Pressable, TouchableOpacity, GestureResponderEvent } from "react-native";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../../features/userData/userDataSlice";
@@ -52,39 +45,26 @@ export default function login() {
       <StatusBar style="dark" />
       <View className="mx-1 py-6">
         <View className="">
-          <Text className="text-[#242424] text-[20px] font-semibold leading-[25px] tracking-tighter[-0.45]">
-            Welcome back (userName)
-          </Text>
+          <View className="">
+            <Text className="text-[#242424] text-[20px] font-semibold leading-[25px] tracking-tighter[-0.45]">Welcome back</Text>
+          </View>
+          <View className="justify-between items-center pl-10 -mt-10">
+            <TextInput className="text-[17px] mt-1 py-2 black font-bold  leading-[22px] tracking-[-0.43px]" value="" placeholder="{userName}" />
+          </View>
         </View>
 
-        <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
-          Enter OTP code
-        </Text>
-        <TextInput
-          className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]"
-          value={phoneNumber}
-          onChangeText={handlePhoneNumberChange}
-          keyboardType="numeric"
-        />
-        <Text className="text-[12px] font-normal leading-[16px] py-[16px]">
-          Code sent via SMS to (number)
-        </Text>
+        <Text className="text-[12px] font-normal leading-[16px] py-[16px]">Enter OTP code</Text>
+        <TextInput className="text-[17px] mt-1 py-2 caret-black font-normal leading-[22px] tracking-[-0.43px] border-b-[1px] border-b-[#D1D1D1]" value={phoneNumber} onChangeText={handlePhoneNumberChange} keyboardType="numeric" />
+        <Text className="text-[12px] font-normal leading-[16px] py-[16px]">Code sent via SMS to (number)</Text>
 
         <View className="">
-          <Pressable
-            onPress={() => router.push("../home")}
-            className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]"
-          >
-            <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-              Continue
-            </Text>
+          <Pressable onPress={() => router.push("../home")} className="bg-[#636363] mt-[56px] w-full h-[52px] items-center justify-center rounded-[99px]">
+            <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">Continue</Text>
           </Pressable>
         </View>
 
         <View className="items-center justify-center">
-          <Text className="text-[#636363] text-[17px] font-semibold leading-[22px] py-[16px]">
-            I did not receive a code
-          </Text>
+          <Text className="text-[#636363] text-[17px] font-semibold leading-[22px] py-[16px]">I did not receive a code</Text>
         </View>
       </View>
     </View>
