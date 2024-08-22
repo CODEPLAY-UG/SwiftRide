@@ -4,7 +4,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Mic, Search, X } from "lucide-react-native";
 import { Stack } from "expo-router";
 
-import getMapSearches from "@services/mapSearches";
+import getMapSearches from "@services/mapSearchesGeo";
+
+interface LocationSuggestion {
+  text_en: string;
+  place_name_en: string;
+  geometry: {
+    coordinates: string[];
+  };
+  // distance: number;
+  // Add other properties as needed
+}
 
 export default function SearchComponent({
   placeholder = "Search",
@@ -13,7 +23,7 @@ export default function SearchComponent({
 }: {
   placeholder?: string;
   setIsTyping: Dispatch<SetStateAction<boolean>>;
-  setLocationSuggestions: Dispatch<SetStateAction<string[]>>;
+  setLocationSuggestions: Dispatch<SetStateAction<LocationSuggestion[]>>;
 }) {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -24,6 +34,7 @@ export default function SearchComponent({
     if (input.length > 0) {
       const locationSuggestions = await getMapSearches(input);
       setLocationSuggestions(locationSuggestions);
+      // console.log(locationSuggestions);
     } else {
       setLocationSuggestions([]);
     }

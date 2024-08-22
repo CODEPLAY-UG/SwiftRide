@@ -20,17 +20,21 @@ import {
   X,
 } from "lucide-react-native";
 import { Link, router, Stack } from "expo-router";
-import SearchComponent from "@/components/core/Search1";
+import SearchComponent from "@/components/core/SearchMapBox";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { ProgressBar, MD3Colors } from "react-native-paper";
 import BikeType from "@/components/core/BikeType";
 import ChevronLeft from "@/assets/svgs/chevronLeft";
 import CalendarPlus from "@/assets/svgs/calendarPlus";
+import getMapSearches from "@/services/mapSearchesGeo";
 
 interface LocationSuggestion {
-  name: string;
-  place_formatted: string;
-  distance: number;
+  text_en: string;
+  place_name_en: string;
+  geometry: {
+    coordinates: string[];
+  };
+  // distance: number;
   // Add other properties as needed
 }
 
@@ -41,6 +45,27 @@ export default function Index() {
   const [locationSuggestions, setLocationSuggestions] = useState<
     LocationSuggestion[]
   >([]);
+
+  const [currentLocationSuggestions, setCurrentLocationSuggestions] = useState<
+    LocationSuggestion[]
+  >([]);
+
+  const [showCurentLocationMenu, setShowCurentLocationMenu] =
+    useState("hidden");
+  const [clocation, setCLocation] = useState("");
+
+  const handleCurrentLocation = async (input: string) => {
+    if (input.length > 0) {
+      setShowCurentLocationMenu("");
+      setCLocation(input);
+      const locationSuggestions = await getMapSearches(input);
+      setCurrentLocationSuggestions(locationSuggestions);
+    } else {
+      setShowCurentLocationMenu("hidden");
+      setCLocation(input);
+      setCurrentLocationSuggestions([]);
+    }
+  };
 
   const rideSheetRef = useRef<BottomSheet>(null);
 
@@ -74,7 +99,36 @@ export default function Index() {
         <TextInput
           placeholder="Current user location"
           className="text-[#616161] font-[17px]"
+          value={clocation}
+          onChangeText={handleCurrentLocation}
         />
+      </View>
+      <View
+        style={styles.shadow}
+        className={`flex px-3 py-2 mx-[60px] rounded-lg ${showCurentLocationMenu}`}>
+        {currentLocationSuggestions.length > 0 ? (
+          currentLocationSuggestions.slice(0, 3).map((item, index) => (
+            <Pressable
+              onPress={() => {
+                setCLocation(item.place_name_en);
+                setShowCurentLocationMenu("hidden");
+              }}
+              key={index}>
+              <View className="flex-row justify-between items-center mt-3">
+                <View className="mx-6 flex-row items-center">
+                  <MapPin color="#808080" size={24} />
+                  <View className="mx-4">
+                    <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
+                      {item.place_name_en}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </Pressable>
+          ))
+        ) : (
+          <Text>No result</Text>
+        )}
       </View>
       <View>
         <SearchComponent
@@ -117,7 +171,7 @@ export default function Index() {
             </>
           ) : (
             <View>
-              {locationSuggestions.slice(0, 3).map((item, index) => (
+              {locationSuggestions.map((item, index) => (
                 <Pressable
                   onPress={() => {
                     setIsAddress(true);
@@ -128,10 +182,10 @@ export default function Index() {
                       <MapPin color="#808080" size={24} />
                       <View className="mx-4">
                         <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-                          {item.name}
+                          {item.text_en}
                         </Text>
                         <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
-                          {item.place_formatted}
+                          {item.place_name_en}
                         </Text>
                       </View>
                     </View>
@@ -249,5 +303,23 @@ const styles = StyleSheet.create({
     left: 0,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+  },
+  position: {
+    position: "absolute",
+    // top: 10,
+  },
+  shadow: {
+    position: "absolute",
+    top: 65,
+    zIndex: 10,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1, // Reduced height for a thinner shadow
+    },
+    shadowOpacity: 0.1, // Lower opacity for a lighter shadow
+    shadowRadius: 2, // Smaller radius for a sharper shadow
+    elevation: 2, // Lower elevation for a less pronounced shadow on Android
   },
 });

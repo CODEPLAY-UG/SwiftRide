@@ -3,6 +3,7 @@ import Mapbox, {
   Camera,
   CircleLayer,
   Images,
+  LineLayer,
   LocationPuck,
   PointAnnotation,
   ShapeSource,
@@ -21,6 +22,8 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 import { router, Stack } from "expo-router";
 import * as Location from "expo-location";
+import { UserLocation } from "@rnmapbox/maps";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   ArrowLeft,
@@ -37,8 +40,20 @@ import { point } from "@turf/helpers";
 import bikes from "@data/bikes.json";
 import { ProgressBar } from "react-native-paper";
 import addresses from "@data/address.json";
-import SearchComponent from "@/components/core/Search";
+import SearchComponent from "@/components/core/SearchMapBox";
 import BikeType from "@/components/core/BikeType";
+import { getDirections } from "@/services/directions";
+import { OnPressEvent } from "@rnmapbox/maps/lib/typescript/src/types/OnPressEvent";
+
+interface LocationSuggestion {
+  text_en: string;
+  place_name_en: string;
+  geometry: {
+    coordinates: string[];
+  };
+  // distance: number;
+  // Add other properties as needed
+}
 
 Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
 export default function MapboxComponent() {
@@ -164,25 +179,32 @@ const MapContent = ({
   const points = bikes.map((bike: { longitude: number; latitude: number }) =>
     point([bike.longitude, bike.latitude])
   );
+  const [direction, setDirection] = useState();
+  const directionCoordinate = direction?.routes?.[0]?.geometry.coordinates;
+
+  const onPointPress = async (event: OnPressEvent) => {
+    // handleRideDetailsPress(0);
+    // console.log(event);
+    const newDirection = await getDirections(
+      [location?.coords.longitude, location?.coords.latitude],
+      [event.coordinates.longitude, event.coordinates.latitude]
+    );
+    setDirection(newDirection);
+  };
 
   const pin = require("@assets/images/pin.png");
 
   const [snapPoints1, setSnapPoints1] = useState(["30%"]);
 
   const [isAddress, setIsAddress] = useState(false);
-  const [text, setText] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
+  // const [text, setText] = useState("");
+  // const [isFocused, setIsFocused] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
 
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredAddresses = addresses.filter(
-    (item) =>
-      item.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.subtext.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.road.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.city.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const [locationSuggestions, setLocationSuggestions] = useState<
+    LocationSuggestion[]
+  >([]);
+  const mapRef = useRef(null);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -195,27 +217,50 @@ const MapContent = ({
       />
       <View className="h-full w-full">
         <Mapbox.MapView
-          // styleURL="mapbox://styles/mapbox/dark-v11"
+          styleURL="mapbox://styles/mapbox/dark-v11"
+          ref={mapRef}
           scaleBarEnabled={false}
+          compassEnabled={true}
+          compassViewPosition={3}
+          // logoEnabled
+          attributionEnabled={false}
+          // surfaceView={false}
           className="w-full h-full">
           {location && (
             <>
               <Camera
-                centerCoordinate={[
-                  location.coords.longitude,
-                  location.coords.latitude,
-                ]}
+                // centerCoordinate={[
+                //   location.coords.longitude,
+                //   location.coords.latitude,
+                // ]}
+                centerCoordinate={[32.583333, 0.316667]} // Centenary Park, Uganda
+                // centerCoordinate={
+                //   location
+                //     ? [location.coords.longitude, location.coords.latitude]
+                //     : [32.583333, 0.316667]
+                // }
                 zoomLevel={16}
                 followZoomLevel={15}
-                followUserLocation
-                animationDuration={3000}
+                // followUserLocation
+                followUserLocation={location !== null ? true : false} // only follow user location if it's available
+                animationDuration={5000}
               />
+              <UserLocation
+                showsUserHeadingIndicator={true}
+                androidRenderMode="gps"
+              />
+
               <LocationPuck
                 pulsing={{ isEnabled: true }}
+                visible={true}
                 puckBearingEnabled
                 puckBearing="heading"
               />
-              <ShapeSource id="bikes" cluster shape={featureCollection(points)}>
+              <ShapeSource
+                onPress={onPointPress}
+                id="bikes"
+                cluster
+                shape={featureCollection(points)}>
                 <SymbolLayer
                   id="bike-icons"
                   minZoomLevel={0.5}
@@ -223,11 +268,11 @@ const MapContent = ({
                     iconImage: "pin",
                     iconAllowOverlap: true,
                     iconSize: 0.4,
-                    // iconKeepUpright: true,
+                    iconKeepUpright: true,
                     iconAnchor: "bottom",
                   }}
                 />
-                {/* <SymbolLayer
+                <SymbolLayer
                   id="pointCount"
                   style={{
                     textField: ["get", "point_count"],
@@ -235,7 +280,7 @@ const MapContent = ({
                     textColor: "#ffffff",
                     textPitchAlignment: "map",
                   }}
-                /> */}
+                />
                 <CircleLayer
                   id="clusters"
                   belowLayerID="pointCount"
@@ -251,6 +296,30 @@ const MapContent = ({
                 />
                 <Images images={{ pin }} />
               </ShapeSource>
+              {directionCoordinate && (
+                <ShapeSource
+                  id="routeSource"
+                  lineMetrics
+                  shape={{
+                    properties: {},
+                    type: "Feature",
+                    geometry: {
+                      type: "LineString",
+                      coordinates: directionCoordinate,
+                    },
+                  }}>
+                  <LineLayer
+                    id="exampleLineLayer"
+                    style={{
+                      lineColor: "#ffd700",
+                      lineCap: "round",
+                      lineJoin: "round",
+                      lineWidth: 7,
+                      // lineDasharray: [0, 4, 3],
+                    }}
+                  />
+                </ShapeSource>
+              )}
             </>
           )}
         </Mapbox.MapView>
@@ -299,7 +368,7 @@ const MapContent = ({
             <View>
               <SearchComponent
                 setIsTyping={setIsTyping}
-                // setSearchQuery={setSearchQuery}
+                setLocationSuggestions={setLocationSuggestions}
                 placeholder="Destination"
               />
             </View>
@@ -311,7 +380,7 @@ const MapContent = ({
                   className="h-[1px]"
                 />
 
-                {filteredAddresses.length == 0 ? (
+                {locationSuggestions.length == 0 ? (
                   <>
                     <View className="mx-6 flex-row justify-between items-center mt-3">
                       <View className="flex-row items-center">
@@ -340,7 +409,7 @@ const MapContent = ({
                   </>
                 ) : (
                   <View>
-                    {filteredAddresses.slice(0, 2).map((item, index) => (
+                    {locationSuggestions.map((item, index) => (
                       <Pressable
                         onPress={() => {
                           setIsAddress(true);
@@ -351,10 +420,14 @@ const MapContent = ({
                             <MapPin color="#808080" size={24} />
                             <View className="mx-4">
                               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-                                {item.address}
+                                {item.text_en}
                               </Text>
                               <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
-                                {item.road}, {item.city}
+                                {item.place_name_en}
+                              </Text>
+                              <Text className="text-[#616161] text-[13px] leading-[18px] tracking-[-0.08]">
+                                ({item.geometry.coordinates[0]},
+                                {item.geometry.coordinates[1]})
                               </Text>
                             </View>
                           </View>
@@ -377,7 +450,7 @@ const MapContent = ({
                       </Pressable>
                     </View>
 
-                    {filteredAddresses.length != 0 ? (
+                    {locationSuggestions.length != 0 ? (
                       <View className="px-4">
                         <Pressable
                           onPress={() => {
