@@ -41,7 +41,7 @@ interface LocationSuggestion {
 export default function Index() {
   const [isAddress, setIsAddress] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  // const [searchQuery, setSearchQuery] = useState("");
+
   const [locationSuggestions, setLocationSuggestions] = useState<
     LocationSuggestion[]
   >([]);

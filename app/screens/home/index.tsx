@@ -115,8 +115,7 @@ export default function MapboxComponent() {
           animationType="fade"
           transparent={true}
           visible={isMenuOpen}
-          onRequestClose={closeMenu}
-        >
+          onRequestClose={closeMenu}>
           <TouchableWithoutFeedback onPress={closeMenu}>
             <View style={styles.overlay}>
               <View style={styles.menuContainer}>
@@ -211,8 +210,7 @@ const MapContent = ({
           // logoEnabled
           attributionEnabled={false}
           // surfaceView={false}
-          className="w-full h-full"
-        >
+          className="w-full h-full">
           {location && (
             <>
               <Camera
@@ -247,8 +245,7 @@ const MapContent = ({
                 onPress={onPointPress}
                 id="bikes"
                 cluster
-                shape={featureCollection(points)}
-              >
+                shape={featureCollection(points)}>
                 <SymbolLayer
                   id="bike-icons"
                   minZoomLevel={0.5}
@@ -295,8 +292,7 @@ const MapContent = ({
                       type: "LineString",
                       coordinates: directionCoordinate,
                     },
-                  }}
-                >
+                  }}>
                   <LineLayer
                     id="exampleLineLayer"
                     style={{
@@ -315,8 +311,7 @@ const MapContent = ({
       </View>
       <Pressable
         onPress={() => router.push("./search_integrated")}
-        className="absolute bottom-5"
-      >
+        className="absolute bottom-5">
         <View className="bg-black rounded-full w-20 h-20 justify-center items-center">
           <Bike color="white" size={24} />
         </View>
@@ -324,8 +319,7 @@ const MapContent = ({
 
       <Pressable
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-        className="absolute top-10 left-5"
-      >
+        className="absolute top-10 left-5">
         <View className="bg-white rounded-full p-4 justify-center items-center">
           <Menu color="#808080" size={24} />
         </View>
@@ -336,8 +330,7 @@ const MapContent = ({
           ref={rideSheetRef}
           snapPoints={snapPoints}
           enablePanDownToClose={true}
-          onClose={() => setIsRideDetailsOpen(false)}
-        >
+          onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
             <BottomSheetHeader title="Ride Details" />
             <RideDetails />

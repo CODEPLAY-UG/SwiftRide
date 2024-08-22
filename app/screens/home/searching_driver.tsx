@@ -3,6 +3,7 @@ import Mapbox, {
   Camera,
   CircleLayer,
   Images,
+  LineLayer,
   LocationPuck,
   PointAnnotation,
   ShapeSource,
@@ -33,6 +34,8 @@ import ConfirmLoading from "@/components/core/ConfirmLoading";
 import PaymentMode from "@/components/core/PaymentMode";
 import { ProgressBar } from "react-native-paper";
 import ConfirmDriver from "@/components/core/ConfirmDriver";
+import { getDirections } from "@/services/directions";
+import { OnPressEvent } from "@rnmapbox/maps/lib/typescript/src/types/OnPressEvent";
 
 Mapbox.setAccessToken("process.env.EXPO_PUBLIC_MAPBOX_KEY");
 export default function MapboxComponent() {
@@ -159,6 +162,19 @@ const MapContent = ({
     point([bike.longitude, bike.latitude])
   );
 
+  const [direction, setDirection] = useState();
+  const directionCoordinate = direction?.routes?.[0]?.geometry.coordinates;
+
+  const onPointPress = async (event: OnPressEvent) => {
+    // handleRideDetailsPress(0);
+    // console.log(event);
+    const newDirection = await getDirections(
+      [location?.coords.longitude, location?.coords.latitude],
+      [event.coordinates.longitude, event.coordinates.latitude]
+    );
+    setDirection(newDirection);
+  };
+
   const pin = require("@assets/images/pin.png");
 
   const [message, setMessage] = useState("Confirming your trip");
@@ -171,18 +187,19 @@ const MapContent = ({
     timer = setTimeout(() => {
       setMessage("Confirming your trip");
       setPer(0.5);
-    }, 2500); // 5 seconds
+    }, 2000); // 5 seconds
     timer = setTimeout(() => {
       setMessage("Connecting to your driver");
       setPer(0.7);
       setSnapPoints1(["50%"]);
       setIsDriver(true);
-    }, 5000); // 5 seconds
+    }, 4000); // 5 seconds
 
     // Cleanup the timeout if the component unmounts
     return () => clearTimeout(timer);
   }, []);
 
+  const mapRef = useRef(null);
   return (
     <View className="flex-1 justify-center items-center">
       <Stack.Screen
@@ -194,27 +211,50 @@ const MapContent = ({
       />
       <View className="h-full w-full">
         <Mapbox.MapView
-          // styleURL="mapbox://styles/mapbox/dark-v11"
+          styleURL="mapbox://styles/mapbox/dark-v11"
+          ref={mapRef}
           scaleBarEnabled={false}
+          compassEnabled={true}
+          compassViewPosition={3}
+          // logoEnabled
+          attributionEnabled={false}
+          // surfaceView={false}
           className="w-full h-full">
           {location && (
             <>
               <Camera
-                centerCoordinate={[
-                  location.coords.longitude,
-                  location.coords.latitude,
-                ]}
+                // centerCoordinate={[
+                //   location.coords.longitude,
+                //   location.coords.latitude,
+                // ]}
+                centerCoordinate={[32.583333, 0.316667]} // Centenary Park, Uganda
+                // centerCoordinate={
+                //   location
+                //     ? [location.coords.longitude, location.coords.latitude]
+                //     : [32.583333, 0.316667]
+                // }
                 zoomLevel={16}
                 followZoomLevel={15}
-                followUserLocation
-                animationDuration={3000}
+                // followUserLocation
+                followUserLocation={location !== null ? true : false} // only follow user location if it's available
+                animationDuration={5000}
               />
+              <UserLocation
+                showsUserHeadingIndicator={true}
+                androidRenderMode="gps"
+              />
+
               <LocationPuck
                 pulsing={{ isEnabled: true }}
+                visible={true}
                 puckBearingEnabled
                 puckBearing="heading"
               />
-              <ShapeSource id="bikes" cluster shape={featureCollection(points)}>
+              <ShapeSource
+                onPress={onPointPress}
+                id="bikes"
+                cluster
+                shape={featureCollection(points)}>
                 <SymbolLayer
                   id="bike-icons"
                   minZoomLevel={0.5}
@@ -222,11 +262,11 @@ const MapContent = ({
                     iconImage: "pin",
                     iconAllowOverlap: true,
                     iconSize: 0.4,
-                    // iconKeepUpright: true,
+                    iconKeepUpright: true,
                     iconAnchor: "bottom",
                   }}
                 />
-                {/* <SymbolLayer
+                <SymbolLayer
                   id="pointCount"
                   style={{
                     textField: ["get", "point_count"],
@@ -234,7 +274,7 @@ const MapContent = ({
                     textColor: "#ffffff",
                     textPitchAlignment: "map",
                   }}
-                /> */}
+                />
                 <CircleLayer
                   id="clusters"
                   belowLayerID="pointCount"
@@ -250,6 +290,30 @@ const MapContent = ({
                 />
                 <Images images={{ pin }} />
               </ShapeSource>
+              {directionCoordinate && (
+                <ShapeSource
+                  id="routeSource"
+                  lineMetrics
+                  shape={{
+                    properties: {},
+                    type: "Feature",
+                    geometry: {
+                      type: "LineString",
+                      coordinates: directionCoordinate,
+                    },
+                  }}>
+                  <LineLayer
+                    id="exampleLineLayer"
+                    style={{
+                      lineColor: "#ffd700",
+                      lineCap: "round",
+                      lineJoin: "round",
+                      lineWidth: 7,
+                      // lineDasharray: [0, 4, 3],
+                    }}
+                  />
+                </ShapeSource>
+              )}
             </>
           )}
         </Mapbox.MapView>
