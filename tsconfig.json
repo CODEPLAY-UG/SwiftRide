@@ -6,8 +6,8 @@
       "@/*": ["./*"],
       "@assets/*": ["./assets/*"],
       "@components/*": ["./components/*"],
-      "@data/*": ["./data/*"],
-      "@screens/*": ["./app/screens*"]
+      "@app/*": ["./app/*"],
+      "@data/*": ["./data/*"]
     }
   },
   "include": [
@@ -15,7 +15,6 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "class-variance-authority.d.ts",
-    "CustomSwitch.js"
-, "app/screens/profileManagement"  ]
+    "class-variance-authority.d.ts"
+  ]
 }

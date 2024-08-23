@@ -43,7 +43,13 @@ export default function Index() {
         </Text>
       </View>
       <View>
-        <SearchComponent setIsTyping={setIsTyping} placeholder="Destination" />
+        <SearchComponent
+          setIsTyping={setIsTyping}
+          placeholder="Destination"
+          setSearchQuery={function (value: React.SetStateAction<string>): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
       </View>
       {isTyping && (
         <View className="mt-2">

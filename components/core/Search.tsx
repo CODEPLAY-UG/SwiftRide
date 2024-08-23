@@ -7,16 +7,25 @@ import { Stack } from "expo-router";
 export default function SearchComponent({
   placeholder = "Search",
   setIsTyping,
+  setSearchQuery,
 }: {
   placeholder?: string;
   setIsTyping: Dispatch<SetStateAction<boolean>>;
+  setSearchQuery: Dispatch<SetStateAction<string>>;
 }) {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
   const handleTextChange = (input: SetStateAction<string>) => {
     setText(input);
+    setSearchQuery(input);
     setIsTyping(input.length > 0);
+  };
+
+  const handleTextClear = () => {
+    setText("");
+    setSearchQuery("");
+    setIsTyping(0 > 0);
   };
   return (
     <View className="flex-row items-center justify-between mt-2 mx-4">
@@ -32,7 +41,7 @@ export default function SearchComponent({
           onBlur={() => setIsFocused(false)}
           onChangeText={handleTextChange}
         />
-        <TouchableOpacity className="mx-[12px]" onPress={() => setText("")}>
+        <TouchableOpacity className="mx-[12px]" onPress={handleTextClear}>
           {text.length > 0 ? (
             <View className="bg-[#616161] p-[3px] rounded-full">
               <X color="white" size={16} />
@@ -44,7 +53,7 @@ export default function SearchComponent({
       </View>
 
       {isFocused && (
-        <TouchableOpacity onPress={() => setText("")}>
+        <TouchableOpacity onPress={handleTextClear}>
           <Text className="text-gray-700 ml-2">Cancel</Text>
         </TouchableOpacity>
       )}
