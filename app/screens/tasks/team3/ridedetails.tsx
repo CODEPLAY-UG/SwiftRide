@@ -26,8 +26,8 @@ export default function RideDetails() {
           headerShown: true,
         }}
       />
-      <View className=" flex-col items-center justify-center px-4 pt-1 pb-3">
-        <BikeIcon width={32} height={32} />
+      <View className=" flex-col items-center justify-center px-4 pt-6 pb-3">
+        <BikeIcon width={42} height={42} />
         <Text className="text-[#242424] text-[17px] font-semibold leading-[22px]tracking-[0.43px] pt-2 pb-3">
           UGX. (Fare)
         </Text>
@@ -107,7 +107,7 @@ export default function RideDetails() {
         onRequestClose={closeModal}
       >
         <TouchableOpacity className="flex-1" onPress={closeModal}>
-          <View className="h-[316px] mt-auto bg-[#FFFFFF] rounded-3xl shadow-2xl">
+          <View className="h-[226px] mt-auto bg-[#FFFFFF] rounded-3xl shadow-2xl">
             <TouchableOpacity activeOpacity={1}>
               <View className="justify-center items-center h-[52px]">
                 <Text className="font-semibold text-[20px] leading-[25px] tracking-[-0.45px]">
@@ -124,7 +124,7 @@ export default function RideDetails() {
                 </Pressable>
               </View>
               <View className="px-4 pt-3">
-                <Pressable className="bg-[#F0F0F0] w-full h-[52px] items-center justify-center rounded-[99px] flex-row">
+                <Pressable className="bg-[#FFFFFF] w-full h-[52px] items-center justify-center rounded-[99px] flex-row">
                   <ShareIcon />
                   <Text className="text-[#636363] text-[17px] font-semibold leading-[22px] tracking-[-0.43px] pl-2">
                     Share
