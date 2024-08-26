@@ -154,7 +154,7 @@ export default function MtnMobileMoney() {
           onRequestClose={closeModal}
         >
           <TouchableOpacity className="flex-1" onPress={closeModal}>
-            <View className=" mt-auto bg-[#FFFFFF] rounded-3xl border">
+            <View className=" mt-auto bg-[#FFFFFF] rounded-t-3xl border">
               <TouchableOpacity activeOpacity={1}>
                 <Animated.View style={[{ height: modalHeight }]}>
                   {isDeleted ? (
