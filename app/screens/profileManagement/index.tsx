@@ -33,7 +33,7 @@ export default function Profile() {
           },
         }}
       />
-      <View className="-mt-9 ">
+      <View className="-mt-4 mx-1">
         <View className="justify-center items-center">
           <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
             <ProfileIcon width={72} height={72} />
