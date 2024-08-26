@@ -41,10 +41,11 @@ export default function Profile() {
         </View>
 
         <TouchableOpacity onPress={() => router.push("./accountInfo")} className="">
-          <View className="gap-[24px] mt-3 justify-between flex-row items-center px-4">
+          <View className="gap-[24px] justify-between flex-row items-center px-4">
             <View className="">
               <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-[-0.43]">Name</Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">Phone number {"\n"}Email</Text>
+              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">Phone number</Text>
+              <Text  className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-[-0.08]">Email</Text>
             </View>
             <View className="">
               <ArrowIcon />
