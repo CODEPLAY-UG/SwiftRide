@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { router } from "expo-router";
 import axios from 'axios';
 
 GoogleSignin.configure({
@@ -14,6 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [confirm, setConfirm] = useState(null);
   const [code, setCode] = useState('');
+  const [usertoken, setUsertoken] = useState(null)
 
   const onAuthStateChanged = (user) => {
     setUser(user);
@@ -56,19 +58,23 @@ export const AuthProvider = ({ children }) => {
       const userCredential = await auth().signInWithCredential(googleCredential); // creates firebase credentials
 
       const firebaseToken = await userCredential.user.getIdToken();
-      const firebaseUID = userCredential.user.uid;
+      const firebaseUID = await userCredential.user.uid;
+
+      // Setting user credentials in authstate management
+      setUsertoken(firebaseToken)
 
       if (userCredential.additionalUserInfo.isNewUser) {
+        alert("Sign In Started")
         console.log("New user created in Firebase Auth.");
 
         try {
-          const response = await axios.post('http://192.168.1.5:8000/auth/create_user/', {
+          const response = await axios.post('http://192.168.1.4:8000/auth/create_user/', {
             "uid": firebaseUID,
             "username": userCredential.user.displayName,
             "email": userCredential.user.email,
           }, {
             headers: {
-              "Authorization": `Bearer ${firebaseToken}`,
+              // "Authorization": `Bearer ${firebaseToken}`,
               "Content-Type": "application/json"
             },
           });
@@ -79,6 +85,7 @@ export const AuthProvider = ({ children }) => {
         }
       } else {
         console.log("User already exists in Firebase Auth.");
+        router.push('../home')
       }
     } catch (error) {
       handleSignInError(error);
@@ -110,6 +117,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         user,
+        usertoken,
         signUpWithGoogle,
         signInWithPhoneNumber,
         confirmCode,

@@ -6,12 +6,14 @@ import { router, Stack } from "expo-router";
 import { RootState } from "../../store";
 import { StatusBar } from "expo-status-bar";
 import { useAuth } from "../../../utils/AuthContext";
+import { firebase } from "@react-native-firebase/auth";
+import axios from "axios";
 
 export default function PhoneNumber() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const name = useSelector((state: RootState) => state.userData.name);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const { signInWithPhoneNumber } = useAuth();
+  const { signInWithPhoneNumber, user, usertoken } = useAuth();
 
   const handlePhoneNumberChange = (newPhoneNumber: string) => {
     setPhoneNumber(newPhoneNumber);
@@ -24,17 +26,30 @@ export default function PhoneNumber() {
     } catch (error) {
       console.error("Message Error", error.message)};}
 
-  const handleSaveUserData = () => {
+  
+
+  const handlephoneFromGoogleSignin = async () => {
     // Dispatch both name and phone number to the store
-    dispatch(
-      setUserData({
-        name,
-        phoneNumber,
-      })
-    );
+
+    try {
+      const firebasetoken = usertoken;
+      console.log(firebasetoken)
+      console.log(phoneNumber)
+      const response = await axios.put('http://192.168.1.4:8000/auth/update_user/', {
+        phone_number: phoneNumber
+      }, {
+        headers: {
+          "Authorization": `Bearer ${firebasetoken}`,
+          "Content-Type": "application/json"
+        },
+      });
+
     // You can also navigate to another screen or perform any other action
-    router.push("./Otp");
-  };
+    router.push("../home");
+  } catch (error) {
+    console.log("Error sending phone number to server", error.message)
+  }
+};
 
   return (
     <View className="bg-white h-full w-full px-4">
@@ -58,7 +73,7 @@ export default function PhoneNumber() {
         keyboardType="default"
       />
       <Pressable
-        onPress={handlePhoneNumber}
+        onPress={user ? handlephoneFromGoogleSignin : handlePhoneNumber}
         className="mt-[56px] bg-[#636363] h-[52px] items-center justify-center rounded-[99px]"
       >
         <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">

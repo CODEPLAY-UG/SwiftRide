@@ -31,6 +31,7 @@ export default function SignUpIndex() {
 
 const handleGoogleSignUp = async () => {
     try {
+      alert("Handling google signup")
       await signUpWithGoogle();
       router.push("./phoneNumber");
     } catch (error) {
