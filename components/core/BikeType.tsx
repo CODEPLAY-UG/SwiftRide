@@ -1,16 +1,9 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { router, Stack } from "expo-router";
-import {
-  Banknote,
-  Bike,
-  Circle,
-  CircleCheck,
-  Info,
-  PackageOpen,
-  Plus,
-  Zap,
-} from "lucide-react-native";
+import PackageOpen from "@/assets/svgs/packageOpen";
+import Bike from "@/assets/svgs/bike";
+import Zap from "@/assets/svgs/zap";
 
 export default function BikeType({
   setIsAddress,
@@ -20,7 +13,7 @@ export default function BikeType({
   const bikes = ["Standard bike", "E-Bike", "Cargo bike"];
   const [select, setSelect] = useState(bikes[0]);
   const selectedItem = [
-    "border-[#b3b3b3] bg-[#e0e0e0] rounded-[16px] mt-3 px-4 py-2 shadow-md",
+    "bg-[#e0e0e0] rounded-[16px] mt-3 px-4 py-2 shadow-md",
     "rounded-[16px] mt-3 px-4 py-2",
   ];
 
@@ -34,6 +27,7 @@ export default function BikeType({
       <View className="">
         <Pressable
           className={select == bikes[0] ? selectedItem[0] : selectedItem[1]}
+          style={select == bikes[0] ? styles.shadow : {}}
           onPress={() => setSelect(bikes[0])}>
           <View className="flex-row space-x-5 justify-between item-center ">
             <View className="p-1 flex-row items-center space-x-3">
@@ -57,6 +51,7 @@ export default function BikeType({
 
         <Pressable
           className={select == bikes[1] ? selectedItem[0] : selectedItem[1]}
+          style={select == bikes[1] ? styles.shadow : {}}
           onPress={() => setSelect(bikes[1])}>
           <View className="flex-row space-x-5 justify-between item-center">
             <View className="p-1 flex-row items-center space-x-3">
@@ -81,6 +76,7 @@ export default function BikeType({
 
         <Pressable
           className={select == bikes[2] ? selectedItem[0] : selectedItem[1]}
+          style={select == bikes[2] ? styles.shadow : {}}
           onPress={() => setSelect(bikes[2])}>
           <View className="flex-row space-x-5 justify-between item-center">
             <View className="p-1 flex-row items-center space-x-3">
@@ -118,3 +114,16 @@ export default function BikeType({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1, // Reduced height for a thinner shadow
+    },
+    shadowOpacity: 0.1, // Lower opacity for a lighter shadow
+    shadowRadius: 2, // Smaller radius for a sharper shadow
+    elevation: 2, // Lower elevation for a less pronounced shadow on Android
+  },
+});

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { router, Stack } from "expo-router";
 import { Banknote, Info, Star } from "lucide-react-native";
 import { Badge, Chip } from "react-native-paper";
+import BankNote from "@/assets/svgs/bankNote";
 
 export default function TripSummary(props: {
   setIsPaymentDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,7 +37,7 @@ export default function TripSummary(props: {
 
         <View className="flex-row space-x-5 justify-between item-center mt-5">
           <View className="p-1 flex-row items-center space-x-2">
-            <Banknote className="" color="#808080" size={24} />
+            <BankNote />
             <View className="">
               <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
                 Payment Method

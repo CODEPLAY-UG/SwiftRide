@@ -10,15 +10,6 @@ import {
 } from "react-native";
 import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  Hop,
-  MapPin,
-  MapPinned,
-  Mic,
-  Search,
-  SearchX,
-  X,
-} from "lucide-react-native";
 import { Link, router, Stack } from "expo-router";
 import SearchComponent from "@/components/core/SearchMapBox";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
@@ -27,6 +18,10 @@ import BikeType from "@/components/core/BikeType";
 import ChevronLeft from "@/assets/svgs/chevronLeft";
 import CalendarPlus from "@/assets/svgs/calendarPlus";
 import getMapSearches from "@/services/mapSearchesGeo";
+import MapPin from "@/assets/svgs/mapPin";
+import Hop from "@/assets/svgs/hop";
+import MapPinned from "@/assets/svgs/mapPinned";
+import SearchX from "@/assets/svgs/searchX";
 
 interface LocationSuggestion {
   text_en: string;
@@ -41,7 +36,7 @@ interface LocationSuggestion {
 export default function Index() {
   const [isAddress, setIsAddress] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-
+  const [result, setResult] = useState("");
   const [locationSuggestions, setLocationSuggestions] = useState<
     LocationSuggestion[]
   >([]);
@@ -95,7 +90,7 @@ export default function Index() {
         }}
       />
       <View className="flex-row space-x-2 px-4 mb-3">
-        <MapPin className="text-[#808080] w-6 h-6" />
+        <MapPin width={24} height={24} />
         <TextInput
           placeholder="Current user location"
           className="text-[#616161] font-[17px]"
@@ -116,7 +111,7 @@ export default function Index() {
               key={index}>
               <View className="flex-row justify-between items-center mt-3">
                 <View className="mx-6 flex-row items-center">
-                  <MapPin color="#808080" size={24} />
+                  <MapPin width={24} height={34} />
                   <View className="mx-4">
                     <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                       {item.place_name_en}
@@ -134,8 +129,8 @@ export default function Index() {
         <SearchComponent
           setIsTyping={setIsTyping}
           setLocationSuggestions={setLocationSuggestions}
-          // setSearchQuery={setSearchQuery}
           placeholder="Destination"
+          setResult={setResult}
         />
       </View>
       {isTyping && (
@@ -146,10 +141,10 @@ export default function Index() {
             <>
               <View className="mx-6 flex-row justify-between items-center mt-3">
                 <View className="flex-row items-center">
-                  <SearchX color="#808080" size={24} />
+                  <SearchX height={24} width={24} />
                   <View className="mx-4">
                     <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-                      No results for query
+                      No results for {result}
                     </Text>
                   </View>
                 </View>
@@ -158,7 +153,7 @@ export default function Index() {
                 <Pressable onPress={() => router.push("./search_map")}>
                   <View className="flex-row justify-between items-center">
                     <View className="mx-6 flex-row items-center">
-                      <MapPinned color="#808080" size={24} />
+                      <MapPinned height={24} width={24} />
                       <View className="mx-4">
                         <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
                           Select location on map
@@ -179,7 +174,7 @@ export default function Index() {
                   key={index}>
                   <View className="flex-row justify-between items-center mt-3">
                     <View className="mx-6 flex-row items-center">
-                      <MapPin color="#808080" size={24} />
+                      <MapPin width={24} height={34} />
                       <View className="mx-4">
                         <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                           {item.text_en}
@@ -197,7 +192,7 @@ export default function Index() {
                 <Pressable onPress={() => router.push("./search_map")}>
                   <View className="flex-row justify-between items-center">
                     <View className="mx-6 flex-row items-center">
-                      <MapPinned color="#808080" size={24} />
+                      <MapPinned height={24} width={24} />
                       <View className="mx-4">
                         <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
                           Select location on map
@@ -236,8 +231,8 @@ export default function Index() {
               Recent destinations
             </Text>
           </View>
-          <View className="px-4 py-4 justify-between items-center">
-            <Hop color="#808080" size={48} />
+          <View className="px-4 py-2 justify-between items-center">
+            <Hop width={48} height={48} />
           </View>
           <View className="mx-4 py-2 justify-between items-center">
             <Text className="text-[#242424] font-semibold text-[20px] leading-[25px] tracking-[-0.45]">

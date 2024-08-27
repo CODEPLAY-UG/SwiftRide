@@ -200,6 +200,7 @@ const MapContent = ({
   // const [text, setText] = useState("");
   // const [isFocused, setIsFocused] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [result, setResult] = useState("");
 
   const [locationSuggestions, setLocationSuggestions] = useState<
     LocationSuggestion[]
@@ -370,6 +371,7 @@ const MapContent = ({
                 setIsTyping={setIsTyping}
                 setLocationSuggestions={setLocationSuggestions}
                 placeholder="Destination"
+                setResult={setResult}
               />
             </View>
             {isTyping && (
@@ -387,7 +389,7 @@ const MapContent = ({
                         <SearchX color="#808080" size={24} />
                         <View className="mx-4">
                           <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
-                            No results for query
+                            No results for {result}
                           </Text>
                         </View>
                       </View>

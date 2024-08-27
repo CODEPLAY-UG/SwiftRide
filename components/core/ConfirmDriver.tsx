@@ -1,20 +1,7 @@
 import { View, Text, Pressable } from "react-native";
 import React, { useState } from "react";
-import { router, Stack } from "expo-router";
-import {
-  Banknote,
-  CircleUserRound,
-  Info,
-  MessageCircleMore,
-  Phone,
-  Star,
-} from "lucide-react-native";
-import {
-  ActivityIndicator,
-  Badge,
-  Chip,
-  ProgressBar,
-} from "react-native-paper";
+import { CircleUserRound, MessageCircleMore, Phone } from "lucide-react-native";
+import ProfileIcon from "@/assets/svgs/profileIcon";
 
 export default function ConfirmDriver() {
   return (
@@ -37,7 +24,7 @@ export default function ConfirmDriver() {
           <View className="flex-row justify-center">
             <View className=" ">
               <View className=" flex-row justify-center w-[98px]">
-                <CircleUserRound color="#000000" size="60" strokeWidth="1" />
+                <ProfileIcon />
               </View>
               <View>
                 <Text className="text-[15px] text-[#616161] leading-[20px] tracking-[-0.23px]">
