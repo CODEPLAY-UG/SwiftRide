@@ -4,8 +4,7 @@ import { Link, router, Stack } from "expo-router";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../../features/userData/userDataSlice";
 import { StatusBar } from "expo-status-bar";
-import { useAuth } from "../../../utils/AuthContext";
-
+import { useAuth } from "@utils/AuthContext";
 
 export default function SignUpIndex() {
   const dispatch = useDispatch();
@@ -28,14 +27,15 @@ export default function SignUpIndex() {
     router.push("./phoneNumber");
   };
 
-
-const handleGoogleSignUp = async () => {
+  const handleGoogleSignUp = async () => {
     try {
-      alert("Handling google signup")
+      alert("Handling google signup");
       await signUpWithGoogle();
       router.push("./phoneNumber");
     } catch (error) {
-      console.error("Google Sign-Up failed:", error.message)};}
+      console.error("Google Sign-Up failed:", error.message);
+    }
+  };
 
   return (
     <View className="bg-white h-full w-full px-5">
@@ -70,7 +70,8 @@ const handleGoogleSignUp = async () => {
         </Text>
         <Pressable
           onPress={handleGoogleSignUp}
-          className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]">
+          className="space-x-3 border border-[#636363] flex-row w-full h-[52px] items-center justify-center rounded-[99px]"
+        >
           <Image
             className="h-5 w-5"
             source={require("../../../assets/images/googleLogo.png")}
@@ -79,7 +80,10 @@ const handleGoogleSignUp = async () => {
             Continue with Google
           </Text>
         </Pressable>
-        <Pressable className="space-x-3 border border-[#636363] flex-row w-full h-[52px] mt-4  items-center justify-center rounded-[99px]">
+        <Pressable
+          onPress={() => router.push("../home")}
+          className="space-x-3 border border-[#636363] flex-row w-full h-[52px] mt-4  items-center justify-center rounded-[99px]"
+        >
           <Image
             className="h-5 w-5"
             source={require("../../../assets/images/appleLogo.png")}
