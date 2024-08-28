@@ -22,6 +22,7 @@ import MapPin from "@/assets/svgs/mapPin";
 import Hop from "@/assets/svgs/hop";
 import MapPinned from "@/assets/svgs/mapPinned";
 import SearchX from "@/assets/svgs/searchX";
+import Triangle from "@/assets/svgs/triangle";
 
 interface LocationSuggestion {
   text_en: string;
@@ -101,6 +102,7 @@ export default function Index() {
       <View
         style={styles.shadow}
         className={`flex px-3 py-2 mx-[60px] rounded-lg ${showCurentLocationMenu}`}>
+        <Triangle />
         {currentLocationSuggestions.length > 0 ? (
           currentLocationSuggestions.slice(0, 3).map((item, index) => (
             <Pressable
@@ -109,7 +111,7 @@ export default function Index() {
                 setShowCurentLocationMenu("hidden");
               }}
               key={index}>
-              <View className="flex-row justify-between items-center mt-3">
+              <View className="flex-row justify-between items-center my-3">
                 <View className="mx-6 flex-row items-center">
                   <MapPin width={24} height={34} />
                   <View className="mx-4">
@@ -122,7 +124,11 @@ export default function Index() {
             </Pressable>
           ))
         ) : (
-          <Text>No result</Text>
+          <View className="flex-row justify-between items-center my-3">
+            <View className="mx-6 flex-row items-center">
+              <Text>No result for {clocation}</Text>
+            </View>
+          </View>
         )}
       </View>
       <View>
@@ -266,7 +272,6 @@ export default function Index() {
         visible={isAddress}
         onRequestClose={() => {
           setIsAddress(false);
-          console.log(isAddress);
         }}>
         <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
           <View style={styles.overlay}>
@@ -319,10 +324,10 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1, // Reduced height for a thinner shadow
+      height: 2, // Reduced height for a thinner shadow
     },
     shadowOpacity: 0.1, // Lower opacity for a lighter shadow
     shadowRadius: 2, // Smaller radius for a sharper shadow
-    elevation: 2, // Lower elevation for a less pronounced shadow on Android
+    elevation: 15, // Lower elevation for a less pronounced shadow on Android
   },
 });

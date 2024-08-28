@@ -5,7 +5,6 @@ import Mapbox, {
   Images,
   LineLayer,
   LocationPuck,
-  PointAnnotation,
   ShapeSource,
   SymbolLayer,
 } from "@rnmapbox/maps";
@@ -13,7 +12,6 @@ import {
   View,
   Text,
   ActivityIndicator,
-  TouchableOpacity,
   Modal,
   TouchableWithoutFeedback,
   StyleSheet,
@@ -25,14 +23,7 @@ import * as Location from "expo-location";
 import { UserLocation } from "@rnmapbox/maps";
 
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  ArrowLeft,
-  Bike,
-  MapPin,
-  MapPinned,
-  Menu,
-  SearchX,
-} from "lucide-react-native";
+import { ArrowLeft } from "lucide-react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import MenuContent from "@components/core/MenuContent";
 import { featureCollection } from "@turf/helpers";
@@ -44,6 +35,10 @@ import SearchComponent from "@/components/core/SearchMapBox";
 import BikeType from "@/components/core/BikeType";
 import { getDirections } from "@/services/directions";
 import { OnPressEvent } from "@rnmapbox/maps/lib/typescript/src/types/OnPressEvent";
+import Bike from "@/assets/svgs/bike";
+import SearchX from "@/assets/svgs/searchX";
+import MapPinned from "@/assets/svgs/mapPinned";
+import MapPin from "@/assets/svgs/mapPin";
 
 interface LocationSuggestion {
   text_en: string;
@@ -329,7 +324,7 @@ const MapContent = ({
         // onPress={() => handleRideDetailsPress(0)}
         className="absolute bottom-5">
         <View className="bg-black rounded-full w-20 h-20 justify-center items-center">
-          <Bike color="white" size={24} />
+          <Bike />
         </View>
       </Pressable>
 
@@ -386,7 +381,6 @@ const MapContent = ({
                   <>
                     <View className="mx-6 flex-row justify-between items-center mt-3">
                       <View className="flex-row items-center">
-                        <SearchX color="#808080" size={24} />
                         <View className="mx-4">
                           <Text className=" text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                             No results for {result}
@@ -398,7 +392,7 @@ const MapContent = ({
                       <Pressable onPress={() => router.push("./search_map")}>
                         <View className="flex-row justify-between items-center">
                           <View className="mx-6 flex-row items-center">
-                            <MapPinned color="#808080" size={24} />
+                            <MapPinned />
                             <View className="mx-4">
                               <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
                                 Select location on map
@@ -419,7 +413,7 @@ const MapContent = ({
                         key={index}>
                         <View className="flex-row justify-between items-center mt-3">
                           <View className="mx-6 flex-row items-center">
-                            <MapPin color="#808080" size={24} />
+                            <MapPin />
                             <View className="mx-4">
                               <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-[-0.43]">
                                 {item.text_en}
@@ -441,7 +435,7 @@ const MapContent = ({
                       <Pressable onPress={() => router.push("./search_map")}>
                         <View className="flex-row justify-between items-center">
                           <View className="mx-6 flex-row items-center">
-                            <MapPinned color="#808080" size={24} />
+                            <MapPinned />
                             <View className="mx-4">
                               <Text className="text-[#242424] text-[17px]  leading-[22px] tracking-[-0.43]">
                                 Select location on map
@@ -489,21 +483,19 @@ const MapContent = ({
         </BottomSheet>
       )}
 
-      {isAddress && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={true}
-          onRequestClose={() => setIsAddress(false)}>
-          <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
-            <View style={styles.overlay}>
-              <View style={styles.menuContainer}>
-                <BikeType setIsAddress={setIsAddress} />
-              </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isAddress}
+        onRequestClose={() => setIsAddress(false)}>
+        <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
+          <View style={styles.overlay}>
+            <View style={styles.menuContainer}>
+              <BikeType setIsAddress={setIsAddress} />
             </View>
-          </TouchableWithoutFeedback>
-        </Modal>
-      )}
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
     </View>
   );
 };
