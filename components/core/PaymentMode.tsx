@@ -7,6 +7,7 @@ import CheckMark from "@/assets/svgs/checkmark";
 
 export default function PaymentMode() {
   const [checked, setChecked] = useState("cash");
+  const [balance, setBalance] = useState("Ugx 46,000");
   return (
     <View className="px-5 h-[80%] justify-between">
       <View className="my-2">
@@ -22,14 +23,16 @@ export default function PaymentMode() {
                 {checked == "wallet" ? <CheckMark /> : ""}
               </View>
             </Pressable>
-            <View className="">
-              <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
-                Wallet
-              </Text>
-              <Text className="text-[15px] text-[#616161] leading-[20px] tracking-[-0.23px]">
-                balance
-              </Text>
-            </View>
+            <Pressable onPress={() => setChecked("wallet")}>
+              <View className="">
+                <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
+                  Wallet
+                </Text>
+                <Text className="text-[15px] text-[#616161] leading-[20px] tracking-[-0.23px]">
+                  {balance}
+                </Text>
+              </View>
+            </Pressable>
           </View>
           <Pressable
             onPress={() => {}}
@@ -46,11 +49,13 @@ export default function PaymentMode() {
                 {checked == "airtel" ? <CheckMark /> : ""}
               </View>
             </Pressable>
-            <View className="">
-              <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
-                Pay with Airtel money
-              </Text>
-            </View>
+            <Pressable onPress={() => setChecked("airtel")}>
+              <View className="">
+                <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
+                  Pay with Airtel money
+                </Text>
+              </View>
+            </Pressable>
           </View>
         </View>
 
@@ -61,11 +66,13 @@ export default function PaymentMode() {
                 {checked == "mtn" ? <CheckMark /> : ""}
               </View>
             </Pressable>
-            <View className="">
-              <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
-                Pay with MTN momo
-              </Text>
-            </View>
+            <Pressable onPress={() => setChecked("mtn")}>
+              <View className="">
+                <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
+                  Pay with MTN momo
+                </Text>
+              </View>
+            </Pressable>
           </View>
         </View>
 
@@ -76,11 +83,13 @@ export default function PaymentMode() {
                 {checked == "cash" ? <CheckMark /> : ""}
               </View>
             </Pressable>
-            <View className="">
-              <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
-                Pay with cash
-              </Text>
-            </View>
+            <Pressable onPress={() => setChecked("cash")}>
+              <View className="">
+                <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
+                  Pay with cash
+                </Text>
+              </View>
+            </Pressable>
           </View>
         </View>
       </View>

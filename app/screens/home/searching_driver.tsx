@@ -187,13 +187,13 @@ const MapContent = ({
     timer = setTimeout(() => {
       setMessage("Confirming your trip");
       setPer(0.5);
-    }, 2000); // 5 seconds
+    }, 1000); // 5 seconds
     timer = setTimeout(() => {
       setMessage("Connecting to your driver");
       setPer(0.7);
-      setSnapPoints1(["50%"]);
+      setSnapPoints1(["46%", "80%"]);
       setIsDriver(true);
-    }, 4000); // 5 seconds
+    }, 2000); // 5 seconds
 
     // Cleanup the timeout if the component unmounts
     return () => clearTimeout(timer);
@@ -338,6 +338,7 @@ const MapContent = ({
         <BottomSheet
           ref={rideSheetRef}
           snapPoints={snapPoints1}
+          index={0}
           enablePanDownToClose={false}
           onClose={() => setIsRideDetailsOpen(false)}>
           <BottomSheetView>
