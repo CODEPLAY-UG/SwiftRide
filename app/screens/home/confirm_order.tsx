@@ -142,7 +142,7 @@ const MapContent = ({
   );
 
   const pin = require("@assets/images/pin.png");
-  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(true);
+  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(false);
 
   return (
     <View className="flex-1 justify-center items-center">
@@ -244,24 +244,20 @@ const MapContent = ({
         </BottomSheet>
       )}
 
-      {!isPaymentDetailsOpen && (
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={true}
-          onRequestClose={() => {}}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              setIsPaymentDetailsOpen(true);
-            }}>
-            <View style={styles.overlay}>
-              <View style={styles.menuContainer}>
-                <PaymentMode />
-              </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isPaymentDetailsOpen}
+        onRequestClose={() => setIsPaymentDetailsOpen(false)}>
+        <TouchableWithoutFeedback
+          onPress={() => setIsPaymentDetailsOpen(false)}>
+          <View style={styles.overlay}>
+            <View style={styles.menuContainer}>
+              <PaymentMode />
             </View>
-          </TouchableWithoutFeedback>
-        </Modal>
-      )}
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
     </View>
   );
 };

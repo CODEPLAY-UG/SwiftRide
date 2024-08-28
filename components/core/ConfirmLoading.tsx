@@ -1,13 +1,6 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text } from "react-native";
 import React, { useState } from "react";
-import { router, Stack } from "expo-router";
-import { Banknote, Info, Star } from "lucide-react-native";
-import {
-  ActivityIndicator,
-  Badge,
-  Chip,
-  ProgressBar,
-} from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 
 export default function ConfirmLoading() {
   return (

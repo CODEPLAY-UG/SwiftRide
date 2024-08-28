@@ -4,6 +4,10 @@ import { CircleUserRound, MessageCircleMore, Phone } from "lucide-react-native";
 import ProfileIcon from "@/assets/svgs/profileIcon";
 
 export default function ConfirmDriver() {
+  const [time, setTime] = useState("2m");
+  const [driver, setDriver] = useState("Ssekikubo");
+  const [pickup, setPointup] = useState("Kireka");
+  const [motorNo, setMotorNo] = useState("Kireka");
   return (
     <View className="px-5 h-[80%] justify-between">
       <View className="px-4 mt-2">
@@ -11,10 +15,10 @@ export default function ConfirmDriver() {
           <View className="flex-row items-center space-x-2 mt-3">
             <View className="">
               <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
-                Arriving in time
+                Arriving in {time}
               </Text>
               <Text className="text-[15px] text-[#616161] leading-[20px] tracking-[-0.23px]">
-                Meet driver_name at pickup_point
+                Meet {driver} at {pickup}
               </Text>
             </View>
           </View>
@@ -27,10 +31,10 @@ export default function ConfirmDriver() {
                 <ProfileIcon />
               </View>
               <View>
-                <Text className="text-[15px] text-[#616161] leading-[20px] tracking-[-0.23px]">
-                  driver_name
+                <Text className="text-[15px] text-[#616161] text-center leading-[20px] tracking-[-0.23px]">
+                  {driver}
                 </Text>
-                <Text>motorcycle_id</Text>
+                <Text className="text-center">{motorNo}</Text>
               </View>
             </View>
           </View>

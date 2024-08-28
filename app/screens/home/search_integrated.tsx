@@ -260,21 +260,24 @@ export default function Index() {
         </View>
       )}
 
-      {isAddress && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={true}
-          onRequestClose={() => setIsAddress(false)}>
-          <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
-            <View style={styles.overlay}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isAddress}
+        onRequestClose={() => {
+          setIsAddress(false);
+          console.log(isAddress);
+        }}>
+        <TouchableWithoutFeedback onPress={() => setIsAddress(false)}>
+          <View style={styles.overlay}>
+            <TouchableWithoutFeedback>
               <View style={styles.menuContainer}>
                 <BikeType setIsAddress={setIsAddress} />
               </View>
-            </View>
-          </TouchableWithoutFeedback>
-        </Modal>
-      )}
+            </TouchableWithoutFeedback>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -286,18 +289,23 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
   },
   menuContainer: {
     height: "50%",
     width: "100%",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     position: "absolute",
     bottom: 0,
     left: 0,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    elevation: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: -2 }, // Shadow goes upwards
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84, // Adds shadow on iOS
   },
   position: {
     position: "absolute",

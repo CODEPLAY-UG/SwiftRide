@@ -8,10 +8,16 @@ import BankNote from "@/assets/svgs/bankNote";
 export default function TripSummary(props: {
   setIsPaymentDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const [status, isStatus] = useState(false);
+  const [tripDetials, setTripDetails] = useState({
+    time: "2m",
+    price: "Ugx 5000",
+    pointA: "Kireka",
+    pointB: "Mukono",
+    bikeType: "E-Bike",
+  });
 
   const changeStatus = () => {
-    props.setIsPaymentDetailsOpen(false);
+    props.setIsPaymentDetailsOpen(true);
   };
 
   return (
@@ -21,17 +27,19 @@ export default function TripSummary(props: {
           <View className="flex-row items-center space-x-2 mt-3">
             <View className="">
               <Text className="text-[17px] text-[#242424] leading-[22px] tracking-[-0.43px]">
-                Point A - Point B
+                {tripDetials.pointA} - {tripDetials.pointB}
               </Text>
               <Text className="text-[15px] text-[#616161] leading-[20px] tracking-[-0.23px]">
-                Price
+                {tripDetials.price}
               </Text>
-              <Text className="flex-row items-center space-x-1">Time</Text>
+              <Text className="flex-row items-center space-x-1">
+                {tripDetials.time}
+              </Text>
             </View>
           </View>
 
           <Chip disabled className="rounded-0 mt-5 h-8">
-            Bike type
+            {tripDetials.bikeType}
           </Chip>
         </View>
 
@@ -79,4 +87,7 @@ export default function TripSummary(props: {
       </View>
     </View>
   );
+}
+function setIsPaymentDetailsOpen(arg0: boolean): any {
+  throw new Error("Function not implemented.");
 }
