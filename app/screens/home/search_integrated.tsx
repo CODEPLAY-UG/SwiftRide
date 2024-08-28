@@ -155,7 +155,7 @@ export default function Index() {
                   </View>
                 </View>
               </View>
-              <View className="space-y-5 mt-[12px]">
+              <View className="space-y-5 mt-3">
                 <Pressable onPress={() => router.push("./search_map")}>
                   <View className="flex-row justify-between items-center">
                     <View className="mx-6 flex-row items-center">
