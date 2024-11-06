@@ -37,7 +37,7 @@ import {
 } from "@react-navigation/native";
 
 Mapbox.setAccessToken(
-  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbHpwZmkxZmQwZ2h3MmtzMzUwaWhxdjRqIn0.CysBEvsOzMQNVQjb3x07FQ"
+  "pk.eyJ1IjoiYXNrdGliYSIsImEiOiJjbTJoZTZwNGowYzBmMndzYmpvNHNzMGV4In0.QQ27lH-fpSC7jep5p2gF2g"
 );
 
 export default function MapboxComponent() {
