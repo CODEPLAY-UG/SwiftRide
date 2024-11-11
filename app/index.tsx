@@ -10,27 +10,26 @@ export default function RootIndex() {
 
   return (
     <SafeAreaView className="h-full w-full flex justify-center items-center">
-      <Stack.Screen
+      {/* <Stack.Screen
         options={{
           title: "Welcome",
           headerTitleAlign: "center",
         }}
       />
-      <Text className="uppercase font-bold text-lg text-[#ffd700]">
-        Welcome to expo
-      </Text>
-      <Link href="/screens/signup" className="mt-5 mb-2" asChild>
+      <Text className="uppercase font-bold text-lg text-[#ffd700]">Welcome to expo</Text>
+      <Link href="/screens/onBoarding" className="mt-5 mb-2" asChild>
         <Pressable>
           <Text className="text-[#32cd32] text-lg">Go to sign up</Text>
         </Pressable>
       </Link>
-      <TouchableOpacity
-        onPress={handleLocation}
-        className="mt-3 bg-[#00ffff] py-2 px-4 rounded"
-      >
+      <TouchableOpacity onPress={handleLocation} className="mt-3 bg-[#00ffff] py-2 px-4 rounded">
         <Text className="text-[#3a1a6c] text-lg">Go to tasks</Text>
       </TouchableOpacity>
-      {/* <Redirect href="/screens/signup" /> */}
+      <TouchableOpacity onPress={() => router.push("/screens/home")} className="mt-3 bg-[#ffd700] py-2 px-4 rounded">
+        <Text className="text-[#3a1a6c] text-lg uppercase">Go to mapbox</Text>
+      </TouchableOpacity> */}
+
+      <Redirect href="/screens/onBoarding" />
     </SafeAreaView>
   );
 }

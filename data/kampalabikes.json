@@ -1,0 +1,182 @@
+[
+  {
+    "bike_id": 1,
+    "latitude": 0.3158,
+    "longitude": 32.5656,
+    "place_name": "Makerere University"
+  },
+  {
+    "bike_id": 2,
+    "latitude": 0.3278,
+    "longitude": 32.5825,
+    "place_name": "Mulago Hospital"
+  },
+  {
+    "bike_id": 3,
+    "latitude": 0.3478,
+    "longitude": 32.5897,
+    "place_name": "Uganda National Museum"
+  },
+  {
+    "bike_id": 4,
+    "latitude": 0.3312,
+    "longitude": 32.5997,
+    "place_name": "Gaddafi National Mosque"
+  },
+  {
+    "bike_id": 5,
+    "latitude": 0.3049,
+    "longitude": 32.5813,
+    "place_name": "Kampala Serena Hotel"
+  },
+  {
+    "bike_id": 6,
+    "latitude": 0.3098,
+    "longitude": 32.5855,
+    "place_name": "Kampala Railway Station"
+  },
+  {
+    "bike_id": 7,
+    "latitude": 0.3108,
+    "longitude": 32.5822,
+    "place_name": "Centenary Park"
+  },
+  {
+    "bike_id": 8,
+    "latitude": 0.315,
+    "longitude": 32.5742,
+    "place_name": "Garden City Mall"
+  },
+  {
+    "bike_id": 9,
+    "latitude": 0.3139,
+    "longitude": 32.5727,
+    "place_name": "Nakumatt Oasis"
+  },
+  {
+    "bike_id": 10,
+    "latitude": 0.318,
+    "longitude": 32.5783,
+    "place_name": "Uganda Golf Club"
+  },
+  {
+    "bike_id": 11,
+    "latitude": 0.3156,
+    "longitude": 32.576,
+    "place_name": "Nakasero Market"
+  },
+  {
+    "bike_id": 12,
+    "latitude": 0.3118,
+    "longitude": 32.5789,
+    "place_name": "Clock Tower"
+  },
+  {
+    "bike_id": 13,
+    "latitude": 0.3208,
+    "longitude": 32.5815,
+    "place_name": "Kampala Road"
+  },
+  {
+    "bike_id": 14,
+    "latitude": 0.3056,
+    "longitude": 32.5844,
+    "place_name": "Victoria University"
+  },
+  {
+    "bike_id": 15,
+    "latitude": 0.3072,
+    "longitude": 32.5867,
+    "place_name": "Sheraton Kampala Hotel"
+  },
+  {
+    "bike_id": 16,
+    "latitude": 0.3148,
+    "longitude": 32.5736,
+    "place_name": "Kololo Airstrip"
+  },
+  {
+    "bike_id": 17,
+    "latitude": 0.3195,
+    "longitude": 32.5889,
+    "place_name": "Kampala Industrial Area"
+  },
+  {
+    "bike_id": 18,
+    "latitude": 0.3203,
+    "longitude": 32.5764,
+    "place_name": "Uganda House"
+  },
+  {
+    "bike_id": 19,
+    "latitude": 0.3228,
+    "longitude": 32.5735,
+    "place_name": "Lugogo Cricket Oval"
+  },
+  {
+    "bike_id": 20,
+    "latitude": 0.3249,
+    "longitude": 32.5838,
+    "place_name": "Acacia Mall"
+  },
+  {
+    "bike_id": 21,
+    "latitude": 0.3216,
+    "longitude": 32.5799,
+    "place_name": "Aga Khan University"
+  },
+  {
+    "bike_id": 22,
+    "latitude": 0.3184,
+    "longitude": 32.5777,
+    "place_name": "Kabaka's Palace"
+  },
+  {
+    "bike_id": 23,
+    "latitude": 0.3289,
+    "longitude": 32.5806,
+    "place_name": "Mengo Hospital"
+  },
+  {
+    "bike_id": 24,
+    "latitude": 0.3308,
+    "longitude": 32.5775,
+    "place_name": "Kasubi Tombs"
+  },
+  {
+    "bike_id": 25,
+    "latitude": 0.335,
+    "longitude": 32.582,
+    "place_name": "Old Kampala"
+  },
+  {
+    "bike_id": 26,
+    "latitude": 0.339,
+    "longitude": 32.5852,
+    "place_name": "Wandegeya Market"
+  },
+  {
+    "bike_id": 27,
+    "latitude": 0.3378,
+    "longitude": 32.5814,
+    "place_name": "Buganda Road Primary School"
+  },
+  {
+    "bike_id": 28,
+    "latitude": 0.3415,
+    "longitude": 32.578,
+    "place_name": "Namirembe Cathedral"
+  },
+  {
+    "bike_id": 29,
+    "latitude": 0.3438,
+    "longitude": 32.5799,
+    "place_name": "Kibuye Roundabout"
+  },
+  {
+    "bike_id": 30,
+    "latitude": 0.3456,
+    "longitude": 32.5861,
+    "place_name": "Lubaga Hospital"
+  }
+]
