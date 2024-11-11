@@ -13,7 +13,6 @@ export default function SignUpLayout() {
         },
       }}
     >
-
       {/* Optionally configure static options outside the route.*/}
       {/* <Stack.Screen name="index" options={{}} />
       <Stack.Screen name="phoneNumber" options={{}} />

@@ -4,8 +4,9 @@ import { ShieldPlus, Smile, TrafficCone } from "lucide-react-native";
 import { router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
+import Button from "@/components/navigation/Button";
 
-export default function onboarding() {
+export default function onBoarding() {
   return (
     <View className="w-full h-full">
       <StatusBar style="light" />
@@ -58,23 +59,19 @@ export default function onboarding() {
             </View>
           </View>
 
-          <View className="px-3 space-y-1">
-            <Pressable
-              onPress={() => router.replace("./login_phoneNumber")}
-              className="bg-[#636363] w-full h-[52px] items-center justify-center rounded-[99px]"
-            >
-              <Text className="text-white text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-                Log in
-              </Text>
-            </Pressable>
-            <Pressable
-              onPress={() => router.push("./name")}
-              className="space-x-3 flex-row w-full h-[52px] items-center justify-center rounded-[99px]"
-            >
-              <Text className="text-[#ffffff] text-[17px] font-[600] leading-[22px] tracking-[-0.43px]">
-                Sign up
-              </Text>
-            </Pressable>
+          <View className="px-3 space-y-3">
+            <Button
+              title="Log in"
+              onPress={() =>
+                router.push("/screens/onBoarding/login_phoneNumber")
+              }
+            />
+            <Button
+              title="Sign up"
+              variant="outline"
+              className=""
+              onPress={() => router.push("/screens/onBoarding/name")}
+            />
           </View>
         </View>
       </ImageBackground>
