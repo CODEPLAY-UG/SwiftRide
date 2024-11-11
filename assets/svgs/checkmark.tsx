@@ -11,8 +11,7 @@ const CheckMark = (props: SvgProps) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     className="lucide lucide-check"
-    {...props}
-  >
+    {...props}>
     <Path d="M20 6 9 17l-5-5" />
   </Svg>
 );
