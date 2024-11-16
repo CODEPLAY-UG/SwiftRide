@@ -3,21 +3,33 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./*"],
-      "@assets/*": ["./assets/*"],
-      "@env/*": ["./env/*"],
-      "@components/*": ["./components/*"],
-      "@data/*": ["./data/*"],
-      "@screens/*": ["./app/screens*"]
+      "@/*": [
+        "./*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@env/*": [
+        "./env/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@data/*": [
+        "./data/*"
+      ],
+      "@screens/*": [
+        "./app/screens*"
+      ]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts",
     "class-variance-authority.d.ts",
     "CustomSwitch.js",
-    "app/screens/profileManagement"
+    "app/screens/profileManagement",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
   ]
 }

@@ -178,7 +178,9 @@ const MapContent = ({
       <View className="h-full w-full">
         <Mapbox.MapView
           // styleURL="mapbox://styles/mapbox/dark-v11"
+          projection="globe"
           scaleBarEnabled={false}
+          compassFadeWhenNorth
           compassEnabled={true}
           compassViewPosition={3}
           // logoEnabled
@@ -193,10 +195,10 @@ const MapContent = ({
                   location.coords.longitude,
                   location.coords.latitude,
                 ]}
-                zoomLevel={16}
-                followZoomLevel={15}
+                zoomLevel={13}
+                followZoomLevel={14}
                 followUserLocation
-                animationDuration={5000}
+                animationDuration={9000}
               />
               <UserLocation
                 showsUserHeadingIndicator={true}

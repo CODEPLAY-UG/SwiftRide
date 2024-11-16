@@ -4,6 +4,8 @@ import { Link, router, Stack, Tabs } from "expo-router";
 import { Button } from "react-native-paper";
 import { Switch } from "react-native-paper";
 import CustomSwitch from "@/CustomSwitch";
+import GoogleIcon from "@/assets/svgs/google";
+import AppleIcon from "@/assets/svgs/apple";
 
 export default function Acounts() {
   const [google, setGoogle] = useState(false);
@@ -30,17 +32,23 @@ export default function Acounts() {
         <View className="space-y-4">
           <View className="flex-row justify-between items-center">
             <View className="">
-              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">Connected accounts</Text>
+              <Text className="text-[#242424] text-[17px] font-semibold leading-[22px] tracking-tighter[-0.43]">
+                Connected accounts
+              </Text>
             </View>
           </View>
         </View>
 
         <View className="flex-row justify-between items-center">
           <View className="flex-row items-center">
-            <Image className="h-10 w-10" source={require(".../../../assets/images/googleLogo.png")} />
+            <GoogleIcon />
             <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Google</Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">example@gmail.com</Text>
+              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">
+                Google
+              </Text>
+              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">
+                example@gmail.com
+              </Text>
             </View>
           </View>
 
@@ -50,10 +58,14 @@ export default function Acounts() {
         </View>
         <View className="flex-row justify-between items-center">
           <View className="flex-row items-center">
-            <Image className="h-10 w-10" source={require(".../../../assets/images/appleLogo.png")} />
+            <AppleIcon />
             <View className="mx-4">
-              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">Apple</Text>
-              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">example@gmail.com</Text>
+              <Text className="text-[#242424] text-[17px] font-normal leading-[22px] tracking-tighter[-0.43]">
+                Apple
+              </Text>
+              <Text className="text-[#616161] text-[13px] font-normal leading-[18px] tracking-tighter[-0.08]">
+                example@gmail.com
+              </Text>
             </View>
           </View>
           <View>
